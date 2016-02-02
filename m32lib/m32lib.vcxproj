@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="a2dw.asm" />
+    <MASM Include="a2dw_ex.asm" />
+    <MASM Include="a2wc.asm" />
+    <MASM Include="about.asm" />
+    <MASM Include="acisort.asm" />
+    <MASM Include="aissort.asm" />
+    <MASM Include="alloc.asm" />
+    <MASM Include="appath.asm" />
+    <MASM Include="appathw.asm" />
+    <MASM Include="argbynum.asm" />
+    <MASM Include="arr2file.asm" />
+    <MASM Include="arr2mem.asm" />
+    <MASM Include="arr2text.asm" />
+    <MASM Include="arradd.asm" />
+    <MASM Include="arralloc.asm" />
+    <MASM Include="arrbin.asm" />
+    <MASM Include="arrcnt.asm" />
+    <MASM Include="arrdat.asm" />
+    <MASM Include="arrealloc.asm" />
+    <MASM Include="arrealoc.asm" />
+    <MASM Include="arrextnd.asm" />
+    <MASM Include="arrfile.asm" />
+    <MASM Include="arrfree.asm" />
+    <MASM Include="arrget.asm" />
+    <MASM Include="arrlen.asm" />
+    <MASM Include="arrmul.asm" />
+    <MASM Include="arrset.asm" />
+    <MASM Include="arrsub.asm" />
+    <MASM Include="arrtotal.asm" />
+    <MASM Include="arrtrunc.asm" />
+    <MASM Include="arrtxt.asm" />
+    <MASM Include="arrxtnd.asm" />
+    <MASM Include="ascdump.asm" />
+    <MASM Include="asqsort.asm" />
+    <MASM Include="assort.asm" />
+    <MASM Include="atodw.asm" />
+    <MASM Include="atofp.asm" />
+    <MASM Include="atol.asm" />
+    <MASM Include="b2b_ex.asm" />
+    <MASM Include="bcount.asm" />
+    <MASM Include="bffolder.asm" />
+    <MASM Include="bin2b_ex.asm" />
+    <MASM Include="bin2hex.asm" />
+    <MASM Include="bintbl.asm" />
+    <MASM Include="bitmapfromfile.asm" />
+    <MASM Include="bitmapfrompicture.asm" />
+    <MASM Include="bitmapfromresource.asm" />
+    <MASM Include="bldarray.asm" />
+    <MASM Include="bm.asm" />
+    <MASM Include="bmh.asm" />
+    <MASM Include="bmpbutn.asm" />
+    <MASM Include="bsearch.asm" />
+    <MASM Include="bubsrta.asm" />
+    <MASM Include="bubsrtd.asm" />
+    <MASM Include="ccsorta.asm" />
+    <MASM Include="ccsortd.asm" />
+    <MASM Include="chtyptbl.asm" />
+    <MASM Include="circle.asm" />
+    <MASM Include="clargs.asm" />
+    <MASM Include="clargsc.asm" />
+    <MASM Include="clearscr.asm" />
+    <MASM Include="closemmf.asm" />
+    <MASM Include="cmpi.asm" />
+    <MASM Include="cmpmem.asm" />
+    <MASM Include="colordlg.asm" />
+    <MASM Include="combsrta.asm" />
+    <MASM Include="combsrtd.asm" />
+    <MASM Include="creatmmf.asm" />
+    <MASM Include="cstsorta.asm" />
+    <MASM Include="cstsortd.asm" />
+    <MASM Include="dbmp.asm" />
+    <MASM Include="dcisort.asm" />
+    <MASM Include="decommnt.asm" />
+    <MASM Include="dectbl.asm" />
+    <MASM Include="dicon.asm" />
+    <MASM Include="dissort.asm" />
+    <MASM Include="dsqsort.asm" />
+    <MASM Include="dssort.asm" />
+    <MASM Include="dw2a.asm" />
+    <MASM Include="dw2ah.asm" />
+    <MASM Include="dw2b_ex.asm" />
+    <MASM Include="dw2hex.asm" />
+    <MASM Include="dw2h_ex.asm" />
+    <MASM Include="dwtoa.asm" />
+    <MASM Include="exist.asm" />
+    <MASM Include="existW.asm" />
+    <MASM Include="filesize.asm" />
+    <MASM Include="filesizeW.asm" />
+    <MASM Include="fntdlg.asm" />
+    <MASM Include="fptoa.asm" />
+    <MASM Include="fptoa2.asm" />
+    <MASM Include="frame3d.asm" />
+    <MASM Include="framegrp.asm" />
+    <MASM Include="framewin.asm" />
+    <MASM Include="free.asm" />
+    <MASM Include="frmctrl.asm" />
+    <MASM Include="getcbtxt.asm" />
+    <MASM Include="getcl.asm" />
+    <MASM Include="getcl_ex.asm" />
+    <MASM Include="geterror.asm" />
+    <MASM Include="getfile.asm" />
+    <MASM Include="getip.asm" />
+    <MASM Include="getlcnt.asm" />
+    <MASM Include="getml.asm" />
+    <MASM Include="getpcnt.asm" />
+    <MASM Include="getpth.asm" />
+    <MASM Include="gettext.asm" />
+    <MASM Include="h2btbl.asm" />
+    <MASM Include="hex2bin.asm" />
+    <MASM Include="hexdump.asm" />
+    <MASM Include="hexflip.asm" />
+    <MASM Include="hextbl.asm" />
+    <MASM Include="htodw.asm" />
+    <MASM Include="instring.asm" />
+    <MASM Include="intdiv.asm" />
+    <MASM Include="intmul.asm" />
+    <MASM Include="intsqrt.asm" />
+    <MASM Include="ip2str.asm" />
+    <MASM Include="isalpha.asm" />
+    <MASM Include="isanum.asm" />
+    <MASM Include="islower.asm" />
+    <MASM Include="isnumber.asm" />
+    <MASM Include="isupper.asm" />
+    <MASM Include="lfcnt.asm" />
+    <MASM Include="line.asm" />
+    <MASM Include="loadlist.asm" />
+    <MASM Include="locate.asm" />
+    <MASM Include="lstdrivs.asm" />
+    <MASM Include="ltoa.asm" />
+    <MASM Include="ltok.asm" />
+    <MASM Include="memcopy.asm" />
+    <MASM Include="memfill.asm" />
+    <MASM Include="namefpth.asm" />
+    <MASM Include="NameFromPathW.asm" />
+    <MASM Include="nrand.asm" />
+    <MASM Include="opendlg.asm" />
+    <MASM Include="pagedlg.asm" />
+    <MASM Include="parsline.asm" />
+    <MASM Include="partial.asm" />
+    <MASM Include="PathOnlyW.asm" />
+    <MASM Include="printdlg.asm" />
+    <MASM Include="qsorta.asm" />
+    <MASM Include="qsortd.asm" />
+    <MASM Include="qstsorta.asm" />
+    <MASM Include="qstsortd.asm" />
+    <MASM Include="readdisk.asm" />
+    <MASM Include="readdiskW.asm" />
+    <MASM Include="readline.asm" />
+    <MASM Include="reload.asm" />
+    <MASM Include="resave.asm" />
+    <MASM Include="retfont.asm" />
+    <MASM Include="retkey.asm" />
+    <MASM Include="riched1.asm" />
+    <MASM Include="riched2.asm" />
+    <MASM Include="roldata.asm" />
+    <MASM Include="rordata.asm" />
+    <MASM Include="rsync_ex.asm" />
+    <MASM Include="runsync.asm" />
+    <MASM Include="savedlg.asm" />
+    <MASM Include="sbm.asm" />
+    <MASM Include="setbmclr.asm" />
+    <MASM Include="setcbtxt.asm" />
+    <MASM Include="shell.asm" />
+    <MASM Include="shell_ex.asm" />
+    <MASM Include="ssorta.asm" />
+    <MASM Include="ssortd.asm" />
+    <MASM Include="stderr.asm" />
+    <MASM Include="stderrw.asm" />
+    <MASM Include="stdin.asm" />
+    <MASM Include="StdInW.asm" />
+    <MASM Include="stdout.asm" />
+    <MASM Include="stdoutw.asm" />
+    <MASM Include="stripi.asm" />
+    <MASM Include="striplf.asm" />
+    <MASM Include="stripx.asm" />
+    <MASM Include="strlen.asm" />
+    <MASM Include="szappend.asm" />
+    <MASM Include="szcatstr.asm" />
+    <MASM Include="szcmp.asm" />
+    <MASM Include="szcmpi.asm" />
+    <MASM Include="szcopy.asm" />
+    <MASM Include="szleft.asm" />
+    <MASM Include="szlen.asm" />
+    <MASM Include="szlower.asm" />
+    <MASM Include="szltrim.asm" />
+    <MASM Include="szmid.asm" />
+    <MASM Include="szmonosp.asm" />
+    <MASM Include="szmulcat.asm" />
+    <MASM Include="szremove.asm" />
+    <MASM Include="szreplac.asm" />
+    <MASM Include="szrev.asm" />
+    <MASM Include="szright.asm" />
+    <MASM Include="szrtrim.asm" />
+    <MASM Include="sztrim.asm" />
+    <MASM Include="szupper.asm" />
+    <MASM Include="szwcnt.asm" />
+    <MASM Include="testreg.asm" />
+    <MASM Include="tstline.asm" />
+    <MASM Include="ucappend.asm" />
+    <MASM Include="ucArgByNum.asm" />
+    <MASM Include="uccat.asm" />
+    <MASM Include="ucCmdTail.asm" />
+    <MASM Include="uccmp.asm" />
+    <MASM Include="uccopy.asm" />
+    <MASM Include="ucfind.asm" />
+    <MASM Include="ucGetCL.asm" />
+    <MASM Include="ucgetline.asm" />
+    <MASM Include="ucleft.asm" />
+    <MASM Include="uclen.asm" />
+    <MASM Include="uclower.asm" />
+    <MASM Include="ucltrim.asm" />
+    <MASM Include="ucmid.asm" />
+    <MASM Include="ucMonoSpace.asm" />
+    <MASM Include="ucmulcat.asm" />
+    <MASM Include="ucremove.asm" />
+    <MASM Include="ucrep.asm" />
+    <MASM Include="ucrev.asm" />
+    <MASM Include="ucright.asm" />
+    <MASM Include="ucrtrim.asm" />
+    <MASM Include="ucupper.asm" />
+    <MASM Include="ucwcnt.asm" />
+    <MASM Include="udw2str.asm" />
+    <MASM Include="uopendlg.asm" />
+    <MASM Include="usavedlg.asm" />
+    <MASM Include="ustr2dw.asm" />
+    <MASM Include="vtile.asm" />
+    <MASM Include="w2b_ex.asm" />
+    <MASM Include="wait_key.asm" />
+    <MASM Include="wordcnt.asm" />
+    <MASM Include="wordrep.asm" />
+    <MASM Include="writdisk.asm" />
+    <MASM Include="writdiskW.asm" />
+    <MASM Include="writline.asm" />
+    <MASM Include="wshell.asm" />
+    <MASM Include="wtok.asm" />
+    <MASM Include="xordata.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="masm32.inc" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C4915CDA-843D-4227-B8E2-748772929B05}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>m32lib</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>masm32</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\masm32\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\masm32\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

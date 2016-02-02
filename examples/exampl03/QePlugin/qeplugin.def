@@ -1,0 +1,2 @@
+LIBRARY QePlugin
+EXPORTS QePlugIn

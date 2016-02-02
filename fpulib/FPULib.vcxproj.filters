@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fpu.inc">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="FpuAbs.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuAdd.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuArccos.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuArccosh.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuArcsin.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuArcsinh.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuArctan.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuArctanh.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuAtoFL.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuChs.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuComp.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuCos.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuCosh.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuDiv.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuEexpX.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuExam.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuFLtoA.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuLnx.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuLogx.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuMul.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuRound.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuSin.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuSinh.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuSize.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuSqrt.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuState.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuSub.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuTan.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuTanh.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuTexpX.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuTrunc.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="FpuXexpY.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="fpulib.txt" />
+  </ItemGroup>
+</Project>
