@@ -12,13 +12,13 @@
   ; Revised January 2005 to free the FPU st7 register if necessary.
   ; Revised December 2006 to avoid a minuscule error when processing strings
   ; which do not have any decimal digit.
+  ; Revised January 2010 to allow additional data types for storage. 
   ;
   ; This FpuAtoFL function converts a decimal number from a zero terminated
-  ; alphanumeric string format (Src) to an 80-bit REAL number and returns
-  ; the result as an 80-bit REAL number at the specified destination (the
-  ; FPU itself or a memory location), unless an invalid operation is
-  ; reported by the FPU or the definition of the parameters (with uID) is
-  ; invalid.
+  ; alphanumeric string format (Src) to a REAL number and returns the
+  ; result as a REAL number at the specified destination (the FPU itself
+  ; or a memory location), unless an invalid operation is reported by
+  ; the FPU or the definition of the parameters (with uID) is invalid.
   ;
   ; The source can be a string in regular numeric format or in scientific
   ; notation. The number of digits (excluding all leading 0's and trailing
@@ -332,21 +332,35 @@ laststep:
       shr   al,1              ;test for invalid operation
       jc    atoflerr          ;clean-up and return error
 
-laststep2:
+; store result as specified
+
       test  uID,DEST_FPU      ;check where result should be stored
-      jnz   @F                ;destination is the FPU
+      .if   !ZERO?            ;destination is the FPU
+            fstp  tempst      ;store it temporarily
+            jmp   restore
+      .endif
       mov   eax,lpDest
-      fstp  tbyte ptr[eax]    ;store result at specified address
-      jmp   restore
-   @@:
-      fstp  tempst            ;store result temporarily
+      test  uID,DEST_MEM4
+      .if   !ZERO?            ;store as REAL4 at specified address
+            fstp  dword ptr[eax]
+            jmp   restore
+      .endif
+      test  uID,DEST_MEM8
+      .if   !ZERO?            ;store as REAL8 at specified address
+            fstp  qword ptr[eax]
+            jmp   restore
+      .endif
+      fstp  tbyte ptr[eax]    ;store as REAL10 at specified address (default)
       
 restore:
       frstor  content         ;restore all previous FPU registers
-      jz    @F
-      ffree st(7)             ;free it if not already empty
-      fld   tempst
-   @@:
+
+      test  uID,DEST_FPU      ;check where result should be stored
+      .if   !ZERO?            ;destination is the FPU
+            ffree st(7)       ;free it if not already empty
+            fld   tempst      ;return the result on the FPU
+      .endif
+
       or    al,1              ;to insure EAX!=0
    @@:
       pop   edi

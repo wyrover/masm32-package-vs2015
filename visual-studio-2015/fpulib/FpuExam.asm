@@ -7,10 +7,12 @@
   ; -----------------------------------------------------------------------
   ; This procedure was written by Raymond Filiatreault, December 2002
   ; Modified March 2004 to avoid any potential data loss from the FPU
+  ; Revised January 2010 to allow additional data types from memory to be
+  ;    used as source parameters. Also corrected a potential bug. 
   ;
-  ; This FpuExam function examines an 80-bit REAL number (Src) for its
-  ; validity, its sign, a value of zero, an absolute value less than 1, and
-  ; a value of infinity.
+  ; This FpuExam function examines a REAL number (Src) for its validity,
+  ; its sign, a value of zero, an absolute value less than 1, and a value
+  ; of infinity.
   ; The result is returned in EAX as coded bits:
   ;         EAX = 0     invalid number
   ;         bit 0       1 = valid number
@@ -21,8 +23,8 @@
   ; If the source was on the FPU, it will be preserved if no error is
   ; reported.
   ;
-  ; The source can only be an 80-bit REAL number from the FPU itself or
-  ; from memory.
+  ; The source can only be a REAL number from the FPU itself or either a
+  ; REAL4, REAL8 or REAL10 from memory.
   ;
   ; Only EAX is used to return the result. All other CPU registers are
   ; preserved. All FPU registers are also preserved.
@@ -39,7 +41,7 @@
 
 ; #########################################################################
 
-FpuExam proc public lpSrc:DWORD, uID:DWORD
+FpuExam proc public uses edx lpSrc:DWORD, uID:DWORD
         
 ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ;
@@ -50,9 +52,7 @@ FpuExam proc public lpSrc:DWORD, uID:DWORD
 ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 LOCAL content[108] :BYTE
-LOCAL tempst       :TBYTE
 
-      push  edx
       test  uID,SRC1_FPU      ;is data taken from FPU?
       jz    @F                ;continue if not
 
@@ -76,17 +76,28 @@ LOCAL tempst       :TBYTE
 ;----------------------------------------
 
       test  uID,SRC1_FPU
-      jz    @F
-      lea   eax,content
-      fld   tbyte ptr[eax+28]
-      jmp   dest0
-
-   @@:
-      test  uID,SRC1_REAL     ;is Src an 80-bit REAL in memory?
-      jz    srcerr            ;no proper source identificaiton
+      .if   !ZERO?            ;Src is taken from FPU?
+            lea   eax,content
+            fld   tbyte ptr[eax+28]
+            jmp   dest0       ;go complete process
+      .endif
+      
       mov   eax,lpSrc
-      fld   tbyte ptr [eax]
-      jmp   dest0             ;go complete process
+      test  uID,SRC1_REAL
+      .if   !ZERO?            ;Src is an 80-bit REAL10 in memory?
+            fld   tbyte ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL8
+      .if   !ZERO?            ;Src is a 64-bit REAL8 in memory?
+            fld   qword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL4
+      .if   !ZERO?            ;Src is a 32-bit REAL4 in memory?
+            fld   dword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
 
 srcerr:
       frstor content
@@ -95,13 +106,13 @@ srcerr1:
       ret
 
 dest0:
-      xor   edx,edx
       ftst                    ;test number
       fstsw ax                ;retrieve exception flags from FPU
       fwait
       shr   al,1              ;invalid operation?
       jc    srcerr
 
+      xor   edx,edx
       sahf                    ;transfer flags to CPU flag register
       jnz   @F                ;if not 0 value or NAN
       jc    examine           ;go check for infinity or NAN value
@@ -128,7 +139,6 @@ dest0:
 finish:
       frstor content
       mov   eax,edx
-      pop   edx               ;retrieve its original value
       or    al,1              ;to indicate source was a valid number
       ret
 

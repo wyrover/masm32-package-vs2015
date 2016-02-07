@@ -7,6 +7,8 @@
   ; -----------------------------------------------------------------------
   ; This procedure was written by Raymond Filiatreault, December 2002
   ; Modified March 2004 to avoid any potential data loss from the FPU
+  ; Revised January 2010 to allow additional data types from memory to be
+  ;    used as source parameters. 
   ;
   ; This FpuComp function compares one number (Src1) to another (Src2)
   ; with the FPU and returns the result in EAX as coded bits:
@@ -15,10 +17,12 @@
   ;         bit 1       1 = Src1 > Src2
   ;         bit 2       1 = Src1 < Src2
   ;
-  ; Either of the two sources can be an 80-bit REAL number from the FPU
-  ; itself or from memory, an immediate DWORD value or one in memory,
-  ; or one of the FPU constants. If one of the sources is from the FPU,
-  ; its value will be preserved if no error is reported.
+  ; Either of the two sources can be:
+  ; a REAL number from the FPU itself, or
+  ; a REAL4, REAL8 or REAL10 from memory, or
+  ; an immediate DWORD integer value, or
+  ; a DWORD or QWORD integer from memory, or
+  ; one of the FPU constants.
   ;
   ; None of the sources are checked for validity. This is the programmer's
   ; responsibility.
@@ -74,33 +78,49 @@ LOCAL tempst       :TBYTE
 ;----------------------------------------
 
       test  uID,SRC1_FPU
-      jz    @F
-      lea   eax,content
-      fld   tbyte ptr[eax+28]
-      jmp   src2
+      .if   !ZERO?            ;Src1 is taken from FPU?
+            lea   eax,content
+            fld   tbyte ptr[eax+28]
+            jmp   src2        ;check next parameter for Src2
+      .endif
 
-   @@:
       mov   eax,lpSrc1
-      test  uID,SRC1_REAL     ;is Src1 an 80-bit REAL in memory?
-      jz    @F                ;check next source for Src1
-      fld   tbyte ptr [eax]
-      jmp   src2              ;check next parameter for Src2
+      test  uID,SRC1_CONST
+      jnz   constant
+      test  uID,SRC1_REAL
+      .if !ZERO?              ;Src1 is an 80-bit REAL10 in memory?
+            fld   tbyte ptr [eax]
+            jmp   src2        ;check next parameter for Src2
+      .endif
+      test  uID,SRC1_REAL8
+      .if !ZERO?              ;Src1 is a 64-bit REAL10 in memory?
+            fld   qword ptr [eax]
+            jmp   src2        ;check next parameter for Src2
+      .endif
+      test  uID,SRC1_REAL4
+      .if !ZERO?              ;Src1 is a 32-bit REAL10 in memory?
+            fld   dword ptr [eax]
+            jmp   src2        ;check next parameter for Src2
+      .endif
 
-@@:
-      test  uID,SRC1_DMEM     ;is Src1 a 32-bit integer in memory?
-      jz    @F                ;check next source for Src1
-      fild  dword ptr [eax]
-      jmp   src2              ;check next parameter for Src2
+      test  uID,SRC1_DMEM
+      .if !ZERO?              ;Src1 is a 32-bit integer in memory?
+            fild  dword ptr [eax]
+            jmp   src2        ;check next parameter for Src2
+      .endif
+      test  uID,SRC1_QMEM
+      .if !ZERO?              ;Src1 is a 64-bit integer in memory?
+            fild  qword ptr [eax]
+            jmp   src2        ;check next parameter for Src2
+      .endif
 
-@@:
-      test  uID,SRC1_DIMM     ;is Src1 an immediate 32-bit integer?
-      jz    @F                ;check next source for Src1
-      fild  lpSrc1
-      jmp   src2              ;check next parameter for Src2
+      test  uID,SRC1_DIMM
+      .if   !ZERO?            ;Src1 is an immediate 32-bit integer?
+            fild  lpSrc1
+            jmp   src2        ;check next parameter for Src2
+      .endif
 
-@@:
-      test  uID,SRC1_CONST    ;is Src1 one of the FPU constants?
-      jnz   @F                ;otherwise no valid ID for Src1
+      ;otherwise no valid ID for Src1
 
 srcerr:
       frstor content
@@ -108,14 +128,14 @@ srcerr1:
       xor   eax,eax           ;error code
       ret
 
-@@:
-      test  eax,FPU_PI
-      jz    @F
+constant:
+      cmp   eax,FPU_PI
+      jnz   @F
       fldpi
       jmp   src2
 @@:
-      test  eax,FPU_NAPIER
-      jz    srcerr            ;no correct CONST flag for Src1
+      cmp   eax,FPU_NAPIER
+      jnz   srcerr            ;no correct CONST for Src1
       fld1
       fldl2e
       fsub  st,st(1)
@@ -129,38 +149,58 @@ srcerr1:
 ;----------------------------------------
 
 src2:
-      test  uID,SRC2_FPU      ;is Src2 taken from FPU?
-      jz    @F                ;check next source for Src2
-      lea   eax,content
-      fld   tbyte ptr[eax+28]
-      jmp   dest0             ;go complete process
+      test  uID,SRC2_FPU
+      .if   !ZERO?            ;Src2 is taken from FPU?
+            lea   eax,content
+            fld   tbyte ptr[eax+28] ;retrieve it from the stored data
+            jmp   dest0       ;go complete process
+      .endif
 
-@@:
       mov   eax,lpSrc2
-      test  uID,SRC2_REAL     ;is Src2 an 80-bit REAL in memory?
-      jz    @F
-      fld   tbyte ptr [eax]
-      jmp   dest0             ;go complete process
-@@:
-      test  uID,SRC2_DMEM     ;is Src2 a 32-bit integer in memory?
-      jz    @F
-      fild  dword ptr [eax]
-      jmp   dest0             ;go complete process
-@@:
-      test  uID,SRC2_DIMM     ;is Src2 an immediate 32-bit integer?
-      jz    @F
-      fild  lpSrc2
-      jmp   dest0             ;go complete process
-@@:
-      test  uID,SRC2_CONST    ;is Src2 one of the FPU constants?
-      jz    srcerr            ;no correct flag for Src2
-      test  eax,FPU_PI
-      jz    @F
+      test  uID,SRC2_CONST
+      jnz   constant2
+      test  uID,SRC2_REAL
+      .if   !ZERO?            ;Src2 is an 80-bit REAL10 in memory?
+            fld   tbyte ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC2_REAL8
+      .if   !ZERO?            ;Src2 is a 64-bit REAL10 in memory?
+            fld   qword ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC2_REAL4
+      .if   !ZERO?            ;Src2 is a 32-bit REAL10 in memory?
+            fld   dword ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+
+      test  uID,SRC2_DMEM
+      .if   !ZERO?            ;Src2 is a 32-bit integer in memory?
+            fild  dword ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC2_QMEM
+      .if   !ZERO?            ;Src2 is a 64-bit integer in memory?
+            fild  qword ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+
+      test  uID,SRC2_DIMM
+      .if   !ZERO?            ;Src2 is an immediate 32-bit integer?
+            fild  lpSrc2
+            jmp   dest0       ;go complete process
+      .endif
+      jmp   srcerr            ;no correct flag for Src2
+
+constant2:
+      cmp   eax,FPU_PI
+      jnz   @F
       fldpi                   ;load pi (3.14159...) on FPU
       jmp   dest0             ;go complete process
 @@:
-      test  eax,FPU_NAPIER
-      jz    srcerr            ;no correct CONST flag for Src2
+      cmp   eax,FPU_NAPIER
+      jnz   srcerr            ;no correct CONST for Src2
       fld1
       fldl2e
       fsub  st,st(1)

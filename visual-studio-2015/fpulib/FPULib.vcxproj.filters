@@ -116,8 +116,24 @@
     <MASM Include="FpuXexpY.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="FpuMod.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="smdtoa.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="smqtoa.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="umdtoa.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="umqtoa.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <Text Include="fpulib.txt" />
+    <Text Include="TesterInfo.txt" />
   </ItemGroup>
 </Project>

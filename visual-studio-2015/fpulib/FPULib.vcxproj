@@ -41,6 +41,7 @@
     <MASM Include="FpuFLtoA.asm" />
     <MASM Include="FpuLnx.asm" />
     <MASM Include="FpuLogx.asm" />
+    <MASM Include="FpuMod.asm" />
     <MASM Include="FpuMul.asm" />
     <MASM Include="FpuRound.asm" />
     <MASM Include="FpuSin.asm" />
@@ -54,9 +55,14 @@
     <MASM Include="FpuTexpX.asm" />
     <MASM Include="FpuTrunc.asm" />
     <MASM Include="FpuXexpY.asm" />
+    <MASM Include="smdtoa.asm" />
+    <MASM Include="smqtoa.asm" />
+    <MASM Include="umdtoa.asm" />
+    <MASM Include="umqtoa.asm" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="fpulib.txt" />
+    <Text Include="TesterInfo.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{434B8E37-3017-4F96-81F0-61AD7818E144}</ProjectGuid>

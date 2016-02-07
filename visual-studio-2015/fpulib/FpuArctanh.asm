@@ -8,19 +8,21 @@
   ; This procedure was written by Raymond Filiatreault, December 2002
   ; Modified March 2004 to avoid any potential data loss from the FPU
   ; Revised January 2005 to free the FPU st7 register if necessary.
+  ; Revised January 2010 to allow additional data types from memory to be
+  ;    used as source parameter and allow additional data types for storage. 
   ;
   ;         atanh(Src) = 0.5 * ln[(1+Src)/(1-Src)] -> Dest
   ;
   ; This FpuArctanh function computes the number corresponding to the
   ; hyperbolic tangent value provided in the source parameter (Src) and
-  ; returns the result as an 80-bit REAL number at the specified destination
+  ; returns the result as a REAL number at the specified destination
   ; (the FPU itself or a memory location), unless an invalid operation is
   ; reported by the FPU or the definition of the parameters (with uID) is
   ; invalid.
   ;
-  ; The source can be an 80-bit REAL number from the FPU itself or from
-  ; memory. The absolute value of the source must be lower than 1,
-  ; otherwise an invalid operation is reported.
+  ; The source can only be a REAL number from the FPU itself or either a
+  ; REAL4, REAL8 or REAL10 from memory. Its absolute value must be
+  ; lower than 1, otherwise an invalid operation is reported.
   ;
   ; The source is not checked for validity. This is the programmer's
   ; responsibility.
@@ -85,15 +87,29 @@ continue:
 ;check source for Src and load it to FPU
 ;----------------------------------------
 
-      test  uID,SRC1_FPU      ;is Src taken from FPU?
-      jz    @F
-      lea   eax,content
-      fld   tbyte ptr[eax+28]
-      jmp   dest0             ;go complete process
+      test  uID,SRC1_FPU
+      .if   !ZERO?            ;Src is taken from FPU?
+            lea   eax,content
+            fld   tbyte ptr[eax+28]
+            jmp   dest0       ;go complete process
+      .endif
       
-   @@:
-      test  uID,SRC1_REAL     ;is Src an 80-bit REAL in memory?
-      jnz   @F                ;last valid ID of source
+      mov   eax,lpSrc
+      test  uID,SRC1_REAL
+      .if   !ZERO?            ;Src is an 80-bit REAL10 in memory?
+            fld   tbyte ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL8
+      .if   !ZERO?            ;Src is a 64-bit REAL8 in memory?
+            fld   qword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL4
+      .if   !ZERO?            ;Src is a 32-bit REAL4 in memory?
+            fld   dword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
 
 srcerr:
       frstor content
@@ -128,13 +144,25 @@ dest0:
       shr   eax,1             ;test for invalid operations
       jc    srcerr            ;clean-up and return error
 
+; store result as specified
+
       test  uID,DEST_FPU      ;check where result should be stored
-      jnz   @F                ;destination is the FPU
+      .if   !ZERO?            ;destination is the FPU
+            fstp  tempst      ;store it temporarily
+            jmp   restore
+      .endif
       mov   eax,lpDest
-      fstp  tbyte ptr[eax]    ;store result at specified address
-      jmp   restore
-   @@:
-      fstp  tempst            ;store it temporarily
+      test  uID,DEST_MEM4
+      .if   !ZERO?            ;store as REAL4 at specified address
+            fstp  dword ptr[eax]
+            jmp   restore
+      .endif
+      test  uID,DEST_MEM8
+      .if   !ZERO?            ;store as REAL8 at specified address
+            fstp  qword ptr[eax]
+            jmp   restore
+      .endif
+      fstp  tbyte ptr[eax]    ;store as REAL10 at specified address (default)
 
 restore:
       frstor  content         ;restore all previous FPU registers
@@ -144,13 +172,12 @@ restore:
       fstp  st                ;remove source
 
    @@:
-      test  uID,DEST_FPU
-      jz    @F                ;the new value has been stored in memory
-                              ;none of the FPU data was modified
+      test  uID,DEST_FPU      ;check where result should be stored
+      .if   !ZERO?            ;destination is the FPU
+            ffree st(7)       ;free it if not already empty
+            fld   tempst      ;return the result on the FPU
+      .endif
 
-      ffree st(7)             ;free it if not already empty
-      fld   tempst            ;load the new value on the FPU
-   @@:
       or    al,1              ;to insure EAX!=0
       ret
     

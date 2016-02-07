@@ -8,9 +8,11 @@
   ; This procedure was written by Raymond Filiatreault, December 2002
   ; and modified April 2003. A minor flaw was corrected in July 2003.
   ; Modified March 2004 to avoid any potential data loss from the FPU
+  ; Revised January 2010 to allow additional data types from memory to be
+  ;    used as source parameters.
   ;
-  ; This FpuFLtoA function converts an 80-bit REAL number (Src) to its
-  ; decimal representation as a zero terminated alphanumeric string which
+  ; This FpuFLtoA function converts a REAL number (Src) to its decimal
+  ; representation as a zero terminated alphanumeric string which
   ; is returned at the specified memory destination unless an invalid
   ; operation is reported by the FPU or the definition of the parameters
   ; (with uID) is invalid.
@@ -22,8 +24,8 @@
   ; padded with preceding spaces to position the decimal point at a
   ; specified location from the start of the string.
   ;
-  ; The source can be an 80-bit REAL number from the FPU itself or from
-  ; memory.
+  ; The source can be a REAL number from the FPU itself or either a
+  ; REAL4, REAL8 or REAL10 from memory.
   ;
   ; The source is not checked for validity. This is the programmer's
   ; responsibility.
@@ -106,17 +108,28 @@ LOCAL unpacked[20] :BYTE
 ;----------------------------------------
 
       test  uID,SRC1_FPU
-      jz    @F
-      lea   eax,content
-      fld   tbyte ptr[eax+28]
-      jmp   dest0
-
-   @@:
-      test  uID,SRC1_REAL     ;is Src an 80-bit REAL in memory?
-      jz    srcerr            ;no proper source identificaiton
+      .if   !ZERO?            ;Src is taken from FPU?
+            lea   eax,content
+            fld   tbyte ptr[eax+28]
+            jmp   dest0       ;go complete process
+      .endif
+      
       mov   eax,lpSrc
-      fld   tbyte ptr [eax]
-      jmp   dest0             ;go complete process
+      test  uID,SRC1_REAL
+      .if   !ZERO?            ;Src is an 80-bit REAL10 in memory?
+            fld   tbyte ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL8
+      .if   !ZERO?            ;Src is a 64-bit REAL8 in memory?
+            fld   qword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL4
+      .if   !ZERO?            ;Src is a 32-bit REAL4 in memory?
+            fld   dword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
       
 srcerr:
       frstor content

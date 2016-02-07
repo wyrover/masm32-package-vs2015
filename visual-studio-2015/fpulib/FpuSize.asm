@@ -7,6 +7,8 @@
   ; -----------------------------------------------------------------------
   ; This procedure was written by Raymond Filiatreault, December 2002.
   ; Modified March 2004 to avoid any potential data loss from the FPU
+  ; Revised January 2010 to allow additional data types from memory to be
+  ;    used as source parameter. 
   ;
   ; This FpuSize function computes the exponent of a number (Src) as if it
   ; were expressed in scientific notation and returns the result as a LONG
@@ -14,11 +16,14 @@
   ; is reported by the FPU or the definition of the parameters (with uID)
   ; is invalid.
   ;
-  ; The source can be an 80-bit REAL number from the FPU itself or from
-  ; memory, or an immediate DWORD value or one in memory. The FPU
-  ; constants are not allowed as input. If the source is taken from the
-  ; FPU, its value will be preserved. The destination must be a pointer
-  ; to a 32-bit integer memory variable.
+  ; The source can be either:
+  ; a REAL number from the FPU itself, or
+  ; a REAL4, REAL8 or REAL10 from memory, or
+  ; an immediate DWORD integer value, or
+  ; a DWORD or QWORD integer from memory.
+  ;
+  ; If the source is taken from the FPU, its value will be preserved.
+  ; The destination must be a pointer to a 32-bit integer memory variable.
   ;
   ; The source is not checked for validity. This is the programmer's
   ; responsibility.
@@ -81,24 +86,41 @@ continue:
 ;check source for Src and load it to FPU
 ;----------------------------------------
 
-      test  uID,SRC1_FPU      ;is Src taken from FPU?
-      jz    @F
-      lea   eax,content
-      fld   tbyte ptr[eax+28]
-      jmp   dest0             ;go complete process
+      test  uID,SRC1_FPU
+      .if   !ZERO?            ;Src is taken from FPU?
+            lea   eax,content
+            fld   tbyte ptr[eax+28]
+            jmp   dest0       ;go complete process
+      .endif
       
-   @@:
       mov   eax,lpSrc
-      test  uID,SRC1_REAL     ;is Src an 80-bit REAL in memory?
-      jz    @F
-      fld   tbyte ptr [eax]
-      jmp   dest0             ;go complete process
-@@:
-      test  uID,SRC1_DMEM     ;is Src a 32-bit integer in memory?
-      jz    @F
-      fild  dword ptr [eax]
-      jmp   dest0             ;go complete process
-@@:
+      test  uID,SRC1_REAL
+      .if   !ZERO?            ;Src is an 80-bit REAL10 in memory?
+            fld   tbyte ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL8
+      .if   !ZERO?            ;Src is a 64-bit REAL8 in memory?
+            fld   qword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_REAL4
+      .if   !ZERO?            ;Src is a 32-bit REAL4 in memory?
+            fld   dword ptr[eax]
+            jmp   dest0       ;go complete process
+      .endif
+
+      test  uID,SRC1_DMEM
+      .if !ZERO?              ;Src1 is a 32-bit integer in memory?
+            fild  dword ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+      test  uID,SRC1_QMEM
+      .if !ZERO?              ;Src1 is a 64-bit integer in memory?
+            fild  qword ptr [eax]
+            jmp   dest0       ;go complete process
+      .endif
+
       test  uID,SRC1_DIMM     ;is Src an immediate 32-bit integer?
       jz    srcerr            ;no correct flag for Src
       fild  lpSrc
