@@ -160,8 +160,14 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VolCtrl", "examples\Bill_Cravener\MVolume\VolCtrl\VolCtrl.vcxproj", "{016B3E1D-3478-4F63-9B64-9C7F0AFBB2A9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VolCtrlDLLTest", "examples\Bill_Cravener\MVolume\VolCtrlDLLTest\VolCtrlDLLTest.vcxproj", "{9D63B036-D222-45E2-88D7-D4A8E103697F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{016B3E1D-3478-4F63-9B64-9C7F0AFBB2A9} = {016B3E1D-3478-4F63-9B64-9C7F0AFBB2A9}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VolCtrlLIBTest", "examples\Bill_Cravener\MVolume\VolCtrlLIBTest\VolCtrlLIBTest.vcxproj", "{EF6DAA09-77EF-416F-BA41-8091D6344AE1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{016B3E1D-3478-4F63-9B64-9C7F0AFBB2A9} = {016B3E1D-3478-4F63-9B64-9C7F0AFBB2A9}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialogs", "Dialogs", "{7324DFA2-6E67-43D8-9244-9917CA48B051}"
 EndProject
