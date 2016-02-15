@@ -1,0 +1,47 @@
+#define MANIFEST 24
+#define IDD_DLG1 1000
+#define IDC_IMG1 1001
+#define IDC_BTN1 1002
+#define IDR_XPMANIFEST1 1
+
+#include "/masm32/include/resource.h"
+
+IDD_DLG1 DIALOGEX 10,10,154,208
+CAPTION "Monroe"
+FONT 8,"MS Sans Serif",0,0,0
+STYLE WS_VISIBLE|WS_CAPTION|WS_SYSMENU|DS_CENTER
+BEGIN
+  CONTROL "",IDC_IMG1,"Static",WS_CHILDWINDOW|WS_VISIBLE|SS_CENTERIMAGE|SS_BITMAP,12,12,132,168
+  CONTROL "OK",IDC_BTN1,"Button",WS_CHILDWINDOW|WS_VISIBLE|WS_TABSTOP,48,186,56,14
+END
+
+100 BITMAP DISCARDABLE "monroe.bmp"
+
+//IDR_XPMANIFEST1 MANIFEST "manifest.xml"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 2,0,0,0
+PRODUCTVERSION 2,0,0,0
+FILEOS 0x00000000
+FILETYPE 0x00000000
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName", "The MASM32 SDK\000\0"
+      VALUE "FileDescription", "ResEd Image Demo\000\0"
+      VALUE "FileVersion", "1.0\000\0"
+      VALUE "InternalName", "monroe\000\0"
+      VALUE "OriginalFilename", "monroe.exe\000\0"
+      VALUE "LegalCopyright", "\251 2012 The MASM32 SDK\000\0"
+      VALUE "ProductName", "monroe\000\0"
+      VALUE "ProductVersion", "1.0\000\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 0x04B0
+  END
+END
+

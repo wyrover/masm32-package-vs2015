@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="confrm.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="csrchdlg.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="ectrl.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="edproc.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="getfn.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="idat.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="includes.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="mrgfile.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="ofcb.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="richedit.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="savefn.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="schproc.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="setbmc.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="sfcb.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="slctfile.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="status.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="strmin.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="strmout.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="tbar.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="tbmacros.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="tpxy.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="txtfnd.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="udat.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="FILE2000.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="mainicon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="idat.txt" />
+    <Text Include="includes.txt" />
+    <Text Include="README.TXT" />
+    <Text Include="udat.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="richedit.inc">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="rsrc.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
