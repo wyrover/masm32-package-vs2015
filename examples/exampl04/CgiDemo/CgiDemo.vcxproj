@@ -99,7 +99,7 @@
       <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <MASM>
-      <AssembledCodeListingFile>$(FileName).lst</AssembledCodeListingFile>
+      <AssembledCodeListingFile>$(TargetName).lst</AssembledCodeListingFile>
     </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

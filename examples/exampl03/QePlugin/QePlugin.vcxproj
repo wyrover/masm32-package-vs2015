@@ -22,7 +22,7 @@
     <ProjectGuid>{4D6670F7-9B3D-4D47-81EC-CC0F175BD2E7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>QePlugin</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -98,6 +98,9 @@
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <ModuleDefinitionFile>qeplugin.def</ModuleDefinitionFile>
     </Link>
+    <MASM>
+      <AssembledCodeListingFile>$(TargetName).lst</AssembledCodeListingFile>
+    </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

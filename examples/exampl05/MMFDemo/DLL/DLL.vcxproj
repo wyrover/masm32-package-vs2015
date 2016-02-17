@@ -22,7 +22,7 @@
     <ProjectGuid>{F22F1763-6317-428D-A63F-9A3872C07001}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DLL</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -98,6 +98,9 @@
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <ModuleDefinitionFile>mmfdll.def</ModuleDefinitionFile>
     </Link>
+    <MASM>
+      <AssembledCodeListingFile>$(TargetName).lst</AssembledCodeListingFile>
+    </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

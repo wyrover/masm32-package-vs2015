@@ -329,6 +329,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <MASM>
+      <AssembledCodeListingFile>$(TargetName).lst</AssembledCodeListingFile>
+    </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

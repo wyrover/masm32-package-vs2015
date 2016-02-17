@@ -12,6 +12,10 @@
 ;
 ;   Iczelion assisted in the development of this example.
 ;
+;   when building in Visual Studio you must add : /SECTION:.text,RWE smc.obj
+;   to properties/configuration settings/Linker/Commandline/Additional options
+;   otherwise the code cannot modify itself.
+;
 ; #########################################################################
 
       .386

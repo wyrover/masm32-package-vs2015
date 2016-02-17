@@ -22,7 +22,7 @@
     <ProjectGuid>{016B3E1D-3478-4F63-9B64-9C7F0AFBB2A9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>VolCtrl</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -98,6 +98,9 @@
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <ModuleDefinitionFile>volctrl.def</ModuleDefinitionFile>
     </Link>
+    <MASM>
+      <AssembledCodeListingFile>$(TargetName).lst</AssembledCodeListingFile>
+    </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
