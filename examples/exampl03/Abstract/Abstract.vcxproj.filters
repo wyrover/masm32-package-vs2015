@@ -18,24 +18,24 @@
     <MASM Include="abstract.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="domacros.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
-    <MASM Include="filedlgs.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
-    <MASM Include="statusbr.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
-    <MASM Include="tbmacros.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="abstract.inc">
       <Filter>Header Files</Filter>
     </None>
     <None Include="toolbar.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="domacros.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="filedlgs.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="statusbr.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="tbmacros.asm">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

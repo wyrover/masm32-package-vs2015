@@ -83,10 +83,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\examples\dialogs\PdbDemo\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\DLL-LIB\PdbDemo\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\examples\dialogs\PdbDemo\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\DLL-LIB\PdbDemo\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

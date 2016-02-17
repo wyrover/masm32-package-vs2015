@@ -18,18 +18,6 @@
     <MASM Include="arrays.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="filedlgs.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
-    <MASM Include="statusbr.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
-    <MASM Include="tbmacros.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
-    <MASM Include="toolbar.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
   </ItemGroup>
   <ItemGroup>
     <Image Include="arrays.ico">
@@ -41,6 +29,18 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="dbmacros.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="filedlgs.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="statusbr.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="tbmacros.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="toolbar.asm">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

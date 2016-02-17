@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fpu.inc" />
+    <None Include="Fpulib.chm" />
+    <None Include="MAKE.BAT" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="FpuAbs.asm" />
@@ -62,13 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="fpulib.txt" />
+    <Text Include="READ1ST.TXT" />
     <Text Include="TesterInfo.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{434B8E37-3017-4F96-81F0-61AD7818E144}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FPULib</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -81,7 +84,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -117,10 +120,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\FPULib\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\PACKAGES\$(ProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\FPULib\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\PACKAGES\$(ProjectName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

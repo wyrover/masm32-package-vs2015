@@ -263,7 +263,7 @@
     <ProjectGuid>{C4915CDA-843D-4227-B8E2-748772929B05}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>m32lib</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
     <ProjectName>masm32</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -313,10 +313,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\masm32\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\PACKAGES\$(ProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\masm32\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\PACKAGES\$(ProjectName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

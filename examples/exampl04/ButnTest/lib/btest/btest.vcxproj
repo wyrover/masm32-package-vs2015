@@ -78,10 +78,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\examples\exampl04\ButnTest\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\DLL-LIB\ButnTest\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\examples\exampl04\ButnTest\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\DLL-LIB\ButnTest\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

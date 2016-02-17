@@ -18,6 +18,8 @@
     <None Include="Fpu.inc">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="Fpulib.chm" />
+    <None Include="MAKE.BAT" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="FpuAbs.asm">
@@ -135,5 +137,6 @@
   <ItemGroup>
     <Text Include="fpulib.txt" />
     <Text Include="TesterInfo.txt" />
+    <Text Include="READ1ST.TXT" />
   </ItemGroup>
 </Project>
