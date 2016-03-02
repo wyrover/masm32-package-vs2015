@@ -18,6 +18,9 @@
     <Image Include="crystal-ball.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="agguro.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="DrawGdiPlussBall.Asm">

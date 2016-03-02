@@ -149,7 +149,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Image Include="crystal-ball.png" />
+    <Image Include="agguro.png">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </Image>
+    <Image Include="crystal-ball.png">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="DrawGdiPlussBall.Asm" />

@@ -65,8 +65,8 @@ LOCAL rect:RECT
     invoke GdipGetImageGraphicsContext,bitmap,ADDR graphics10
     ;---------------------------------------------------------
 	 
-	invoke DrawRoundRect,graphics10,0,0,399,399,6,1,A_rgb(190,0,0,255),TRUE;	 
-	invoke DrawRoundRect,graphics10,0,0,399,399,6,1,A_rgb(255,255,255,255),FALSE;	 
+	;invoke DrawRoundRect,graphics10,0,0,399,399,6,1,A_rgb(190,0,0,255),TRUE;	 
+	;invoke DrawRoundRect,graphics10,0,0,399,399,6,1,A_rgb(255,255,255,255),FALSE;	 
 	
 
 	
@@ -136,7 +136,7 @@ pop	ecx
     INVOKE CreateWindowEx,WS_EX_LAYERED ,\
             ADDR ClassName,ADDR AppName,\
              WS_VISIBLE or WS_POPUP,0,\
-            0 ,600,600,NULL,NULL,\
+            0 ,700,700,NULL,NULL,\
             hInst,NULL
             
     mov hMainWindow,eax
