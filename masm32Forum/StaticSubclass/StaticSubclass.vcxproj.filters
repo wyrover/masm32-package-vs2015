@@ -15,8 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="StaticSubclass.asm">
+    <MASM Include="StaticSubclass.asm">
       <Filter>Source Files</Filter>
-    </None>
+    </MASM>
   </ItemGroup>
 </Project>
