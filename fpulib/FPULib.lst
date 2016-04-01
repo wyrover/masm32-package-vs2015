@@ -1,0 +1,186 @@
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    02/17/16 13:50:43
+umqtoa.asm						     Page 1 - 1
+
+
+				; #######################################################################
+				;
+				;                               umqtoa
+				;
+				; Procedure for converting a 64-bit unsigned integer from memory to ASCII
+				; without any leading "0"
+				;
+				; Return:   Null-terminated ASCII string in memory
+				;           EAX = address of first character of the string
+				;           ECX = number of characters in string (excluding terminating 0)
+				;
+				; Usage:    invoke umqtoa,lpQW,lpBuf
+				;
+				;   where:  
+				;   lpQW  = pointer to the location of the qword in memory
+				;   lpBuf = pointer to a memory buffer for the null-terminated ASCII
+				;           string (a 21-byte buffer is sufficient for the largest of
+				;           numbers, i.e. 20 digits maximum, and the terminating 0)
+				;
+				; EAX, ECX and EDX are trashed. EBX, ESI and EDI are preserved.
+				;
+				; NOTE: This procedure cannot determine if the data pointed to by
+				;       lpQW is a valid unsigned QWORD INTEGER. It is the responsibility
+				;       of the programmer to insure that. No error code can be returned.
+				;
+				;                       by Raymond Filiatreault
+				;                            Otober 2009
+				;                            MASM  syntax
+				;
+				; The "m" in the procedure name is to indicate that this procedure is
+				; based on the principal of multiplying by the reciprocal of 10 instead
+				; of dividing by 10, i.e. the use of "magic numbers".
+				;
+				; #######################################################################
+
+				      .686                   ; minimum processor needed for 32 bit
+				      .model flat, stdcall   ; FLAT memory model & STDCALL calling
+				      option casemap :none   ; set code to case sensitive
+
+				; #######################################################################
+
+				;umqtoa PROTO :DWORD, :DWORD
+
+ 00000000			.code
+
+ 00000000			umqtoa proc uses ebx esi edi lpsrc:DWORD, lpdest:DWORD
+
+				LOCAL x10 :DWORD
+				LOCAL r10L :DWORD
+				LOCAL r10H :DWORD
+				LOCAL t1 :DWORD
+				LOCAL t2 :DWORD
+
+ 00000009  8B 75 08		      mov   esi,lpsrc         ;memory address of QWORD
+ 0000000C  8B 7D 0C		      mov   edi,lpdest        ;buffer address
+ 0000000F  8B 1E		      mov   ebx,[esi]         ;EBX = low DWORD of QWORD
+ 00000011  8B 76 04		      mov   esi,[esi+4]       ;ESI = high DWORD of QWORD
+ 00000014  83 C7 14		      add   edi,20            ;=>21th byte of the buffer
+ 00000017  57			      push  edi
+ 00000018  C6 07 00		      mov   byte ptr[edi],0   ;string terminating 0
+ 0000001B  C7 45 F8		      mov   r10L,0CCCCCCCDh   ;low DWORD of "magic number" multiplier
+	   CCCCCCCD
+ 00000022  C7 45 F4		      mov   r10H,0CCCCCCCCh   ;high DWORD of "magic number" multiplier
+	   CCCCCCCC
+ 00000029  C7 45 FC		      mov   x10,10
+	   0000000A
+
+				; multiplications of two 64-bit numbers will be required as long as
+				; the "quotient" is greater than a DWORD
+				; the result of such a multiplication has potentially up to 128 bits
+
+ 00000030			   @@:
+				      .if   esi != 0          ;if still greater than a DWORD
+ 00000034  33 C9		            xor   ecx,ecx     ;for the 96-127 bits
+
+				;multiply the "magic number" by the low DWORD
+
+ 00000036  8B 45 F8		            mov   eax,r10L
+ 00000039  F7 E3		            mul   ebx         ;multiply by the low DWORD
+ 0000003B  89 55 F0		            mov   t1,edx      ;keep only the higher 32 bits (32-63)
+ 0000003E  8B 45 F4		            mov   eax,r10H
+ 00000041  F7 E3		            mul   ebx
+ 00000043  01 45 F0		            add   t1,eax      ;add to the previous 32 bits
+ 00000046  83 D2 00		            adc   edx,0       ;add any overflow to the 64-95 bits
+ 00000049  89 55 EC		            mov   t2,edx      ;store those bits
+
+				;multiply the "magic number" by the high DWORD and add
+
+ 0000004C  8B 45 F8		            mov   eax,r10L
+ 0000004F  F7 E6		            mul   esi         ;multiply by the high DWORD
+ 00000051  01 45 F0		            add   t1,eax      ;add the 32-63 bits
+ 00000054  11 55 EC		            adc   t2,edx      ;add with carry the 64-95 bits
+ 00000057  83 D1 00		            adc   ecx,0       ;transfer the carry to the 96-127 bits
+ 0000005A  8B 45 F4		            mov   eax,r10H
+ 0000005D  F7 E6		            mul   esi
+ 0000005F  03 45 EC		            add   eax,t2      ;add with the previous 64-95 bits
+ 00000062  13 D1		            adc   edx,ecx     ;add with carry with the previous 96-127 bits
+ 00000064  8B 4D F0		            mov   ecx,t1      ;retrieve the lower 32-63 bits
+ 00000067  0F AC C1 03		            shrd  ecx,eax,3   ;binary fractional "remainder" back in ECX
+ 0000006B  0F AC D0 03		            shrd  eax,edx,3   ;low DWORD of quotient in EAX
+ 0000006F  41			            inc   ecx         ;precaution against occasional "underflow"
+ 00000070  C1 EA 03		            shr   edx,3       ;high DWORD of quotient in EDX
+ 00000073  8B D8		            mov   ebx,eax     ;low DWORD of quotient back in EBX
+ 00000075  8B F2		            mov   esi,edx     ;high DWORD of quotient back in ESI
+ 00000077  8B C1		            mov   eax,ecx     ;binary fractional "remainder" back in EAX
+ 00000079  F7 65 FC		            mul   x10         ;=>"decimal" remainder into EDX
+ 0000007C  80 C2 30		            add   dl,30h      ;convert remainder to ascii
+ 0000007F  4F			            dec   edi         ;back to previous digit in buffer
+ 00000080  88 17		            mov   [edi],dl    ;insert it into buffer
+ 00000082  EB AC		            jmp   @B
+				      .endif
+
+				; multiplications of DWORDs will be sufficient after "quotient" is
+				; reduced to a DWORD.
+
+ 00000084			   @@:
+ 00000084  8B C3		      mov   eax,ebx           ;current DWORD quotient
+ 00000086  F7 65 F8		      mul   r10L              ;multiply by "magic number" for DWORD
+ 00000089  0F AC D0 03		      shrd  eax,edx,3         ;binary fractional "remainder" back in EAX
+ 0000008D  C1 EA 03		      shr   edx,3             ;EDX = quotient
+ 00000090  40			      inc   eax               ;precaution against occasional "underflow"
+ 00000091  8B DA		      mov   ebx,edx           ;save current quotient in EBX
+ 00000093  F7 65 FC		      mul   x10               ;=> "decimal" remainder into EDX
+ 00000096  4F			      dec   edi               ;back to previous digit in buffer
+ 00000097  80 C2 30		      add   dl,30h            ;convert remainder to ascii
+ 0000009A  88 17		      mov   [edi],dl          ;insert it into buffer
+ 0000009C  85 DB		      test  ebx,ebx           ;test if done
+ 0000009E  75 E4		      jnz   @B                ;continue if not done
+
+ 000000A0  59			      pop   ecx
+ 000000A1  8B C7		      mov   eax,edi           ;EAX = address of first character
+ 000000A3  2B CF		      sub   ecx,edi           ;ECX = number of characters
+				      ret
+
+ 000000AC			umqtoa endp
+
+				end
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    02/17/16 13:50:43
+umqtoa.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 000000AC Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+umqtoa . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 000000AC Public STDCALL
+  lpsrc  . . . . . . . . . . . .	DWord	 bp + 00000008
+  lpdest . . . . . . . . . . . .	DWord	 bp + 0000000C
+  x10  . . . . . . . . . . . . .	DWord	 bp - 00000004
+  r10L . . . . . . . . . . . . .	DWord	 bp - 00000008
+  r10H . . . . . . . . . . . . .	DWord	 bp - 0000000C
+  t1 . . . . . . . . . . . . . .	DWord	 bp - 00000010
+  t2 . . . . . . . . . . . . . .	DWord	 bp - 00000014
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   0 Warnings
+	   0 Errors
