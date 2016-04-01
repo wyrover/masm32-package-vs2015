@@ -1,0 +1,95 @@
+////////////////////////////////////////////////////////////////////////////
+//                                                                        //
+// EXCEPT2.RC     - resource script for Except2.Exe                       //
+// Demo of Win32 structured exception handling for assembler programmers  //
+// COPYRIGHT NOTE - this file is Copyright Jeremy Gordon 1996-2002        //
+//                  [MrDuck Software]                                     //
+//                - e-mail: JG@JGnet.co.uk                                //
+//                - http://www.GoDevTool.com                              //
+// LEGAL NOTICE - The author accepts no responsibility for losses         //
+// of any type arising from this file or anything wholly or in part       //
+// created from it                                                        //
+//                                                                        //
+////////////////////////////////////////////////////////////////////////////
+;
+;;this resource script is intended to be compiled using GoRC.Exe
+(Resource Compiler by Jeremy Gordon 1998-2002)
+The syntax in this file will not be acceptable to Microsoft's RC.EXE;;
+;Compile using gorc /r except2.rc (see goseh2.bat)
+;
+;************
+;
+FlowBitmap BITMAP SEH8.BMP
+;
+;************  Dialogex used so that weight of font can be specified
+About DIALOGEX 20, 20, 160, 90
+STYLE DS_MODALFRAME | WS_CAPTION | WS_POPUP
+FONT             9,"MS Sans Serif",FW_LIGHT,0
+CAPTION          "About Except2.Exe"
+BEGIN
+  CTEXT "Demonstrates exception handling\nfor assembler programmers",
+                                                      0, 0, 12,160,16
+  CTEXT "Version 2.1 Copyright \251 1996/2002\nJeremy Gordon\nwww.GoDevTool.com (JG@JGnet.co.uk)",
+                                                      0, 0, 36,160,48
+  DEFPUSHBUTTON "OK",100,98,68, 50,14
+END
+;
+1 VERSIONINFO
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904E4"
+    BEGIN
+      VALUE "FileDescription",       "ASM Exception handling demo\0"
+      VALUE "FileVersion",           "2.1\0"
+      VALUE "LegalCopyright",        "Copyright \251 1996/2002 Jeremy Gordon\0"
+      VALUE "Author",                "Jeremy Gordon\0"
+      VALUE "Author's trading name", "MrDuck Software\0"
+      VALUE "Contact e-mail",        "JG@JGnet.co.uk\0"
+      VALUE "Author's web site",     "www.GoDevTool.com\0"
+      VALUE "Published Filename",    "Except2.Exe\0"
+      VALUE "Programming language",  "assembler\0"
+      VALUE "Source compiled using", "GoAsm\0"
+      VALUE "Resources made using",  "GoRC\0"
+      VALUE "Linked using",          "GoLink\0"
+    END
+  END
+;****** and this is so that the first item will be highlighted see
+    BLOCK "VarFileInfo"
+    BEGIN
+       VALUE "Translation", 0x809, 1252     ;ENGLISH (UK)
+    END
+END
+;
+;Remember dimensions go x,y,width,height
+MainDialog DIALOGEX 8000h,8000h,398D,248D
+STYLE            WS_CAPTION+WS_SYSMENU+DS_MODALFRAME
+FONT             9,"MS Sans Serif",FW_LIGHT,0
+CAPTION          "Exception handler demo for assembler programmers"
+BEGIN
+CONTROL          "",120,STATIC,SS_WHITERECT,          ;area around bitmap
+                                                      6,  8,208,232
+CONTROL          "",0,STATIC,SS_BLACKFRAME,           ;black frame around bitmap
+                                                      6,  8,208,232
+CONTROL          "FlowBitmap",0,STATIC,SS_BITMAP,     ;holds bitmap itself
+                                                      10, 12,150,181
+PUSHBUTTON       "About",                         99,229,222, 34,14
+PUSHBUTTON       "Cause exception",              101,272,222, 62,14
+PUSHBUTTON       "Quit",                         102,342,222, 34,14
+GROUPBOX         "Choose an exception",          103,221, 90,166,64
+AUTORADIOBUTTON  "Memory read test",             104,234,100, 70,10,WS_GROUP+WS_TABSTOP
+AUTORADIOBUTTON  "Memory write test",            105,313,100, 70,10
+AUTORADIOBUTTON  "Own continuable exception",    106,234,113, 70,26,BS_MULTILINE
+AUTORADIOBUTTON  "Own non-continuable exception",107,313,113, 70,26,BS_MULTILINE
+AUTORADIOBUTTON  "Divide by zero",               108,234,140, 70,10
+AUTORADIOBUTTON  "Corruption of code",           109,313,140, 70,10
+CONTROL          "",110,COMBOBOX,CBS_DROPDOWNLIST+WS_TABSTOP+WS_GROUP,
+                                                     239,164,132,100
+AUTORADIOBUTTON  "Continue from point of exception",
+                                                 111,240,188, 66,24,
+                                                 BS_MULTILINE+WS_GROUP
+AUTORADIOBUTTON  "Continue from handler safe-place",
+                                                 112,316,188, 65,24,BS_MULTILINE
+CONTROL          "",113,LISTBOX,LBS_NOSEL+WS_VSCROLL+WS_BORDER+WS_GROUP,
+                                                     218,  8,173,82
+END

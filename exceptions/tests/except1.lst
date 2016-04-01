@@ -1,0 +1,109 @@
+
+
+GoAsm.Exe Version 0.60.0.1 - Copyright Jeremy Gordon 2001-2015 - JG@JGnet.co.uk
+                 Date: woensdag 17 februari 2016 Time: 23:10:06
+                      Listing created whilst assembling ..
+                                  except1.asm
+
+
+================================DATA SECTION
+                                FATALMESS
+492074686F726F7567686C7920656E..DB "I thoroughly enjoyed it and I have already tidied everything up - "
+796F75206B6E6F772C20636F6D706C..DB "you know, completed records, closed filehandles, "
+72656C6561736564206D656D6F7279..DB "released memory, that sort of thing .."
+476C61642074686973207761732062..DB "Glad this was by design - bye, bye ..",0Dh,0Ah
+0D                              
+0A                              
+2E2E206275742066697273742C2049..DB ".. but first, I expect the system will do an unwind ..",0
+00                              
+================================CODE SECTION
+                                CLEAR_UP:
+        C3                      RET
+                                FINAL_HANDLER:
+        53                      PUSH EBX,EDI,ESI        ;save registers as required by Windows
+        57                      
+        56                      
+        E8 F7FFFFFF             CALL CLEAR_UP
+        6A 40                   PUSH 40h                ;exclamation sign + ok button only
+                                PUSH "Except1 - well it's all over for now."
+        68[F7000000]            ¦ PUSH ADDR ...
+        68[00000000]            PUSH ADDR FATALMESS,0
+        6A 00                   
+        E8[00000000]            CALL MessageBoxA        ;wait till ok pressed
+        B8 01000000             MOV EAX,1               ;terminate process without showing system message box
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        C3                      RET
+                                START:
+        68[00000000]            PUSH ADDR FINAL_HANDLER
+        E8[00000000]            CALL SetUnhandledExceptionFilter
+        E8[00000000]            CALL PROTECTED_AREA
+        E8 C7FFFFFF             CALL CLEAR_UP           ;here the program clears up normally
+        6A 40                   PUSH 40h                ;exclamation sign + ok button only
+                                PUSH "Except1","This is a very happy ending",0
+        68[1D010000]            ¦ PUSH ADDR ...
+                                ,"This is a very happy ending",0
+        68[25010000]            ¦ PUSH ADDR ...
+        6A 00                   
+        E8[00000000]            CALL MessageBoxA        ;wait till ok pressed
+        6A 00                   PUSH 0                  ;code meaning a succesful conclusion
+        E8[00000000]            CALL ExitProcess        ;and finish with aplomb!
+                                PROTECTED_AREA:
+        55                      PUSH EBP,0,0            ; )create the
+        6A 00                   
+        6A 00                   
+        68[00000000]            PUSH OFFSET SAFE_PLACE  ; )ERR structure
+        68[00000000]            PUSH OFFSET HANDLER     ; )on the 
+64      FF35 00000000           FS PUSH [0]             ; )stack
+64      8925 00000000           FS MOV [0],ESP          ;point to structure just established on the stack
+        FA                      CLI
+        31C9                    XOR ECX,ECX             ;set ecx to zero
+        F7F1                    DIV ECX                 ;divide by zero, causing exception
+                                SAFE_PLACE:
+64      8F05 00000000           FS POP [0]              ;restore original exception handler from stack
+        83C4 14                 ADD ESP,14h             ;throw away remainder of ERR structure made earlier
+        C3                      RET
+                                HANDLER:
+        53                      PUSH EBX,EDI,ESI        ;save registers as required by Windows
+        57                      
+        56                      
+        8B5D 08                 MOV EBX,[EBP+8]         ;get exception record in ebx
+        8B43 04                 MOV EAX,[EBX+4]         ;get flag sent by the system
+        A8 01                   TEST AL,1h              ;see if its a non-continuable exception
+        75 00                   JNZ >.nodeal            ;yes, so not allowed by system to touch it
+        A8 02                   TEST AL,2h              ;see if its the system unwinding
+        75 00                   JNZ >.unwind            ;yes
+        6A 24                   PUSH 24h                ;question mark + YES/NO buttons
+                                PUSH 'Except1','There was an exception - do you want me to swallow it?',0
+        68[41010000]            ¦ PUSH ADDR ...
+                                ,'There was an exception - do you want me to swallow it?',0
+        68[49010000]            ¦ PUSH ADDR ...
+        6A 00                   
+        E8[00000000]            CALL MessageBoxA        ;wait till button pressed
+        83F8 06                 CMP EAX,6               ;see if yes clicked
+        75 00                   JNZ >.nodeal            ;no
+        8B75 10                 MOV ESI,[EBP+10h]       ;get register context record in esi
+        8B7D 0C                 MOV EDI,[EBP+0Ch]       ;get pointer to ERR structure in edi
+        89BE C4000000           MOV [ESI+0C4h],EDI      ;insert new esp (happens to be pointer to ERR)
+        8B47 08                 MOV EAX,[EDI+8]         ;get address of SAFE_PLACE given in ERR structure
+        8986 B8000000           MOV [ESI+0B8h],EAX      ;insert that as new eip in register context
+        8B47 14                 MOV EAX,[EDI+14h]       ;get ebp at safe place given in ERR structure
+        8986 B4000000           MOV [ESI+0B4h],EAX      ;insert that as new ebp in register context
+        31C0                    XOR EAX,EAX             ;eax=0 reload context and return to system
+        EB 00                   JMP >.fin
+                                .unwind:
+        6A 40                   PUSH 40h                ;exclamation sign + ok button only
+                                PUSH "Except1"
+        68[80010000]            ¦ PUSH ADDR ...
+                                PUSH "The system calling the handler again for more clearing up (unwinding)"
+        68[88010000]            ¦ PUSH ADDR ...
+        6A 00                   PUSH 0
+        E8[00000000]            CALL MessageBoxA        ;wait till ok pressed, then return eax=1
+                                .nodeal:
+        B8 01000000             MOV EAX,1               ;eax=1 system to go to next handler
+                                .fin:
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        C3                      RET

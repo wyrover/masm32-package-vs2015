@@ -1,0 +1,1061 @@
+
+
+GoAsm.Exe Version 0.60.0.1 - Copyright Jeremy Gordon 2001-2015 - JG@JGnet.co.uk
+                 Date: woensdag 17 februari 2016 Time: 23:12:25
+                      Listing created whilst assembling ..
+                                  except2.asm
+
+
+================================DATA SECTION
+                                MSG
+000000000000000000000000000000..DD 7 DUP 0  ;hWnd, +4=message, +8=wParam, +C=lParam, +10h=time, +14h/18h=pt
+                                RECT
+000000000000000000000000000000..DD 4 DUP 0         ;rectangle - left, +4 top, +8 right, +0Ch bottom
+                                lpArguments
+0000000000000000                DD 2 DUP 0  ;holds data when RaiseException called
+                                flOldProtect
+00000000                        DD 0       ;holds previous code section access protection
+                                hHeap
+00000000                        DD 0        ;handle to temporary memory areas
+                                hList
+00000000                        DD 0        ;handle to listbox
+                                hDC
+00000000                        DD 0        ;handle to device context of listbox
+                                hCombo
+00000000                        DD 0        ;handle to combo box
+                                hInst
+00000000                        DD 0        ;handle to main process
+                                CINDEX
+00000000                        DD 0        ;index of combobox selection
+                                COUNT
+00000000                        DD 0        ;used in getting a random number
+                                MESSDELAY
+00010000                        DD 100h     ;length of time to keep message on the screen
+                                EBPSAFE_PLACE3
+00000000                        DD 0     ;these are kept solely for
+                                ESPSAFE_PLACE3
+00000000                        DD 0     ;repair by final handler
+                                EXC_TYPE
+00                              DB 0        ;radio button exception type chosen
+                                HANDLER
+00                              DB 0        ;the handler to repair the exception
+                                CONTINUE
+00                              DB 0        ;1=continue from handler safe-place
+                                HANDLERFLAG
+00                              DB 0        ;1=read/write message is new
+                                BYETEXT
+4861766520616E2065786365707469..DB 'Have an exceptional day!',0
+00                              
+                                COMBO_STRING1
+4465616C2077697468207468652065..DB 'Deal with the exception in handler  ',0
+00                              
+                                COMBO_STRING3
+416C6C6F7720657863657074696F6E..DB 'Allow exception to go to final handler',0
+00                              
+                                EXC_MESS0
+52656164696E672066726F6D202020..DB 'Reading from         h ...  ',0     ;spaces at end to get rub-out
+00                              
+                                EXC_MESS1
+57726974696E6720746F2020202020..DB 'Writing to         h ...  ',0       ;spaces at end to get rub-out
+00                              
+                                EXC_MESS2
+457863657074696F6E436F64652020..DB 'ExceptionCode         h now in handler  :',0
+00                              
+                                EXC_MESS3
+417474656D7074696E67206C6F6361..DB 'Attempting local repair (no unwind)',0
+00                              
+                                EXC_MESS4
+526570616972206170706561727320..DB 'Repair appears successful',0
+00                              
+                                EXC_MESS5
+2020202020202020466C61673D2020..DB '        Flag=        h (continuable exception)',0
+00                              
+                                EXC_MESS5A
+2020202020202020466C61673D2020..DB '        Flag=        h (non-continuable exception)',0
+00                              
+                                EXC_MESS5B
+2020202020202020466C61673D2020..DB '        Flag=        h (unwinding)',0
+00                              
+                                EXC_MESS5C
+20202020202020204C6F63616C2064..DB '        Local data=        h',0
+00                              
+                                EXC_MESS6
+48616E646C65722063616E6E6F7420..DB 'Handler cannot repair this exception',0
+00                              
+                                EXC_MESS7
+4D656D6F7279207772697465206572..DB 'Memory write error at         h',0
+00                              
+                                EXC_MESS8
+4D656D6F7279207265616420657272..DB 'Memory read error at          h',0
+00                              
+                                EXC_MESS9
+417474656D707420746F20636F7272..DB 'Attempt to corrupt code at         h',0
+00                              
+                                EXC_MESS10
+457863657074696F6E436F64652020..DB 'ExceptionCode         h in final handler',0
+00                              
+                                EXC_MESS11
+48616E646C6572202020636C656172..DB 'Handler   clear-up code',0
+00                              
+                                EXC_MESS11A
+48616E646C6572202020636C656172..DB 'Handler   clear-up code - byebye ........',0
+00                              
+                                EXC_MESS12
+526561647920746F20646F20766F6C..DB 'Ready to do voluntary stack unwind',0
+00                              
+                                EXC_MESS13
+202020202020202045786365707469..DB '        Exception at eip=        h',0
+00                              
+                                EXC_MESS14
+48656C6C6F2066726F6D2073616665..DB 'Hello from safe-place #2!',0
+00                              
+                                EXC_MESS15
+48656C6C6F2066726F6D2073616665..DB 'Hello from safe-place #3!',0
+00                              
+                                EXC_MESS16
+48656C6C6F2066726F6D2073616665..DB 'Hello from safe-place #1!',0
+00                              
+                                EXC_MESS17
+4B65792046333D706F6C6974652065..DB 'Key F3=polite end; F5=nasty end; F7=recover',0
+00                              
+                                EXC_MESS18
+436C6F73696E67206D656D6F727920..DB 'Closing memory heap and dc',0
+00                              
+                                EXC_MESS19
+54686572652077696C6C2062652061..DB 'There will be an exception in 3rd routine',0
+00                              
+                                EXC_MESS20
+20202020202020202870726F746563..DB '        (protected by handler 3)',0
+00                              
+                                EXC_MESS21
+4E6F772073797374656D2077696C6C..DB 'Now system will unwind and call ExitProcess ...',0
+00                              
+                                EXC_MESS22
+436F64652061742020202020202020..DB 'Code at        h caused an exception',0
+00                              
+                                EXC_MESS23
+4E6F7720666F72206F776E20756E77..DB 'Now for own unwind then get to safe-place ...',0
+00                              
+                                EXC_MESS24
+48656C6C6F2066726F6D2066696E61..DB 'Hello from final handler in safe-place #3!',0
+00                              
+                                sHEXb
+303132333435363738394142434445..DB '0123456789ABCDEF'
+================================CODE SECTION
+                                CODESTART:
+                                HEXWRITE:
+        50                      PUSH EAX,EBX,EDX
+        53                      
+        52                      
+        BB[00000000]            MOV EBX,ADDR sHEXb
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        C1C0 04                 ROL EAX,4               ;get high order nibble into al
+        88C2                    MOV DL,AL
+        83E2 0F                 AND EDX,0Fh             ;use only least sig nibble
+        8A1413                  MOV DL,[EBX+EDX]
+        8816                    MOV [ESI],DL            ;write the nibble
+        46                      INC ESI                 ;ready for next
+        5A                      POP EDX,EBX,EAX
+        5B                      
+        58                      
+        C3                      RET
+                                ADD_LISTBOXSTRING:
+        52                      PUSH EDX,0,180h,[hList] ;LB_ADDSTRING (address in edx)
+        6A 00                   
+        68 80010000             
+        FF35[00000000]          
+        E8[00000000]            CALL SendMessageA
+        50                      PUSH EAX                ;keep item index
+        48                      DEC EAX                 ;index now one smaller
+        6A 00                   PUSH 0,EAX              ;string to ensure visible
+        50                      
+        68 97010000             PUSH 197h,[hList]       ;LB_SETTOPINDEX
+        FF35[00000000]          
+        E8[00000000]            CALL SendMessageA       ;scroll listbox now to show string just inserted
+        FF35[00000000]          PUSH [hList]
+        E8[00000000]            CALL UpdateWindow
+        58                      POP EAX                 ;restore item index
+        C3                      RET
+                                WRITE_LISTBOXLINE:
+        50                      PUSH EAX
+        E8 C5FFFFFF             CALL ADD_LISTBOXSTRING  ;write to listbox
+        FF35[00000000]          PUSH [MESSDELAY]        ;256 milliseconds at start
+        E8[00000000]            CALL Sleep              ;delay for a while
+        58                      POP EAX
+        C3                      RET
+                                WRITE_MEM_ERROR:
+        53                      PUSH EBX
+        BA[00000000]            MOV EDX,ADDR EXC_MESS7  ;correct message if write error
+        837B 14 01              CMP D[EBX+14h],1        ;see if write error flag from 1st part of array
+        74 00                   JZ >0                   ;yes (write=1, read=0)
+        BA[00000000]            MOV EDX,ADDR EXC_MESS8  ;correct message if read error
+                                0:
+        8B43 18                 MOV EAX,[EBX+18h]       ;get 2nd part of array (inaccessible address)
+        89D6                    MOV ESI,EDX
+        83C6 16                 ADD ESI,22D
+        E8 1EFFFFFF             CALL HEXWRITE           ;write address into message
+        E8 CAFFFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        800D[00000000] 01       OR B[HANDLERFLAG],1     ;ensure that read/write message is written into listbox
+        5B                      POP EBX
+        C3                      RET
+                                WCE23:
+        56                      PUSH ESI
+        89DE                    MOV ESI,EBX
+        E8 08FFFFFF             CALL HEXWRITE           ;write memory read/write number into message at esi
+        5E                      POP ESI
+        C3                      RET
+                                WRITE_CURRENT_EDI:
+        51                      PUSH ECX,EDI
+        57                      
+        BA[00000000]            MOV EDX,ADDR EXC_MESS0  ;read message
+        BB 0D000000             MOV EBX,13D
+        803D[00000000] 68       CMP B[EXC_TYPE],104D    ;see if read test
+        74 00                   JZ >1                   ;yes
+        83EB 02                 SUB EBX,2
+        BA[00000000]            MOV EDX,ADDR EXC_MESS1  ;write message
+                                1:
+        89D6                    MOV ESI,EDX             ;keep correct message in esi
+        01D3                    ADD EBX,EDX             ;and correct write-place in ebx
+        F605[00000000] 01       TEST B[HANDLERFLAG],1   ;see if first read/write message
+        74 00                   JZ >2                   ;no
+        89F8                    MOV EAX,EDI             ;this message will be displayed at end of test
+        05 00100000             ADD EAX,1000h           ;so ensure it shows correct place of exception occurance
+        E8 C0FFFFFF             CALL WCE23              ;write memory read/write number into message
+        89F2                    MOV EDX,ESI
+        E8 45FFFFFF             CALL ADD_LISTBOXSTRING  ;write item to listbox, returning index in eax
+        68[00000000]            PUSH ADDR RECT,EAX      ;index of last string written (wParam)
+        50                      
+        68 98010000             PUSH 198h,[hList]       ;LB_GETITEMRECT
+        FF35[00000000]          
+        E8[00000000]            CALL SendMessageA       ;get client co-ordinates in RECT for string just written
+        8305[00000000] 02       ADD D[RECT],2           ;allow for lhs border
+        8025[00000000] FE       AND B[HANDLERFLAG],0FEh ;don't come here again
+                                2:
+        89F8                    MOV EAX,EDI
+        E8 8EFFFFFF             CALL WCE23              ;write memory read/write number into message
+        68 00010000             PUSH 100h,ADDR RECT     ;no clipping
+        68[00000000]            
+        6A FF                   PUSH -1,ESI,[hDC]       ;-1=system to count length
+        56                      
+        FF35[00000000]          
+        E8[00000000]            CALL DrawTextA
+        5F                      POP EDI,ECX
+        59                      
+        C3                      RET
+                                WRITE_WHICHADDRESS:
+        BE[00000000]            MOV ESI,ADDR EXC_MESS22
+        89F2                    MOV EDX,ESI
+        83C6 08                 ADD ESI,8
+        E8 74FEFFFF             CALL HEXWRITE           ;write code address into message
+        E8 20FFFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        C3                      RET
+                                WRITE_HANDLERDATA:
+        50                      PUSH EAX,ESI,EDX
+        56                      
+        52                      
+        BE[00000000]            MOV ESI,ADDR EXC_MESS10
+        80FA 04                 CMP DL,4                ;see if final handler
+        9C                      PUSHFD                  ;keep flag
+        74 00                   JZ >3                   ;yes
+        BE[00000000]            MOV ESI,ADDR EXC_MESS2
+        80C2 30                 ADD DL,48D              ;convert handler number to ascii char
+        8856 27                 MOV [ESI+39D],DL        ;write the handler number
+                                3:
+        89F2                    MOV EDX,ESI             ;keep correct message
+        83C6 0E                 ADD ESI,14D
+        E8 4BFEFFFF             CALL HEXWRITE           ;write exception number into message
+        E8 F7FEFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        8B43 04                 MOV EAX,[EBX+4]         ;get exception flag
+        BE[00000000]            MOV ESI,ADDR EXC_MESS5  ;continuable
+        83F8 01                 CMP EAX,1
+        72 00                   JB >4
+        BE[00000000]            MOV ESI,ADDR EXC_MESS5A ;non-continuable
+        74 00                   JZ >4
+        BE[00000000]            MOV ESI,ADDR EXC_MESS5B ;unwind
+                                4:
+        89F2                    MOV EDX,ESI             ;keep for WRITE_LISTBOXLINE later
+        83C6 0D                 ADD ESI,13D
+        E8 23FEFFFF             CALL HEXWRITE           ;write exception flag into message
+        E8 CFFEFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        9D                      POPFD                   ;restore flag
+        74 00                   JZ >5                    ;final handler so don't show local data address
+        BE[00000000]            MOV ESI,ADDR EXC_MESS5C
+        89F2                    MOV EDX,ESI             ;keep for WRITE_LISTBOXLINE later
+        83C6 13                 ADD ESI,19D
+        8B45 0C                 MOV EAX,[EBP+0Ch]       ;get pointer to ERR structure
+        E8 09FEFFFF             CALL HEXWRITE           ;write as address of local data
+        E8 B5FEFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+                                5:
+        5A                      POP EDX,ESI,EAX
+        5E                      
+        58                      
+        C3                      RET
+                                CLEARUPCODE_MESS:
+        BE[00000000]            MOV ESI,ADDR EXC_MESS11
+        80FA 01                 CMP DL,1                ;see if handler 1
+        75 00                   JNZ >6
+        F605[00000000] 02       TEST B[HANDLERFLAG],2   ;see if final handler doing unwind, though
+        75 00                   JNZ >6                  ;yes, so do ordinary message
+        C705[00000000] B80B0000 MOV D[MESSDELAY],3000D  ;3 seconds
+        BE[00000000]            MOV ESI,ADDR EXC_MESS11A
+                                6:
+        80C2 30                 ADD DL,48D              ;convert handler number to ascii char
+        8856 08                 MOV [ESI+8D],DL         ;write the handler number into message
+        89F2                    MOV EDX,ESI             ;keep correct message
+        E8 82FEFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        C3                      RET
+                                ADD_STRING:
+        56                      PUSH ESI,0,143h,[hCombo] ;CB_ADDSTRING (uMsg), handle to combobox
+        6A 00                   
+        68 43010000             
+        FF35[00000000]          
+        E8[00000000]            CALL SendMessageA
+        C3                      RET
+                                INITIALISE_CONTROLS:
+        8B4D 14                 MOV ECX,[EBP+14h]       ;get dialog id sent to DialogBoxIndirectParam (lParam)
+67      E3 FF                   JCXZ >1                 ;it's main dialog
+        C3                      RET                     ;it must be "about" dialog
+                                1:
+        6A 6C                   PUSH 108D               ;button to select
+        6A 6D                   PUSH 109D,104D          ;last,first in group
+        6A 68                   
+        FF75 08                 PUSH [EBP+8]            ;hdlg
+        E8[00000000]            CALL CheckRadioButton
+        6A 01                   PUSH 1                  ;indicate check
+        6A 6F                   PUSH 111D               ;identifier
+        FF75 08                 PUSH [EBP+8]            ;hdlg
+        E8[00000000]            CALL CheckDlgButton
+        6A 71                   PUSH 113D,[EBP+8]       ;list box identifier
+        FF75 08                 
+        E8[00000000]            CALL GetDlgItem         ;get list box handle
+        A3[00000000]            MOV [hList],EAX         ;keep it
+        6A 6E                   PUSH 110D,[EBP+8]       ;combo box identifier
+        FF75 08                 
+        E8[00000000]            CALL GetDlgItem         ;get combo box handle
+        A3[00000000]            MOV [hCombo],EAX        ;keep it
+        B3 31                   MOV BL,'1'              ;handler number to add to message
+        BE[00000000]            MOV ESI,ADDR COMBO_STRING1
+                                2:
+        885E 23                 MOV [ESI+35D],BL        ;insert number into message
+        E8 9EFFFFFF             CALL ADD_STRING
+        FEC3                    INC BL
+        80FB 34                 CMP BL,'4'              ;see if at last message
+        75 F1                   JNZ 2
+        A3[00000000]            MOV [CINDEX],EAX        ;keep the selection for later use
+        6A 00                   PUSH 0,EAX,14Eh,[hCombo] ;CB_SETCURSEL, handle to combobox
+        50                      
+        68 4E010000             
+        FF35[00000000]          
+        E8[00000000]            CALL SendMessageA
+        BE[00000000]            MOV ESI,ADDR COMBO_STRING3
+        E8 75FFFFFF             CALL ADD_STRING         ;no repair message
+        C3                      RET
+                                GET_EXC_TYPE:
+        BB 68000000             MOV EBX,104D
+        BE 06000000             MOV ESI,6               ;number to do
+                                3:
+        53                      PUSH EBX,[EBP+8]        ;button identifier, hdlg
+        FF75 08                 
+        E8[00000000]            CALL IsDlgButtonChecked
+        3C 01                   CMP AL,1                ;see if button is checked
+        74 00                   JZ >4                    ;yes
+        43                      INC EBX
+        4E                      DEC ESI
+        75 EF                   JNZ 3
+                                4:
+        881D[00000000]          MOV [EXC_TYPE],BL       ;keep type for later tests
+        C3                      RET
+                                START:
+        6A 00                   PUSH 0
+        E8[00000000]            CALL GetModuleHandleA
+        A3[00000000]            MOV [hInst],EAX
+        68[00000000]            PUSH ADDR FINAL_HANDLER
+        E8[00000000]            CALL SetUnhandledExceptionFilter
+        6A 00                   PUSH 0,ADDR DlgProc     ;pointer to dialog procedure (param=0=main dialog)
+        68[00000000]            
+        6A 00                   PUSH 0                  ;this dialog is the main window (no parent)
+                                PUSH 'MainDialog'       ;name of dialog in resource file
+        68[E4040000]            ¦ PUSH ADDR ...
+        FF35[00000000]          PUSH [hInst]           
+        E8[00000000]            CALL DialogBoxParamA    ;this does not return until dialog closed
+        6A 00                   PUSH 0                  ;exit code zero=success if finishes this way
+        E8[00000000]            CALL ExitProcess
+                                PROCESS_COMMAND:
+        83F8 63                 CMP EAX,99D             ;see if "about" clicked
+        75 00                   JNZ >0                  ;no
+        6A 01                   PUSH 1,ADDR DlgProc,[EBP+8h]    ;param=1
+        68[00000000]            
+        FF75 08                 
+                                PUSH 'About'
+        68[EF040000]            ¦ PUSH ADDR ...
+        FF35[00000000]          PUSH [hInst]
+        E8[00000000]            CALL DialogBoxParamA    ;create about dialog, borrowing main dlgproc
+        C3                      RET
+                                0:
+        83F8 65                 CMP EAX,101D            ;see if it was "cause exception" button
+        74 00                   JZ >1                   ;yes
+        C3                      RET
+                                1:
+        E8 7DFFFFFF             CALL GET_EXC_TYPE       ;get the chosen exception type
+        6A 70                   PUSH 112D,[EBP+8]       ;identifier of safe-place radiobutton
+        FF75 08                 
+        E8[00000000]            CALL IsDlgButtonChecked
+        A2[00000000]            MOV [CONTINUE],AL       ;keep this 1=continue from safe-place
+        6A 00                   PUSH 0,0,147h           ;CB_GETCURSEL (uMsg)
+        6A 00                   
+        68 47010000             
+        FF35[00000000]          PUSH [hCombo]           ;handle to combobox
+        E8[00000000]            CALL SendMessageA       ;get current selection
+        FEC0                    INC AL                  ;handler 1 now = 1
+        A2[00000000]            MOV [HANDLER],AL
+        6A 00                   PUSH 0,0,184h           ;LB_RESETCONTENT
+        6A 00                   
+        68 84010000             
+        FF35[00000000]          PUSH [hList]            ;handle to listbox
+        E8[00000000]            CALL SendMessageA
+        E8[00000000]            CALL SECOND_ROUTINE     ;run until exception and repair
+        C3                      RET
+                                DlgProc:
+        55                      PUSH EBP
+        89E5                    MOV EBP,ESP
+        83EC 40                 SUB ESP,40h             ;make space of 16 dwords on stack for local data
+        53                      PUSH EBX,EDI,ESI
+        57                      
+        56                      
+        55                      PUSH EBP                ;ERR+14h save ebp (being ebp at safe-place1)
+        6A 00                   PUSH 0                  ;ERR+10h area for flags
+        68[00000000]            PUSH ADDR EXC_MESS16    ;ERR+0Ch safe place 1 message
+        68[00000000]            PUSH ADDR SAFE_PLACE1   ;ERR+8h  place for new eip
+        68[00000000]            PUSH ADDR HANDLER_1     ;ERR+4h  address of handler routine
+64      FF35 00000000           FS PUSH [0]             ;ERR+0h  keep next handler up the chain
+64      8925 00000000           FS MOV [0],ESP          ;point to structure just established on the stack
+        FF05[00000000]          INC D[COUNT]            ;used in getting a random number
+        8B45 0C                 MOV EAX,[EBP+0Ch]       ;get uMsg
+        3D 36010000             CMP EAX,136h            ;see if WM_CTLCOLORDLG
+        74 00                   JZ >3                   ;yes
+        3D 35010000             CMP EAX,135h            ;see if WM_CTLCOLORBTN
+        74 00                   JZ >2                   ;yes
+        3D 38010000             CMP EAX,138h            ;see if WM_CTLCOLORSTATIC
+        75 00                   JNZ >4                  ;no
+        6A 78                   PUSH 120D,[EBP+8]
+        FF75 08                 
+        E8[00000000]            CALL GetDlgItem         ;get control 120 handle
+        3B45 14                 CMP EAX,[EBP+14h]       ;see if its the static control for bitmap frame
+      0F84 00000000             JZ LONG >8              ;must be kept white
+                                2:
+        6A 01                   PUSH 1,[EBP+10h]        ;1=transparent, wParam
+        FF75 10                 
+        E8[00000000]            CALL SetBkMode
+                                3:
+        68 40808000             PUSH 00808040h          ;blue colour from default palette
+        E8[00000000]            CALL CreateSolidBrush   ;create brush as an object with handle in EAX
+        E9 00000000             JMP LONG >9             ;return with the brush handle (deleted on program exit)
+                                4:                      ;this is needed because dialog=main window (no IDCANCEL)
+        3D 10010000             CMP EAX,110h            ;see if WM_INITDIALOG
+        75 00                   JNZ >5                  ;no
+        E8 42FEFFFF             CALL INITIALISE_CONTROLS
+        EB 00                   JMP >.nonzero           ;return non-zero
+                                5:
+        83F8 10                 CMP EAX,10h             ;see if WM_CLOSE (sent if sysmenu clicked)
+        74 00                   JZ >6                   ;yes, so say goodbye and finish
+        3D 11010000             CMP EAX,111h            ;see if WM_COMMAND
+        75 00                   JNZ >8                  ;no
+        F605[00000000] 02       TEST B[HANDLERFLAG],2   ;see if in final handler
+        75 00                   JNZ >8                  ;yes so ignore command messages
+        8B45 10                 MOV EAX,[EBP+10h]       ;wParam
+        83F8 66                 CMP EAX,102D            ;see if it was quit button
+        74 00                   JZ >6                   ;yes, so say goodbye and finish
+        83F8 64                 CMP EAX,100D            ;see if "about" OK button
+        74 00                   JZ >7                   ;yes so remove about dialog
+        E8 E9FEFFFF             CALL PROCESS_COMMAND
+        EB 00                   JMP >.nonzero
+                                6:
+        F605[00000000] 02       TEST B[HANDLERFLAG],2   ;see if in final handler
+        75 00                   JNZ >8                  ;yes so ignore quit/close messages
+        C705[00000000] E8030000 MOV D[MESSDELAY],1000D  ;one second delay
+        BA[00000000]            MOV EDX,ADDR BYETEXT    ;write "Have an exceptional day!"
+        E8 67FCFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+                                7:
+        6A 00                   PUSH 0,[EBP+8]
+        FF75 08                 
+        E8[00000000]            CALL EndDialog          ;end dialog
+                                .nonzero
+        B8 01000000             MOV EAX,1               ;return non-zero (TRUE=message processed)
+        EB 00                   JMP >9
+                                SAFE_PLACE1:
+        E8 51FCFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox tell user reached here
+                                8:
+        31C0                    XOR EAX,EAX             ;return zero (FALSE=message not processed)
+                                9:
+64      8F05 00000000           FS POP [0]              ;restore original exception handler from stack
+        83C4 14                 ADD ESP,14h             ;throw away remainder of ERR structure made earlier
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        89EC                    MOV ESP,EBP
+        5D                      POP EBP
+        C2 1000                 RET 10h                 ;automatically does epilogue code to close stack frame
+                                ATTEMPT_CORRUPTION:
+        BE[00000000]            MOV ESI,ADDR CODESTART
+        BF[00000000]            MOV EDI,ADDR CODEEND
+        29F7                    SUB EDI,ESI             ;get how many bytes in the routine
+        68[00000000]            PUSH ADDR flOldProtect
+        6A 20                   PUSH 20h                ;PAGE_EXECUTE_READ
+        57                      PUSH EDI,ESI            ;size, start
+        56                      
+        E8[00000000]            CALL VirtualProtect
+        09C0                    OR EAX,EAX              ;check for success
+        74 00                   JZ >.fin                ;no, so too dangerous to do the test
+        31DB                    XOR EBX,EBX
+                                7:
+        F9                      STC
+        D1D3                    RCL EBX,1
+        39DF                    CMP EDI,EBX             ;find how many bits may be looked at
+        73 F9                   JNB 7
+                                8:
+        E8[00000000]            CALL GetTickCount       ;get count since Windows started now
+        89C2                    MOV EDX,EAX             ;keep whole tick count
+        2B05[00000000]          SUB EAX,[COUNT]         ;add another random element
+        B9 C8000000             MOV ECX,200D
+                                9:
+        21D8                    AND EAX,EBX             ;only look at correct number of bits
+        39C7                    CMP EDI,EAX             ;see if number is now too high
+        73 00                   JNB >10                 ;no
+        C1CA 05                 ROR EDX,5               ;rotate edx 5 times
+        01D0                    ADD EAX,EDX             ;add extra random element
+        E2 F3                   LOOP 9                  ;try again 200 times
+        EB DF                   JMP 8                   ;try again with another tick count
+                                10:
+        01C6                    ADD ESI,EAX             ;get to address to corrupt
+        56                      PUSH ESI
+        89F0                    MOV EAX,ESI             ;get number to write in eax
+        BE[00000000]            MOV ESI,ADDR EXC_MESS9
+        83C6 1B                 ADD ESI,27D
+        E8 31FBFFFF             CALL HEXWRITE           ;write exception flags into message
+        BA[00000000]            MOV EDX,ADDR EXC_MESS9  ;write "Attempt to corrupt code at         h"
+        E8 D8FBFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        5E                      POP ESI
+        C606 90                 MOV B[ESI],90h          ;attempt to corrupted code (causes exception)
+                                .fin
+        C3                      RET
+                                MEM_TEST:
+        800D[00000000] 01       OR B[HANDLERFLAG],1     ;ensure read/write message is written to listbox
+        FF35[00000000]          PUSH [hList]
+        E8[00000000]            CALL GetDC
+        A3[00000000]            MOV [hDC],EAX           ;keep handle of device context of listbox
+        6A 00                   PUSH 0,0,31h,[hList]    ;WM_GETFONT
+        6A 00                   
+        6A 31                   
+        FF35[00000000]          
+        E8[00000000]            CALL SendMessageA       ;get listbox font
+        50                      PUSH EAX,[hDC]
+        FF35[00000000]          
+        E8[00000000]            CALL SelectObject       ;use this font in the dc
+        68 0000FF00             PUSH 0FF0000h,[hDC]     ;nice blue colour
+        FF35[00000000]          
+        E8[00000000]            CALL SetTextColor
+        08DB                    OR BL,BL                ;see if write test
+        74 00                   JZ >22                  ;yes
+        6A 00                   PUSH 0,1000h,0          ;make "growable" memory, 4K for immediate use
+        68 00100000             
+        6A 00                   
+        E8[00000000]            CALL HeapCreate
+        89C7                    MOV EDI,EAX
+        A3[00000000]            MOV [hHeap],EAX         ;keep heap address
+        B9 01200000             MOV ECX,2001h           ;ready to read from 8K +1
+                                20:
+        8A07                    MOV AL,[EDI]            ;read into al
+        83F9 01                 CMP ECX,1               ;unless the last (handler returns to here for last one)
+        74 00                   JZ >21                  ;listbox message already written
+        E8 AEFBFFFF             CALL WRITE_CURRENT_EDI  ;show user current position
+                                21:
+        47                      INC EDI
+        E2 F1                   LOOP 20                 ;continue so as to cause exception
+        FF35[00000000]          PUSH [hHeap]
+        E8[00000000]            CALL HeapDestroy
+        EB 00                   JMP >25
+                                22:
+        6A 04                   PUSH 4h                 ;read & write access
+        68 00200000             PUSH 2000h              ;MEM_RESERVE
+        68 00000100             PUSH 10000h             ;64K
+        6A 00                   PUSH 0                  ;system to decide address
+        E8[00000000]            CALL VirtualAlloc
+        A3[00000000]            MOV [hHeap],EAX
+        6A 04                   PUSH 4h                 ;read & write access
+        68 00100000             PUSH 1000h              ;MEM_COMMIT
+        68 00100000             PUSH 1000h              ;4K
+        FF35[00000000]          PUSH [hHeap]
+        E8[00000000]            CALL VirtualAlloc
+        89C7                    MOV EDI,EAX             ;base address of allocated 4K
+        B9 01200000             MOV ECX,2001h           ;ready to write 8K + 1 byte
+                                23:
+        C607 58                 MOV B[EDI],'X'
+        83F9 01                 CMP ECX,1               ;unless the last (handler returns to here for last one)
+        74 00                   JZ >24                  ;listbox message already written
+        E8 5BFBFFFF             CALL WRITE_CURRENT_EDI  ;show user current position
+                                24:
+        47                      INC EDI
+        E2 F0                   LOOP 23                 ;continue so as to cause exception
+        68 00400000             PUSH 4000h,0,[hHeap]    ;MEM_DECOMMIT
+        6A 00                   
+        FF35[00000000]          
+        E8[00000000]            CALL VirtualFree        ;decommit memory used
+        68 00800000             PUSH 8000h,0,[hHeap]    ;MEM_RELEASE
+        6A 00                   
+        FF35[00000000]          
+        E8[00000000]            CALL VirtualFree        ;free memory used
+                                25:
+        FF35[00000000]          PUSH [hDC],[hList]
+        FF35[00000000]          
+        E8[00000000]            CALL ReleaseDC
+        C3                      RET
+                                ERROR_ROUTINE:
+        31DB                    XOR EBX,EBX
+        8A1D[00000000]          MOV BL,[EXC_TYPE]       ;get exception type again
+        83EB 69                 SUB EBX,105D            ;see if memory read/write test
+        77 00                   JA >30                  ;no
+        E8 F4FEFFFF             CALL MEM_TEST
+        C3                      RET
+                                30:
+        4B                      DEC EBX                 ;see if should do own (continuable) software exception
+        74 00                   JZ >31                  ;yes
+        83FB 01                 CMP EBX,1               ;see if should do own (non-continuable) software exception
+        75 00                   JNZ >32                 ;no
+                                31:                     ;0=continuable exception, 1=non-continuable exception
+        B8[00000000]            MOV EAX,ADDR AVOID      ;get place to restart from
+        A3[00000000]            MOV [lpArguments],EAX   ;keep in array in memory
+        8925[04000000]          MOV [lpArguments+4],ESP ;keep esp too
+        68[00000000]            PUSH ADDR lpArguments   ;give array to function
+        6A 02                   PUSH 2                  ;number of arguments in array
+        53                      PUSH EBX                ;continuable or non-continuable exception flag
+        68 000100E0             PUSH 0E0000100h         ;exception code
+        E8[00000000]            CALL RaiseException
+                                AVOID:
+        C3                      RET
+                                32:
+        4B                      DEC EBX,EBX             ;see if divide by zero
+        4B                      
+        75 00                   JNZ >33                 ;no
+        31C9                    XOR ECX,ECX
+        B8 42000000             MOV EAX,66D
+        F6F1                    DIV CL                  ;divide by zero to create exception
+        C3                      RET
+                                33:                     ;must be attempt to corrupt code test
+        E8 4CFEFFFF             CALL ATTEMPT_CORRUPTION ;attempt code corruption in random place in code
+        C3                      RET
+                                THIRD_ROUTINE:
+        55                      PUSH EBP                ;ERR+14h save ebp (being ebp at safe-place3)
+        6A 00                   PUSH 0                  ;ERR+10h area for flags
+        68[00000000]            PUSH ADDR EXC_MESS15    ;ERR+0Ch safe place 3 message
+        68[00000000]            PUSH ADDR SAFE_PLACE3   ;ERR+8h  place for new eip
+        68[00000000]            PUSH ADDR HANDLER_3     ;ERR+4h  address of handler routine
+64      FF35 00000000           FS PUSH [0]             ;ERR+0h  keep next handler up the chain
+64      8925 00000000           FS MOV [0],ESP          ;point to structure just established on the stack
+        892D[00000000]          MOV [EBPSAFE_PLACE3],EBP ;these are kept solely for
+        8925[00000000]          MOV [ESPSAFE_PLACE3],ESP ;repair by final handler
+        BA[00000000]            MOV EDX,ADDR EXC_MESS19 ;"exception will occur in level 3 code"
+        E8 51FAFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        BA[00000000]            MOV EDX,ADDR EXC_MESS20 ;"(protected by exception handler 3)"
+        E8 47FAFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        E8 69FFFFFF             CALL ERROR_ROUTINE      ;exception will be caused by this routine
+        EB 00                   JMP >4
+                                SAFE_PLACE3:
+        E8 3BFAFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox tell user reached here
+                                4:
+64      8F05 00000000           FS POP [0]              ;restore original exception handler from stack
+        83C4 14                 ADD ESP,14h             ;throw away handler_3
+        C3                      RET
+                                SECOND_ROUTINE:
+        55                      PUSH EBP                ;ERR+14h save ebp (being ebp at safe-place2)
+        6A 00                   PUSH 0                  ;ERR+10h area for flags
+        68[00000000]            PUSH ADDR EXC_MESS14    ;ERR+0Ch safe place 2 message
+        68[00000000]            PUSH ADDR SAFE_PLACE2   ;ERR+8h  place for new eip
+        68[00000000]            PUSH ADDR HANDLER_2     ;ERR+4h  address of handler routine
+64      FF35 00000000           FS PUSH [0]             ;ERR+0h  keep next handler up the chain
+64      8925 00000000           FS MOV [0],ESP          ;point to structure just established on the stack
+        E8 84FFFFFF             CALL THIRD_ROUTINE
+        EB 00                   JMP >5
+                                SAFE_PLACE2:
+        E8 04FAFFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox tell user reached here
+                                5:
+64      8F05 00000000           FS POP [0]              ;restore original exception handler from stack
+        83C4 14                 ADD ESP,14h             ;throw away remainder of ERR structure made earlier
+        C3                      RET
+                                TRYFOR_SAFEPLACE:
+        3D 050000C0             CMP EAX,0C0000005h      ;see if memory read/write exception
+        75 00                   JNZ >6                  ;no
+        E8 00FAFFFF             CALL WRITE_MEM_ERROR    ;write type and place of error
+                                6:
+        BA[00000000]            MOV EDX,ADDR EXC_MESS12
+        E8 E3F9FFFF             CALL WRITE_LISTBOXLINE  ;write "Ready to do voluntary stack unwind"
+        6A 00                   PUSH 0                  ;return value (not needed)
+        FF75 08                 PUSH [EBP+8]            ;send exception_record to per-thread handlers
+        68[00000000]            PUSH ADDR UN23          ;return address
+        FF75 0C                 PUSH [EBP+0Ch]          ;pointer to this ERR structure
+        E8[00000000]            CALL RtlUnwind
+                                UN23:
+        8B75 10                 MOV ESI,[EBP+10h]       ;get context record in esi
+        8B55 0C                 MOV EDX,[EBP+0Ch]       ;get pointer to ERR structure
+        8996 C4000000           MOV [ESI+0C4h],EDX      ;insert new esp (happens to be pointer to ERR)
+        8B42 08                 MOV EAX,[EDX+8]         ;get safe place given in ERR structure
+        8986 B8000000           MOV [ESI+0B8h],EAX      ;insert new eip
+        8B42 0C                 MOV EAX,[EDX+0Ch]       ;get message address in eax
+        8986 A8000000           MOV [ESI+0A8h],EAX      ;insert new edx
+        8B42 14                 MOV EAX,[EDX+14h]       ;get ebp at safe place given in ERR structure
+        8986 B4000000           MOV [ESI+0B4h],EAX      ;insert new ebp
+        C3                      RET
+                                ATTEMPT_LOCAL_REPAIR:
+        BA[00000000]            MOV EDX,ADDR EXC_MESS3
+        E8 9FF9FFFF             CALL WRITE_LISTBOXLINE  ;write "Attempting local repair (no unwind)" (saves eax)
+        3D 000100E0             CMP EAX,0E0000100h      ;see if own software exception
+        74 00                   JZ >11                  ;yes
+        3D 940000C0             CMP EAX,0C0000094h      ;see if divide by zero exception
+        74 00                   JZ >9                   ;yes
+        3D 050000C0             CMP EAX,0C0000005h      ;see if memory read/write exception
+        75 00                   JNZ >10                 ;no
+        803D[00000000] 68       CMP B[EXC_TYPE],104D    ;see if memory test
+        74 00                   JZ >7                   ;yes
+        803D[00000000] 69       CMP B[EXC_TYPE],105D    ;see if memory test
+        75 00                   JNZ >10                 ;no
+                                7:
+        E8 86F9FFFF             CALL WRITE_MEM_ERROR    ;write type and place of error
+        837B 14 01              CMP D[EBX+14h],1        ;see if write error flag from 1st part of array
+        74 00                   JZ >8                   ;yes (write=1, read=0)
+        68 00100000             PUSH 1000h              ;allocate another 4K
+        6A 04                   PUSH 4                  ;HEAP_GENERATE_EXCEPTIONS on error=another exception
+        FF35[00000000]          PUSH [hHeap]            ;normally get this from handler structure
+        E8[00000000]            CALL HeapAlloc          ;allocate another 4K
+        09C0                    OR EAX,EAX              ;see if error
+        74 00                   JZ >10                  ;yes
+        EB 00                   JMP >12
+                                8:
+        6A 04                   PUSH 4                  ;read and write access
+        68 00100000             PUSH 1000h              ;commit more memory
+        68 00100000             PUSH 1000h              ;another 4K required
+        FF73 18                 PUSH [EBX+18h]          ;inaccessible address sent as 2nd part of array
+        E8[00000000]            CALL VirtualAlloc       ;add another 4K using inaccessible address as base
+        09C0                    OR EAX,EAX              ;see if error
+        74 00                   JZ >10                  ;yes
+        EB 00                   JMP >12
+                                9:                      ;its divide by zero exception
+        8B75 10                 MOV ESI,[EBP+10h]       ;get context record in esi
+        C786 AC000000 01000000  MOV D[ESI+0ACh],1D      ;replace ecx with 1 to ensure div by 1 next time
+        EB 00                   JMP >12
+                                10:                     ;error or unexpected exception return
+        BA[00000000]            MOV EDX,ADDR EXC_MESS6
+        E8 22F9FFFF             CALL WRITE_LISTBOXLINE  ;write "Handler cannot repair this exception"
+        F9                      STC
+        C3                      RET
+                                11:                     ;its an own software exception
+        8B75 10                 MOV ESI,[EBP+10h]       ;get context record in esi
+        8B55 0C                 MOV EDX,[EBP+0Ch]       ;get pointer to ERR structure
+        8B42 14                 MOV EAX,[EDX+14h]       ;get ebp at safe place given in ERR structure
+        8986 B4000000           MOV [ESI+0B4h],EAX      ;insert new ebp in context
+        8B43 14                 MOV EAX,[EBX+14h]       ;get from exception record the address to jump to
+        8986 B8000000           MOV [ESI+0B8h],EAX      ;change eip in context
+        8B43 18                 MOV EAX,[EBX+18h]       ;get from exception record the 2nd part of array
+        8986 C4000000           MOV [ESI+0C4h],EAX      ;which is the ESP at repair place
+                                12:
+        BA[00000000]            MOV EDX,ADDR EXC_MESS4
+        E8 F5F8FFFF             CALL WRITE_LISTBOXLINE  ;write "repair appears successful"
+        F8                      CLC
+        C3                      RET                     ;return nc on success, c on failure
+                                HEAP_CLOSE:
+        803D[00000000] 68       CMP B[EXC_TYPE],104D    ;see if memory test
+        74 00                   JZ >20                  ;yes
+        803D[00000000] 69       CMP B[EXC_TYPE],105D    ;see if memory test
+        75 00                   JNZ >23                 ;no
+                                20:
+        BA[00000000]            MOV EDX,ADDR EXC_MESS18
+        E8 D7F8FFFF             CALL WRITE_LISTBOXLINE  ;write "Closing memory heap and dc"
+        837B 14 01              CMP D[EBX+14h],1        ;see if write error flag from 1st part of array
+        74 00                   JZ >21                  ;yes (write=1, read=0)
+        FF35[00000000]          PUSH [hHeap]
+        E8[00000000]            CALL HeapDestroy
+        EB 00                   JMP >22
+                                21:
+        68 00400000             PUSH 4000h,0,[hHeap]    ;MEM_DECOMMIT
+        6A 00                   
+        FF35[00000000]          
+        E8[00000000]            CALL VirtualFree        ;decommit memory used
+        68 00800000             PUSH 8000h,0,[hHeap]    ;MEM_RELEASE
+        6A 00                   
+        FF35[00000000]          
+        E8[00000000]            CALL VirtualFree
+                                22:
+        FF35[00000000]          PUSH [hDC],[hList]
+        FF35[00000000]          
+        E8[00000000]            CALL ReleaseDC
+                                23:
+        C3                      RET
+                                HANDLER_3:
+        55                      PUSH EBP
+        89E5                    MOV EBP,ESP
+        53                      PUSH EBX,EDI,ESI        ;save registers as required by Windows
+        57                      
+        56                      
+        8B5D 08                 MOV EBX,[EBP+8]         ;get exception record in ebx
+        F743 04 02000000        TEST D[EBX+4],02h       ;see if its EH_UNWINDING (from Unwind)
+        75 00                   JNZ >30                 ;yes, so exception address is not useful here
+        8B43 0C                 MOV EAX,[EBX+0Ch]       ;get ExceptionAddress
+        E8 40F9FFFF             CALL WRITE_WHICHADDRESS
+                                30:
+        8B03                    MOV EAX,[EBX]           ;get ExceptionCode
+        B2 03                   MOV DL,3                ;indicate 3rd handler
+        E8 4CF9FFFF             CALL WRITE_HANDLERDATA  ;saves edx
+        F743 04 01000000        TEST D[EBX+4],01h       ;see if its a non-continuable exception
+        75 00                   JNZ >34                 ;yes
+        F743 04 02000000        TEST D[EBX+4],02h       ;see if its EH_UNWINDING (from Unwind)
+        74 00                   JZ >31                  ;no
+        E8 A3F9FFFF             CALL CLEARUPCODE_MESS
+        E8 5CFFFFFF             CALL HEAP_CLOSE         ;close the memory heap and dc if memory test
+        EB 00                   JMP >34                 ;must return 1 to go to next handler
+                                31:
+        3815[00000000]          CMP [HANDLER],DL        ;see if this handler allowed to deal
+        75 00                   JNZ >34                 ;no
+        803D[00000000] 01       CMP B[CONTINUE],1       ;see if 1=continue from safe-place
+        75 00                   JNZ >32                 ;no so deal with exception locally
+        E8 3EFEFFFF             CALL TRYFOR_SAFEPLACE
+        EB 00                   JMP >33
+                                32:
+        E8 87FEFFFF             CALL ATTEMPT_LOCAL_REPAIR
+        73 00                   JNC >33                 ;success
+        E8 30FEFFFF             CALL TRYFOR_SAFEPLACE
+                                33:
+        31C0                    XOR EAX,EAX             ;reload context and return to system
+        EB 00                   JMP >35
+                                34:                  
+        B8 01000000             MOV EAX,1               ;this handler will not deal with this exception
+                                35:
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        89EC                    MOV ESP,EBP
+        5D                      POP EBP
+        C3                      RET                     ;ordinary return because was a "C" type call not PASCAL
+                                HANDLER_2:
+        55                      PUSH EBP
+        89E5                    MOV EBP,ESP
+        53                      PUSH EBX,EDI,ESI        ;save registers as required by Windows
+        57                      
+        56                      
+        8B5D 08                 MOV EBX,[EBP+8]         ;get exception record in ebx
+        8B03                    MOV EAX,[EBX]           ;get ExceptionCode
+        B2 02                   MOV DL,2                ;indicate 2nd handler
+        E8 E8F8FFFF             CALL WRITE_HANDLERDATA  ;saves edx
+        F743 04 01000000        TEST D[EBX+4],01h       ;see if its a non-continuable exception
+        75 00                   JNZ >43                 ;yes
+        F743 04 02000000        TEST D[EBX+4],02h       ;see if its EH_UNWINDING (from Unwind)
+        74 00                   JZ >40                  ;no
+        E8 3FF9FFFF             CALL CLEARUPCODE_MESS
+        EB 00                   JMP >43                 ;must return 1 to go to next handler
+                                40:
+        3815[00000000]          CMP [HANDLER],DL        ;see if this handler allowed to deal
+        75 00                   JNZ >43                 ;no
+        803D[00000000] 01       CMP B[CONTINUE],1       ;see if 1=continue from safe-place
+        75 00                   JNZ >41                 ;no so deal with exception locally
+        E8 DFFDFFFF             CALL TRYFOR_SAFEPLACE
+        EB 00                   JMP >42
+                                41:
+        E8 28FEFFFF             CALL ATTEMPT_LOCAL_REPAIR
+        73 00                   JNC >42                 ;success
+        E8 D1FDFFFF             CALL TRYFOR_SAFEPLACE
+                                42:
+        31C0                    XOR EAX,EAX             ;exception was repaired - reload context and try again
+        EB 00                   JMP >44
+                                43:
+        B8 01000000             MOV EAX,1               ;this handler will not deal with this exception
+                                44:
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        89EC                    MOV ESP,EBP
+        5D                      POP EBP
+        C3                      RET                     ;ordinary return because was a "C" type call not PASCAL
+                                HANDLER_1:
+        55                      PUSH EBP
+        89E5                    MOV EBP,ESP
+        53                      PUSH EBX,EDI,ESI        ;save registers as required by Windows
+        57                      
+        56                      
+        8B5D 08                 MOV EBX,[EBP+8]         ;get exception record in ebx
+        8B03                    MOV EAX,[EBX]           ;get ExceptionCode
+        B2 01                   MOV DL,1                ;indicate 1st handler
+        E8 89F8FFFF             CALL WRITE_HANDLERDATA  ;saves edx
+        F743 04 01000000        TEST D[EBX+4],01h       ;see if its a non-continuable exception
+        75 00                   JNZ >53                 ;yes
+        F743 04 02000000        TEST D[EBX+4],02h       ;see if its EH_UNWINDING (from Unwind)
+        74 00                   JZ >50                  ;no
+        E8 E0F8FFFF             CALL CLEARUPCODE_MESS
+        EB 00                   JMP >53                 ;must return 1 to go to next handler
+                                50:
+        3815[00000000]          CMP [HANDLER],DL        ;see if this handler allowed to deal
+        75 00                   JNZ >53                 ;no
+        803D[00000000] 01       CMP B[CONTINUE],1       ;see if 1=continue from safe-place
+        75 00                   JNZ >51                 ;no so deal with exception locally
+        E8 80FDFFFF             CALL TRYFOR_SAFEPLACE
+        EB 00                   JMP >52
+                                51:
+        E8 C9FDFFFF             CALL ATTEMPT_LOCAL_REPAIR
+        73 00                   JNC >52                 ;success
+        E8 72FDFFFF             CALL TRYFOR_SAFEPLACE
+                                52:
+        31C0                    XOR EAX,EAX             ;reload context and return to system
+        EB 00                   JMP >54
+                                53:                  
+        B8 01000000             MOV EAX,1               ;go to next handler
+                                54:
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        89EC                    MOV ESP,EBP
+        5D                      POP EBP
+        C3                      RET                     ;ordinary return because was a "C" type call not PASCAL
+                                FINAL_HANDLER_RECOVERY:
+        BA[00000000]            MOV EDX,ADDR EXC_MESS23 ;will now do voluntary unwind and safe-place
+        E8 51F7FFFF             CALL WRITE_LISTBOXLINE  ;write the string in edx to listbox
+        C743 04 02000000        MOV D[EBX+4],02h        ;indicate eh_unwinding flag for termination code
+64      8B3D 00000000           FS MOV EDI,[0]          ;get pointer to very first ERR structure
+                                60:
+        833F FF                 CMP D[EDI],-1           ;see if the last one
+        74 00                   JZ >61                  ;yes, so finish
+        57                      PUSH EDI,EBX            ;push ERR structure,exception record
+        53                      
+        FF57 04                 CALL [EDI+4]            ;call the associated handler to run clear-up code
+        83C4 08                 ADD ESP,8h              ;remove parameters put on the stack
+        8B3F                    MOV EDI,[EDI]           ;get pointer to next ERR structure
+        EB EF                   JMP 60
+                                61:
+        A1[00000000]            MOV EAX,[EBPSAFE_PLACE3] ;kept earlier in third_routine
+        8986 B4000000           MOV [ESI+0B4h],EAX      ;insert new ebp
+        A1[00000000]            MOV EAX,[ESPSAFE_PLACE3] ;in case of this repair
+        8986 C4000000           MOV [ESI+0C4h],EAX      ;insert new esp
+        B8[00000000]            MOV EAX,ADDR SAFE_PLACE3
+        8986 B8000000           MOV [ESI+0B8h],EAX      ;insert new eip
+        B8[00000000]            MOV EAX,ADDR EXC_MESS24 ;hello from safe-place 3 message
+        8986 A8000000           MOV [ESI+0A8h],EAX      ;insert new edx
+        C3                      RET
+                                FINAL_HANDLER:
+        8B5424 04               MOV EDX,[ESP+4]         ;to EXCEPTION_POINTERS - get it in edx
+        53                      PUSH EBX,EDI,ESI        ;save registers as required by Windows
+        57                      
+        56                      
+        800D[00000000] 02       OR B[HANDLERFLAG],2     ;flag that in final handler
+        8B72 04                 MOV ESI,[EDX+4]         ;get context record in esi
+        8B1A                    MOV EBX,[EDX]           ;get pointer to Exception Record
+        8B03                    MOV EAX,[EBX]           ;get exception code
+        B2 04                   MOV DL,4                ;indicate final handler
+        E8 CAF7FFFF             CALL WRITE_HANDLERDATA  ;saves esi, ebx
+        8B86 B8000000           MOV EAX,[ESI+0B8h]      ;get eip from context
+        56                      PUSH ESI                ;keep context
+        BE[00000000]            MOV ESI,ADDR EXC_MESS13 ;Exception at eip=         h
+        89F2                    MOV EDX,ESI
+        83C6 19                 ADD ESI,25D
+        E8 22F6FFFF             CALL HEXWRITE
+        E8 99F6FFFF             CALL ADD_LISTBOXSTRING  ;write the string in edx to listbox
+        BA[00000000]            MOV EDX,ADDR EXC_MESS17 ;"Press F3=polite end, F5=nasty end, F7=recover!"
+        E8 8FF6FFFF             CALL ADD_LISTBOXSTRING  ;write the string in edx to listbox
+        5E                      POP ESI                 ;restore context
+                                0:
+        E8[00000000]            CALL GetActiveWindow    ;get handle to dialog
+        6A 01                   PUSH 1                  ;PM_REMOVE remove message if there
+        68 08010000             PUSH 108h,100h,EAX,ADDR MSG   ;WM_KEYLAST,WM_KEYFIRST key press filter
+        68 00010000             
+        50                      
+        68[00000000]            
+        E8[00000000]            CALL PeekMessageA
+        09C0                    OR EAX,EAX              ;see if there was a key message there
+        75 E0                   JNZ 0                   ;yes, so ignore it
+                                1:                      ;note that command messages are sent direct to dlgproc
+        E8[00000000]            CALL GetActiveWindow    ;get handle to dialog
+        6A 00                   PUSH 0,0,EAX,ADDR MSG   ;get all messages
+        6A 00                   
+        50                      
+        68[00000000]            
+        E8[00000000]            CALL GetMessageA
+        A1[04000000]            MOV EAX,[MSG+4]         ;get message
+        3D 00010000             CMP EAX,100h            ;see if below WM_KEYFIRST
+        72 00                   JB >2                   ;yes, so send to dlgproc
+        3D 08010000             CMP EAX,108h            ;see if above WM_KEYLAST
+        77 00                   JA >2                   ;yes, so send to dlgproc
+        A1[08000000]            MOV EAX,[MSG+8]         ;get virtual key
+        83F8 76                 CMP EAX,76h             ;see if F7 pressed
+        74 00                   JZ >3                   ;yes
+        83F8 74                 CMP EAX,74h             ;see if F5 pressed
+        74 00                   JZ >5                   ;yes
+        83F8 72                 CMP EAX,72h             ;see if F3 pressed
+        74 00                   JZ >4                   ;yes
+        EB C3                   JMP 1                   ;no so ignore and wait for other messages
+                                2:
+        68[00000000]            PUSH ADDR MSG
+        E8[00000000]            CALL DispatchMessageA   ;send mouse message to DlgProc
+        EB B7                   JMP 1
+                                3:
+        E8 FAFEFFFF             CALL FINAL_HANDLER_RECOVERY
+        B8 FFFFFFFF             MOV EAX,-1              ;reload context and continue execution
+        EB 00                   JMP >7
+                                4:
+        6A 00                   PUSH 0                  ;ok button only
+                                PUSH 'This is the polite end'
+        68[F5040000]            ¦ PUSH ADDR ...
+                                PUSH 'We sincerely offer our grovelling apologies (sic)!'
+        68[0C050000]            ¦ PUSH ADDR ...
+        FF35[00000000]          PUSH [hInst]
+        E8[00000000]            CALL MessageBoxA        ;wait till ok pressed
+        BA[00000000]            MOV EDX,ADDR EXC_MESS21
+        E8 2DF6FFFF             CALL WRITE_LISTBOXLINE  ;back to the system for unwind and termination
+        B8 01000000             MOV EAX,1               ;terminate process without showing message box
+        EB 00                   JMP >6
+                                5:
+        BA[00000000]            MOV EDX,ADDR EXC_MESS21
+        E8 1CF6FFFF             CALL WRITE_LISTBOXLINE  ;back to the system for unwind and termination
+        B8 00000000             MOV EAX,0               ;terminate process showing message box
+                                6:
+        C705[00000000] E8030000 MOV D[MESSDELAY],1000D  ;greater delay for final messages from the system
+                                7:
+        8025[00000000] FD       AND B[HANDLERFLAG],0FDh ;clear flag that in final handler
+        5E                      POP ESI,EDI,EBX
+        5F                      
+        5B                      
+        C2 0400                 RET 4h                  ;(for what it's worth) remove parameter from the stack
