@@ -1,0 +1,3 @@
+﻿  Assembling unicode.asm...
+unicode.asm(125): warning A6004: procedure argument or local not referenced : lParam
+  Unicode.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Unicode\Unicode.exe

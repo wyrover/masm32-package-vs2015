@@ -1,0 +1,5 @@
+﻿  Assembling comctls.asm...
+comctls.asm(160): warning A6004: procedure argument or local not referenced : hPrevInst
+comctls.asm(160): warning A6004: procedure argument or local not referenced : CmdLine
+comctls.asm(160): warning A6004: procedure argument or local not referenced : CmdShow
+  ComCtls.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ComCtls\ComCtls.exe

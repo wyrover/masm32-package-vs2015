@@ -1,0 +1,3 @@
+﻿  Assembling vhll.asm...
+smalled.lib(REDIT.OBJ) : warning LNK4258: directive '/entry:ReEntryPoint@0' not compatible with switch '/ENTRY:application'; ignored
+  VHLL.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\VHLL\VHLL.exe

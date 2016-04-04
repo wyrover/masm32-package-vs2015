@@ -1,0 +1,14 @@
+﻿  Assembling bmbutton.asm...
+bmbutton.asm(112): warning A6004: procedure argument or local not referenced : hPrevInst
+bmbutton.asm(112): warning A6004: procedure argument or local not referenced : CmdLine
+bmbutton.asm(112): warning A6004: procedure argument or local not referenced : CmdShow
+bmbutton.asm(210): warning A6004: procedure argument or local not referenced : var
+bmbutton.asm(210): warning A6004: procedure argument or local not referenced : caW
+bmbutton.asm(210): warning A6004: procedure argument or local not referenced : caH
+bmbutton.asm(210): warning A6004: procedure argument or local not referenced : Rct
+bmbutton.asm(210): warning A6004: procedure argument or local not referenced : buffer1
+bmbutton.asm(210): warning A6004: procedure argument or local not referenced : buffer2
+bmbutton.asm(241): warning A6004: procedure argument or local not referenced : hWin
+bmbutton.asm(241): warning A6004: procedure argument or local not referenced : hDC
+bmbutton.asm(241): warning A6004: procedure argument or local not referenced : Rct
+  BmButton.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\BmButton\BmButton.exe

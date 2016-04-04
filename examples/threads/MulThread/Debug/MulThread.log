@@ -1,0 +1,4 @@
+﻿  Assembling multhrd.asm...
+multhrd.asm(225): warning A6004: procedure argument or local not referenced : wDim
+multhrd.asm(225): warning A6004: procedure argument or local not referenced : sDim
+  MulThread.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\THREADING\MulThread\MulThread.exe

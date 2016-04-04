@@ -1,0 +1,3 @@
+﻿  Assembling mdir.asm...
+mdir.asm(106): warning A6004: procedure argument or local not referenced : fBuffer
+  Dir.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\Dir\Dir.exe

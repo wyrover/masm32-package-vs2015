@@ -1,0 +1,7 @@
+﻿  Assembling treedemo.asm...
+treedemo.asm(178): warning A6004: procedure argument or local not referenced : hinst
+treedemo.asm(178): warning A6004: procedure argument or local not referenced : hPrevInst
+treedemo.asm(178): warning A6004: procedure argument or local not referenced : CmdLine
+treedemo.asm(178): warning A6004: procedure argument or local not referenced : CmdShow
+treedemo.asm(641): warning A6004: procedure argument or local not referenced : lparam
+  TreeDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\TreeDemo\TreeDemo.exe

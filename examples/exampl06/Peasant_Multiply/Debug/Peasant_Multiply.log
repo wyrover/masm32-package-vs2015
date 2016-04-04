@@ -1,0 +1,4 @@
+﻿  Assembling pmul.asm...
+pmul.asm(117): warning A6004: procedure argument or local not referenced : arg1
+pmul.asm(117): warning A6004: procedure argument or local not referenced : arg2
+  Peasant_Multiply.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\Peasant_Multiply\Peasant_Multiply.exe

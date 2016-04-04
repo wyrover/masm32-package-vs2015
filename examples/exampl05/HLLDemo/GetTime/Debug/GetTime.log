@@ -1,0 +1,7 @@
+﻿  Assembling gettime.asm...
+gettime.asm(145): warning A6004: procedure argument or local not referenced : lParam
+gettime.asm(145): warning A6004: procedure argument or local not referenced : str4
+gettime.asm(145): warning A6004: procedure argument or local not referenced : buffer2
+gettime.asm(145): warning A6004: procedure argument or local not referenced : buffer3
+gettime.asm(145): warning A6004: procedure argument or local not referenced : buffer4
+  GetTime.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\GetTime\GetTime.exe

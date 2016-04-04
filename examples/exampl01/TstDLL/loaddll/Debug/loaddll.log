@@ -1,0 +1,6 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Assembling loaddll.asm...
+loaddll.asm(161): warning A6004: procedure argument or local not referenced : hPrevInst
+loaddll.asm(161): warning A6004: procedure argument or local not referenced : CmdLine
+loaddll.asm(161): warning A6004: procedure argument or local not referenced : CmdShow
+  loaddll.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\DLL\LoadDLL.exe

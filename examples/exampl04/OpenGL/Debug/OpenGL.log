@@ -1,0 +1,13 @@
+﻿  Assembling opengl.asm...
+opengl.asm(273): warning A6004: procedure argument or local not referenced : hPrevInst
+opengl.asm(273): warning A6004: procedure argument or local not referenced : CmdLine
+opengl.asm(273): warning A6004: procedure argument or local not referenced : CmdShow
+opengl.asm(367): warning A6004: procedure argument or local not referenced : ParentW
+opengl.asm(367): warning A6004: procedure argument or local not referenced : ParentH
+opengl.asm(493): warning A6004: procedure argument or local not referenced : LocXSpd
+opengl.asm(493): warning A6004: procedure argument or local not referenced : LocYSpd
+opengl.asm(493): warning A6004: procedure argument or local not referenced : LocZSpd
+opengl.asm(493): warning A6004: procedure argument or local not referenced : LocXAngle
+opengl.asm(493): warning A6004: procedure argument or local not referenced : LocYAngle
+opengl.asm(493): warning A6004: procedure argument or local not referenced : LocZAngle
+  OpenGL.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\OpenGL\OpenGL.exe

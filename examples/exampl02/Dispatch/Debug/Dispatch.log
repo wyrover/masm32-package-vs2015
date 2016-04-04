@@ -1,0 +1,21 @@
+﻿  Assembling dispatch.asm...
+dispatch.asm(169): warning A6004: procedure argument or local not referenced : hPrevInst
+dispatch.asm(169): warning A6004: procedure argument or local not referenced : CmdLine
+dispatch.asm(169): warning A6004: procedure argument or local not referenced : CmdShow
+dispatch.asm(227): warning A6004: procedure argument or local not referenced : uMsg
+dispatch.asm(227): warning A6004: procedure argument or local not referenced : wParam
+dispatch.asm(227): warning A6004: procedure argument or local not referenced : lParam
+dispatch.asm(245): warning A6004: procedure argument or local not referenced : uMsg
+dispatch.asm(245): warning A6004: procedure argument or local not referenced : lParam
+dispatch.asm(279): warning A6004: procedure argument or local not referenced : uMsg
+dispatch.asm(279): warning A6004: procedure argument or local not referenced : wParam
+dispatch.asm(279): warning A6004: procedure argument or local not referenced : lParam
+dispatch.asm(279): warning A6004: procedure argument or local not referenced : Rct
+dispatch.asm(298): warning A6004: procedure argument or local not referenced : uMsg
+dispatch.asm(298): warning A6004: procedure argument or local not referenced : wParam
+dispatch.asm(298): warning A6004: procedure argument or local not referenced : lParam
+dispatch.asm(311): warning A6004: procedure argument or local not referenced : hWin
+dispatch.asm(311): warning A6004: procedure argument or local not referenced : uMsg
+dispatch.asm(311): warning A6004: procedure argument or local not referenced : wParam
+dispatch.asm(311): warning A6004: procedure argument or local not referenced : lParam
+  Dispatch.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Dispatch\Dispatch.exe

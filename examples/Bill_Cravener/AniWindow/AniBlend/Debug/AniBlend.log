@@ -1,0 +1,4 @@
+﻿  Assembling AniBlend.asm...
+AniBlend.asm(65): warning A6004: procedure argument or local not referenced : aParam
+AniBlend.asm(65): warning A6004: procedure argument or local not referenced : bParam
+  AniBlend.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\AniBlend\AniBlend.exe

@@ -1,0 +1,14 @@
+﻿  Assembling ernie.asm...
+ernie.asm(133): warning A6004: procedure argument or local not referenced : hPrevInst
+ernie.asm(133): warning A6004: procedure argument or local not referenced : CmdLine
+ernie.asm(133): warning A6004: procedure argument or local not referenced : CmdShow
+ernie.asm(214): warning A6004: procedure argument or local not referenced : var
+ernie.asm(214): warning A6004: procedure argument or local not referenced : caW
+ernie.asm(214): warning A6004: procedure argument or local not referenced : caH
+ernie.asm(214): warning A6004: procedure argument or local not referenced : Rct
+ernie.asm(214): warning A6004: procedure argument or local not referenced : tbab
+ernie.asm(214): warning A6004: procedure argument or local not referenced : tbb
+ernie.asm(245): warning A6004: procedure argument or local not referenced : hWin
+ernie.asm(245): warning A6004: procedure argument or local not referenced : hDC
+ernie.asm(245): warning A6004: procedure argument or local not referenced : Rct
+  Ernie.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Ernie\Ernie.exe

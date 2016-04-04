@@ -1,0 +1,12 @@
+﻿  Assembling butntest.asm...
+butntest.asm(161): warning A6004: procedure argument or local not referenced : bColor
+butntest.asm(279): warning A6004: procedure argument or local not referenced : var
+butntest.asm(279): warning A6004: procedure argument or local not referenced : caW
+butntest.asm(279): warning A6004: procedure argument or local not referenced : caH
+butntest.asm(279): warning A6004: procedure argument or local not referenced : Rct
+butntest.asm(279): warning A6004: procedure argument or local not referenced : buffer1
+butntest.asm(279): warning A6004: procedure argument or local not referenced : buffer2
+butntest.asm(348): warning A6004: procedure argument or local not referenced : btn_hi
+butntest.asm(348): warning A6004: procedure argument or local not referenced : btn_lo
+  Assembling statusbr.asm...
+  ButnTest.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\ButnTest\ButnTest.exe

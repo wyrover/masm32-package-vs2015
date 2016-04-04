@@ -1,0 +1,14 @@
+﻿  Assembling scall.asm...
+scall.asm(150): warning A6004: procedure argument or local not referenced : hPrevInst
+scall.asm(150): warning A6004: procedure argument or local not referenced : CmdLine
+scall.asm(150): warning A6004: procedure argument or local not referenced : CmdShow
+scall.asm(202): warning A6004: procedure argument or local not referenced : var
+scall.asm(202): warning A6004: procedure argument or local not referenced : caW
+scall.asm(202): warning A6004: procedure argument or local not referenced : caH
+scall.asm(202): warning A6004: procedure argument or local not referenced : Rct
+scall.asm(202): warning A6004: procedure argument or local not referenced : buffer1
+scall.asm(202): warning A6004: procedure argument or local not referenced : buffer2
+scall.asm(233): warning A6004: procedure argument or local not referenced : hWin
+scall.asm(233): warning A6004: procedure argument or local not referenced : hDC
+scall.asm(233): warning A6004: procedure argument or local not referenced : Rct
+  SCall.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\SCall\SCall.exe

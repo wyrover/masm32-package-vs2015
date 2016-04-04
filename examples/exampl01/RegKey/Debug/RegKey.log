@@ -1,0 +1,6 @@
+﻿  Assembling regkey.asm...
+regkey.asm(169): warning A6004: procedure argument or local not referenced : hPrevInst
+regkey.asm(169): warning A6004: procedure argument or local not referenced : CmdLine
+regkey.asm(169): warning A6004: procedure argument or local not referenced : CmdShow
+regkey.asm(347): warning A6004: procedure argument or local not referenced : hDC
+  RegKey.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\RegKey\RegKey.exe

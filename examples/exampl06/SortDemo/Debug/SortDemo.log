@@ -1,0 +1,6 @@
+﻿  Assembling simple.asm...
+simple.asm(333): warning A6004: procedure argument or local not referenced : lParam
+simple.asm(333): warning A6004: procedure argument or local not referenced : buffer2
+simple.asm(333): warning A6004: procedure argument or local not referenced : buffer3
+simple.asm(333): warning A6004: procedure argument or local not referenced : buffer4
+  SortDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\SortDemo\SortDemo.exe

@@ -1,0 +1,5 @@
+﻿  Assembling poplist.asm...
+poplist.asm(189): warning A6004: procedure argument or local not referenced : hPrevInst
+poplist.asm(189): warning A6004: procedure argument or local not referenced : CmdLine
+poplist.asm(189): warning A6004: procedure argument or local not referenced : CmdShow
+  PopList.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\PopList\PopList.exe

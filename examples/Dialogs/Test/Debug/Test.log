@@ -1,0 +1,3 @@
+﻿  Assembling tests.asm...
+tests.asm(81): warning A6004: procedure argument or local not referenced : lParam
+  Test.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Test\Test.exe

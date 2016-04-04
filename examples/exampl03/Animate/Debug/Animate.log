@@ -1,0 +1,12 @@
+﻿  Assembling animate.asm...
+animate.asm(127): warning A6004: procedure argument or local not referenced : hPrevInst
+animate.asm(127): warning A6004: procedure argument or local not referenced : CmdLine
+animate.asm(127): warning A6004: procedure argument or local not referenced : CmdShow
+animate.asm(179): warning A6004: procedure argument or local not referenced : var
+animate.asm(179): warning A6004: procedure argument or local not referenced : caW
+animate.asm(179): warning A6004: procedure argument or local not referenced : caH
+animate.asm(179): warning A6004: procedure argument or local not referenced : Rct
+animate.asm(179): warning A6004: procedure argument or local not referenced : buffer1
+animate.asm(179): warning A6004: procedure argument or local not referenced : buffer2
+animate.asm(277): warning A6004: procedure argument or local not referenced : hWin
+  Animate.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Animate\Animate.exe

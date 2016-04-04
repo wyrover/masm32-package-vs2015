@@ -1,0 +1,4 @@
+﻿  Assembling regkey2.asm...
+regkey2.asm(170): warning A6004: procedure argument or local not referenced : lParam
+regkey2.asm(218): warning A6004: procedure argument or local not referenced : tl
+  RegKey2.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\RegKey2\RegKey2.exe

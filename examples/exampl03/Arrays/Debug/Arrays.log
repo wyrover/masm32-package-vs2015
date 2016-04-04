@@ -1,0 +1,10 @@
+﻿  Assembling arrays.asm...
+arrays.asm(289): warning A6004: procedure argument or local not referenced : var
+arrays.asm(289): warning A6004: procedure argument or local not referenced : caW
+arrays.asm(289): warning A6004: procedure argument or local not referenced : caH
+arrays.asm(289): warning A6004: procedure argument or local not referenced : Rct
+arrays.asm(289): warning A6004: procedure argument or local not referenced : buffer1
+arrays.asm(289): warning A6004: procedure argument or local not referenced : buffer2
+arrays.asm(331): warning A6004: procedure argument or local not referenced : Rct
+arrays.asm(385): warning A6004: procedure argument or local not referenced : cntr
+  Arrays.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Arrays\Arrays.exe

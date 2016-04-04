@@ -1,0 +1,20 @@
+﻿  Assembling filedlgs.asm...
+  Assembling mditest.asm...
+mditest.asm(116): warning A6004: procedure argument or local not referenced : hPrevInst
+mditest.asm(116): warning A6004: procedure argument or local not referenced : CmdLine
+mditest.asm(116): warning A6004: procedure argument or local not referenced : CmdShow
+mditest.asm(329): warning A6004: procedure argument or local not referenced : var
+mditest.asm(329): warning A6004: procedure argument or local not referenced : caW
+mditest.asm(329): warning A6004: procedure argument or local not referenced : caH
+mditest.asm(329): warning A6004: procedure argument or local not referenced : mdihWnd
+mditest.asm(329): warning A6004: procedure argument or local not referenced : tbab
+mditest.asm(329): warning A6004: procedure argument or local not referenced : tbb
+mditest.asm(329): warning A6004: procedure argument or local not referenced : buffer1
+mditest.asm(329): warning A6004: procedure argument or local not referenced : buffer2
+mditest.asm(360): warning A6004: procedure argument or local not referenced : hWin
+mditest.asm(360): warning A6004: procedure argument or local not referenced : hDC
+mditest.asm(360): warning A6004: procedure argument or local not referenced : Rct
+  Assembling statusbr.asm...
+  Assembling tbmacros.asm...
+  Assembling toolbar.asm...
+  MDIDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\MDIDemo\MDIDemo.exe

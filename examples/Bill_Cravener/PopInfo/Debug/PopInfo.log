@@ -1,0 +1,5 @@
+﻿  Assembling popinfo.asm...
+popinfo.asm(107): warning A6004: procedure argument or local not referenced : wParam
+rsrc.rc(5): warning RC4005: 'IDC_EDIT1' : redefinition
+  
+  PopInfo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\PopInfo\PopInfo.exe

@@ -1,0 +1,4 @@
+﻿  Assembling getini.asm...
+getini.asm(180): warning A6004: procedure argument or local not referenced : lParam
+getini.asm(180): warning A6004: procedure argument or local not referenced : flen
+  GetINI.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\GetINI\GetINI.exe

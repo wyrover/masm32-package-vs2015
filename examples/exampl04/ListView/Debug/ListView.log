@@ -1,0 +1,8 @@
+﻿  Assembling listview.asm...
+listview.asm(193): warning A6004: procedure argument or local not referenced : hinst
+listview.asm(193): warning A6004: procedure argument or local not referenced : hPrevInst
+listview.asm(193): warning A6004: procedure argument or local not referenced : CmdLine
+listview.asm(193): warning A6004: procedure argument or local not referenced : CmdShow
+listview.asm(457): warning A6004: procedure argument or local not referenced : szBuff
+listview.asm(833): warning A6004: procedure argument or local not referenced : Comma
+  ListView.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ListView\ListView.exe

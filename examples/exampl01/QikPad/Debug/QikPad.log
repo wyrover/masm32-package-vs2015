@@ -1,0 +1,17 @@
+﻿  Assembling filedlgs.asm...
+  Assembling qikpad.asm...
+qikpad.asm(135): warning A6004: procedure argument or local not referenced : hPrevInst
+qikpad.asm(135): warning A6004: procedure argument or local not referenced : CmdLine
+qikpad.asm(135): warning A6004: procedure argument or local not referenced : CmdShow
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : var
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : caW
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : caH
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : hDC
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : tbab
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : tbb
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : buffer1
+qikpad.asm(334): warning A6004: procedure argument or local not referenced : buffer2
+  Assembling statusbr.asm...
+  Assembling tbmacros.asm...
+  Assembling toolbar.asm...
+  QikPad.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\QikPad\QikPad.exe

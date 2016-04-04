@@ -1,0 +1,7 @@
+﻿  Assembling ctrls.asm...
+  Assembling exdll.asm...
+exdll.asm(165): warning A6004: procedure argument or local not referenced : hPrevInst
+exdll.asm(165): warning A6004: procedure argument or local not referenced : CmdLine
+exdll.asm(165): warning A6004: procedure argument or local not referenced : CmdShow
+exdll.asm(165): warning A6004: procedure argument or local not referenced : ref
+  ExtDLL.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\ExtDLL\ExtDLL.exe

@@ -1,0 +1,5 @@
+﻿  Assembling barchart.asm...
+barchart.asm(162): warning A6004: procedure argument or local not referenced : wDim
+barchart.asm(162): warning A6004: procedure argument or local not referenced : sDim
+barchart.asm(214): warning A6004: procedure argument or local not referenced : Rct
+  BarChart.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\BarChart\BarChart.exe

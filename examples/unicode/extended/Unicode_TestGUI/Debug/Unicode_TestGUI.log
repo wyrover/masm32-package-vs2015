@@ -1,0 +1,3 @@
+﻿  Assembling UnicodeTest_GUI.asm...
+UnicodeTest_GUI.asm(85): warning A6001: no return from procedure
+  Unicode_TestGUI.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Unicode_TestGUI\Unicode_TestGUI.exe

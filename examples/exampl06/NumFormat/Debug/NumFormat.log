@@ -1,0 +1,4 @@
+﻿  Assembling nfmt.asm...
+nfmt.asm(132): warning A6004: procedure argument or local not referenced : src
+nfmt.asm(132): warning A6004: procedure argument or local not referenced : dst
+  NumFormat.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\NumFormat\NumFormat.exe

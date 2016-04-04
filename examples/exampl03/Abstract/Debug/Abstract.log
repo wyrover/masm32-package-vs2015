@@ -1,0 +1,19 @@
+﻿  Assembling abstract.asm...
+abstract.asm(67): warning A6004: procedure argument or local not referenced : hPrevInst
+abstract.asm(67): warning A6004: procedure argument or local not referenced : CmdLine
+abstract.asm(67): warning A6004: procedure argument or local not referenced : CmdShow
+abstract.asm(219): warning A6004: procedure argument or local not referenced : var
+abstract.asm(219): warning A6004: procedure argument or local not referenced : caW
+abstract.asm(219): warning A6004: procedure argument or local not referenced : caH
+abstract.asm(219): warning A6004: procedure argument or local not referenced : Rct
+abstract.asm(219): warning A6004: procedure argument or local not referenced : tbab
+abstract.asm(219): warning A6004: procedure argument or local not referenced : tbb
+abstract.asm(219): warning A6004: procedure argument or local not referenced : buffer1
+abstract.asm(219): warning A6004: procedure argument or local not referenced : buffer2
+abstract.asm(250): warning A6004: procedure argument or local not referenced : hWin
+abstract.asm(250): warning A6004: procedure argument or local not referenced : hDC
+abstract.asm(250): warning A6004: procedure argument or local not referenced : Rct
+abstract.asm(265): warning A6004: procedure argument or local not referenced : uMsg
+abstract.asm(265): warning A6004: procedure argument or local not referenced : wParam
+abstract.asm(265): warning A6004: procedure argument or local not referenced : lParam
+  Abstract.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Abstract\Abstract.exe

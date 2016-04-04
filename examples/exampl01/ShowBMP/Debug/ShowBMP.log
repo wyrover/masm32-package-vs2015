@@ -1,0 +1,15 @@
+﻿  Assembling ctrls.asm...
+  Assembling showbmp.asm...
+showbmp.asm(112): warning A6004: procedure argument or local not referenced : hPrevInst
+showbmp.asm(112): warning A6004: procedure argument or local not referenced : CmdLine
+showbmp.asm(112): warning A6004: procedure argument or local not referenced : CmdShow
+showbmp.asm(186): warning A6004: procedure argument or local not referenced : var
+showbmp.asm(186): warning A6004: procedure argument or local not referenced : caW
+showbmp.asm(186): warning A6004: procedure argument or local not referenced : caH
+showbmp.asm(186): warning A6004: procedure argument or local not referenced : Rct
+showbmp.asm(186): warning A6004: procedure argument or local not referenced : buffer1
+showbmp.asm(186): warning A6004: procedure argument or local not referenced : buffer2
+showbmp.asm(217): warning A6004: procedure argument or local not referenced : hWin
+showbmp.asm(217): warning A6004: procedure argument or local not referenced : hDC
+showbmp.asm(217): warning A6004: procedure argument or local not referenced : Rct
+  ShowBMP.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ShowBMP\ShowBMP.exe

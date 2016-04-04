@@ -1,0 +1,10 @@
+﻿  Assembling string.asm...
+string.asm(224): warning A6004: procedure argument or local not referenced : lParam
+string.asm(224): warning A6004: procedure argument or local not referenced : str8
+string.asm(224): warning A6004: procedure argument or local not referenced : var1
+string.asm(224): warning A6004: procedure argument or local not referenced : var2
+string.asm(224): warning A6004: procedure argument or local not referenced : var3
+string.asm(224): warning A6004: procedure argument or local not referenced : var4
+string.asm(224): warning A6004: procedure argument or local not referenced : buffer3
+string.asm(224): warning A6004: procedure argument or local not referenced : buffer4
+  String.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\String\String.exe

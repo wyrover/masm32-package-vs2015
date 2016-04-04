@@ -1,0 +1,14 @@
+﻿  Assembling multiwin.asm...
+multiwin.asm(204): warning A6004: procedure argument or local not referenced : hPrevInst
+multiwin.asm(204): warning A6004: procedure argument or local not referenced : CmdLine
+multiwin.asm(204): warning A6004: procedure argument or local not referenced : CmdShow
+multiwin.asm(274): warning A6004: procedure argument or local not referenced : var
+multiwin.asm(274): warning A6004: procedure argument or local not referenced : caW
+multiwin.asm(274): warning A6004: procedure argument or local not referenced : caH
+multiwin.asm(274): warning A6004: procedure argument or local not referenced : Rct
+multiwin.asm(274): warning A6004: procedure argument or local not referenced : buffer1
+multiwin.asm(274): warning A6004: procedure argument or local not referenced : buffer2
+multiwin.asm(305): warning A6004: procedure argument or local not referenced : hWin
+multiwin.asm(305): warning A6004: procedure argument or local not referenced : hDC
+multiwin.asm(305): warning A6004: procedure argument or local not referenced : Rct
+  MultiWin.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\MultiWin\MultiWin.exe

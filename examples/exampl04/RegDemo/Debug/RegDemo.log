@@ -1,0 +1,6 @@
+﻿  Assembling regdemo.asm...
+regdemo.asm(185): warning A6004: procedure argument or local not referenced : hinst
+regdemo.asm(185): warning A6004: procedure argument or local not referenced : hPrevInst
+regdemo.asm(185): warning A6004: procedure argument or local not referenced : CmdLine
+regdemo.asm(185): warning A6004: procedure argument or local not referenced : CmdShow
+  RegDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\RegDemo\RegDemo.exe

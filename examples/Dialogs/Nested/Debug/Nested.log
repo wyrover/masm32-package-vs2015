@@ -1,0 +1,5 @@
+﻿  Assembling nested.asm...
+nested.asm(126): warning A6004: procedure argument or local not referenced : lpIcon
+nested.asm(126): warning A6004: procedure argument or local not referenced : buffer
+nested.asm(176): warning A6004: procedure argument or local not referenced : buffer
+  Nested.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Nested\Nested.exe

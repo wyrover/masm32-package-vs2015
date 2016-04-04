@@ -1,0 +1,7 @@
+﻿  Assembling jmptable.asm...
+jmptable.asm(219): warning A6004: procedure argument or local not referenced : lParam
+jmptable.asm(219): warning A6004: procedure argument or local not referenced : buffer1
+jmptable.asm(219): warning A6004: procedure argument or local not referenced : buffer2
+jmptable.asm(219): warning A6004: procedure argument or local not referenced : buffer3
+jmptable.asm(219): warning A6004: procedure argument or local not referenced : buffer4
+  JMPTable.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\JMPTable\JMPTable.exe

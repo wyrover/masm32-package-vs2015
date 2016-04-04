@@ -1,0 +1,9 @@
+﻿  Assembling qeplugin.asm...
+qeplugin.asm(103): warning A6004: procedure argument or local not referenced : hInstDLL
+qeplugin.asm(103): warning A6004: procedure argument or local not referenced : unused
+qeplugin.asm(159): warning A6004: procedure argument or local not referenced : hInst
+qeplugin.asm(159): warning A6004: procedure argument or local not referenced : hMain
+qeplugin.asm(159): warning A6004: procedure argument or local not referenced : hTool
+qeplugin.asm(159): warning A6004: procedure argument or local not referenced : hStat
+     Creating library D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\QePlugin\QePlugin.lib and object D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\QePlugin\QePlugin.exp
+  QePlugin.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\QePlugin\QePlugin.dll

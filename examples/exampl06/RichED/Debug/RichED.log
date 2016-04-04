@@ -1,0 +1,26 @@
+﻿  Assembling filedlgs.asm...
+  Assembling fileio.asm...
+  Assembling misc.asm...
+  Assembling richedit.asm...
+richedit.asm(483): warning A5000: @@: label defined but not referenced
+fileio.asm(160): warning A6004: procedure argument or local not referenced : poz
+fileio.asm(160): warning A6004: procedure argument or local not referenced : Cr
+search.asm(90): warning A6004: procedure argument or local not referenced : lParam
+misc.asm(18): warning A6004: procedure argument or local not referenced : tl
+richedit.asm(249): warning A6004: procedure argument or local not referenced : hPrevInst
+richedit.asm(249): warning A6004: procedure argument or local not referenced : CmdLine
+richedit.asm(249): warning A6004: procedure argument or local not referenced : CmdShow
+richedit.asm(574): warning A6004: procedure argument or local not referenced : var
+richedit.asm(574): warning A6004: procedure argument or local not referenced : caW
+richedit.asm(574): warning A6004: procedure argument or local not referenced : caH
+richedit.asm(574): warning A6004: procedure argument or local not referenced : hDC
+richedit.asm(574): warning A6004: procedure argument or local not referenced : nmh
+richedit.asm(574): warning A6004: procedure argument or local not referenced : Ps
+richedit.asm(574): warning A6004: procedure argument or local not referenced : tbab
+richedit.asm(574): warning A6004: procedure argument or local not referenced : tbb
+richedit.asm(627): warning A6004: procedure argument or local not referenced : hFont
+  Assembling search.asm...
+  Assembling statusbr.asm...
+  Assembling tbmacros.asm...
+  Assembling toolbar.asm...
+  RichED.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\RichED\RichED.exe

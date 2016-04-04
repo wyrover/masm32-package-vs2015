@@ -1,0 +1,4 @@
+﻿  Assembling resdlg.asm...
+resdlg.asm(73): warning A6004: procedure argument or local not referenced : wParam
+resdlg.asm(73): warning A6004: procedure argument or local not referenced : lParam
+  ResDlg.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ResDlg\ResDlg.exe

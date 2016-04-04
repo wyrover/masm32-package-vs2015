@@ -1,0 +1,7 @@
+﻿  Assembling CommonDlgs.asm...
+CommonDlgs.asm(132): warning A6004: procedure argument or local not referenced : lParam
+rsrc.rc(6): warning RC4005: 'IDC_BUTTON1' : redefinition
+  
+rsrc.rc(7): warning RC4005: 'IDC_BUTTON2' : redefinition
+  
+  CommonDlgs.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\CommonDlgs\CommonDlgs.exe

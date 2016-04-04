@@ -1,0 +1,7 @@
+﻿  Assembling enumwin.asm...
+enumwin.asm(160): warning A6004: procedure argument or local not referenced : hPrevInst
+enumwin.asm(160): warning A6004: procedure argument or local not referenced : CmdLine
+enumwin.asm(160): warning A6004: procedure argument or local not referenced : CmdShow
+enumwin.asm(351): warning A6004: procedure argument or local not referenced : y
+enumwin.asm(407): warning A6004: procedure argument or local not referenced : IndexItem
+  EnumWin.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\EnumWin\EnumWin.exe

@@ -1,0 +1,3 @@
+﻿  Assembling redit.asm...
+redit.asm(381): warning A6004: procedure argument or local not referenced : tl
+  REdit.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\REdit\REdit.exe

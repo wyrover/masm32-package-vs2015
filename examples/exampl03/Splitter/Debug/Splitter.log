@@ -1,0 +1,12 @@
+﻿  Assembling splitter.asm...
+splitter.asm(140): warning A6004: procedure argument or local not referenced : hPrevInst
+splitter.asm(140): warning A6004: procedure argument or local not referenced : CmdLine
+splitter.asm(140): warning A6004: procedure argument or local not referenced : CmdShow
+splitter.asm(208): warning A6004: procedure argument or local not referenced : var
+splitter.asm(208): warning A6004: procedure argument or local not referenced : caW
+splitter.asm(208): warning A6004: procedure argument or local not referenced : caH
+splitter.asm(208): warning A6004: procedure argument or local not referenced : hDC
+splitter.asm(208): warning A6004: procedure argument or local not referenced : Ps
+splitter.asm(208): warning A6004: procedure argument or local not referenced : buffer1
+splitter.asm(208): warning A6004: procedure argument or local not referenced : buffer2
+  Splitter.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Splitter\Splitter.exe

@@ -1,0 +1,12 @@
+﻿  Assembling bitblt.asm...
+bitblt.asm(114): warning A6004: procedure argument or local not referenced : hPrevInst
+bitblt.asm(114): warning A6004: procedure argument or local not referenced : CmdLine
+bitblt.asm(114): warning A6004: procedure argument or local not referenced : CmdShow
+bitblt.asm(156): warning A6004: procedure argument or local not referenced : var
+bitblt.asm(156): warning A6004: procedure argument or local not referenced : caW
+bitblt.asm(156): warning A6004: procedure argument or local not referenced : caH
+bitblt.asm(156): warning A6004: procedure argument or local not referenced : Rct
+bitblt.asm(156): warning A6004: procedure argument or local not referenced : buffer1
+bitblt.asm(156): warning A6004: procedure argument or local not referenced : buffer2
+bitblt.asm(191): warning A6004: procedure argument or local not referenced : hWin
+  BitBlt.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\BitBlt\BitBlt.exe

@@ -1,0 +1,13 @@
+﻿  Assembling dragdrop.asm...
+dragdrop.asm(116): warning A6004: procedure argument or local not referenced : hPrevInst
+dragdrop.asm(116): warning A6004: procedure argument or local not referenced : CmdLine
+dragdrop.asm(116): warning A6004: procedure argument or local not referenced : CmdShow
+dragdrop.asm(170): warning A6004: procedure argument or local not referenced : var
+dragdrop.asm(170): warning A6004: procedure argument or local not referenced : caW
+dragdrop.asm(170): warning A6004: procedure argument or local not referenced : caH
+dragdrop.asm(170): warning A6004: procedure argument or local not referenced : Rct
+dragdrop.asm(170): warning A6004: procedure argument or local not referenced : buffer2
+dragdrop.asm(201): warning A6004: procedure argument or local not referenced : hWin
+dragdrop.asm(201): warning A6004: procedure argument or local not referenced : hDC
+dragdrop.asm(201): warning A6004: procedure argument or local not referenced : Rct
+  DragDrop.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\DragDrop\DragDrop.exe

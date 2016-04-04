@@ -1,0 +1,7 @@
+﻿  Assembling dynamic.asm...
+dynamic.asm(242): warning A6004: procedure argument or local not referenced : lParam
+dynamic.asm(242): warning A6004: procedure argument or local not referenced : buffer1
+dynamic.asm(242): warning A6004: procedure argument or local not referenced : buffer2
+dynamic.asm(242): warning A6004: procedure argument or local not referenced : buffer3
+dynamic.asm(242): warning A6004: procedure argument or local not referenced : buffer4
+  Dynamic.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\VTable\Dynamic.exe

@@ -1,0 +1,15 @@
+﻿  Assembling ecmenu.asm...
+ecmenu.asm(179): warning A6004: procedure argument or local not referenced : hPrevInst
+ecmenu.asm(179): warning A6004: procedure argument or local not referenced : CmdLine
+ecmenu.asm(179): warning A6004: procedure argument or local not referenced : CmdShow
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : var
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : caW
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : caH
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : Rct
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : buffer1
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : buffer2
+ecmenu.asm(237): warning A6004: procedure argument or local not referenced : pt
+ecmenu.asm(268): warning A6004: procedure argument or local not referenced : hWin
+ecmenu.asm(268): warning A6004: procedure argument or local not referenced : hDC
+ecmenu.asm(268): warning A6004: procedure argument or local not referenced : Rct
+  EcMenu.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\EcMenu\EcMenu.exe

@@ -1,0 +1,20 @@
+﻿  Assembling filedlgs.asm...
+  Assembling splash.asm...
+splash.asm(197): warning A6004: procedure argument or local not referenced : hPrevInst
+splash.asm(197): warning A6004: procedure argument or local not referenced : CmdLine
+splash.asm(197): warning A6004: procedure argument or local not referenced : CmdShow
+splash.asm(342): warning A6004: procedure argument or local not referenced : var
+splash.asm(342): warning A6004: procedure argument or local not referenced : caW
+splash.asm(342): warning A6004: procedure argument or local not referenced : caH
+splash.asm(342): warning A6004: procedure argument or local not referenced : Rct
+splash.asm(342): warning A6004: procedure argument or local not referenced : tbab
+splash.asm(342): warning A6004: procedure argument or local not referenced : tbb
+splash.asm(342): warning A6004: procedure argument or local not referenced : buffer1
+splash.asm(342): warning A6004: procedure argument or local not referenced : buffer2
+splash.asm(373): warning A6004: procedure argument or local not referenced : hWin
+splash.asm(373): warning A6004: procedure argument or local not referenced : hDC
+splash.asm(373): warning A6004: procedure argument or local not referenced : Rct
+  Assembling statusbr.asm...
+  Assembling tbmacros.asm...
+  Assembling toolbar.asm...
+  Splash.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Splash\Splash.exe

@@ -1,0 +1,2 @@
+﻿smc.obj : warning LNK4042: object specified more than once; extras ignored
+  Smc.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\SELF_MODIFYING_CODE\Smc\Smc.exe

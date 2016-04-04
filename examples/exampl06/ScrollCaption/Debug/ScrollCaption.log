@@ -1,0 +1,4 @@
+﻿  Assembling scaption.asm...
+scaption.asm(111): warning A6004: procedure argument or local not referenced : lParam
+scaption.asm(138): warning A6004: procedure argument or local not referenced : pbuf
+  ScrollCaption.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ScrollCaption\ScrollCaption.exe

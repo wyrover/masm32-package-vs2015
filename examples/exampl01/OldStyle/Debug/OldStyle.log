@@ -1,0 +1,5 @@
+﻿  Assembling oldstyle.asm...
+oldstyle.asm(206): warning A6004: procedure argument or local not referenced : hPrevInst
+oldstyle.asm(206): warning A6004: procedure argument or local not referenced : CmdLine
+oldstyle.asm(206): warning A6004: procedure argument or local not referenced : CmdShow
+  OldStyle.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\OldStyle\OldStyle.exe

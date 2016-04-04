@@ -1,0 +1,4 @@
+﻿  Assembling ustrings.asm...
+ustrings.asm(236): warning A6004: procedure argument or local not referenced : hkey
+ustrings.asm(377): warning A6004: procedure argument or local not referenced : lns
+  HasApp.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\HasApp\HasApp.exe

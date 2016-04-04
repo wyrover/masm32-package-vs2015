@@ -1,0 +1,4 @@
+﻿  Assembling vtdll.asm...
+vtdll.asm(72): warning A6004: procedure argument or local not referenced : unused
+     Creating library D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\VTable\VTDLL.lib and object D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\VTable\VTDLL.exp
+  VTDLL.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\VTable\VTDLL.dll

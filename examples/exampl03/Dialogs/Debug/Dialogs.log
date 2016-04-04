@@ -1,0 +1,13 @@
+﻿  Assembling dialogs.asm...
+dialogs.asm(121): warning A6004: procedure argument or local not referenced : hPrevInst
+dialogs.asm(121): warning A6004: procedure argument or local not referenced : CmdLine
+dialogs.asm(121): warning A6004: procedure argument or local not referenced : CmdShow
+dialogs.asm(249): warning A6004: procedure argument or local not referenced : var
+dialogs.asm(249): warning A6004: procedure argument or local not referenced : caW
+dialogs.asm(249): warning A6004: procedure argument or local not referenced : caH
+dialogs.asm(249): warning A6004: procedure argument or local not referenced : Rct
+dialogs.asm(249): warning A6004: procedure argument or local not referenced : buffer2
+dialogs.asm(280): warning A6004: procedure argument or local not referenced : hWin
+dialogs.asm(280): warning A6004: procedure argument or local not referenced : hDC
+dialogs.asm(280): warning A6004: procedure argument or local not referenced : Rct
+  Dialogs.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Dialogs\Dialogs.exe

@@ -1,0 +1,3 @@
+﻿  Assembling resstrng.asm...
+resstrng.asm(125): warning A6004: procedure argument or local not referenced : lParam
+  ResString.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ResString\ResString.exe

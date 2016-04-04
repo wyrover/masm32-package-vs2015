@@ -1,0 +1,5 @@
+﻿  Assembling listbox.asm...
+listbox.asm(157): warning A6004: procedure argument or local not referenced : hPrevInst
+listbox.asm(157): warning A6004: procedure argument or local not referenced : CmdLine
+listbox.asm(157): warning A6004: procedure argument or local not referenced : CmdShow
+  ListBox.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ListBox\ListBox.exe

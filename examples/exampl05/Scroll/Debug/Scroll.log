@@ -1,0 +1,13 @@
+﻿  Assembling scroll.asm...
+scroll.asm(84): warning A6004: procedure argument or local not referenced : rct
+scroll.asm(254): warning A6004: procedure argument or local not referenced : var
+scroll.asm(254): warning A6004: procedure argument or local not referenced : caW
+scroll.asm(254): warning A6004: procedure argument or local not referenced : caH
+scroll.asm(254): warning A6004: procedure argument or local not referenced : patn
+scroll.asm(254): warning A6004: procedure argument or local not referenced : buffer1
+scroll.asm(254): warning A6004: procedure argument or local not referenced : buffer2
+scroll.asm(269): warning A6004: procedure argument or local not referenced : wDim
+scroll.asm(269): warning A6004: procedure argument or local not referenced : sDim
+scroll.asm(298): warning A6004: procedure argument or local not referenced : Rct
+  Assembling statusbr.asm...
+  Scroll.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Scroll\Scroll.exe

@@ -1,0 +1,13 @@
+﻿  Assembling mmfdemo.asm...
+mmfdemo.asm(86): warning A6004: procedure argument or local not referenced : Wwd
+mmfdemo.asm(86): warning A6004: procedure argument or local not referenced : Wht
+mmfdemo.asm(86): warning A6004: procedure argument or local not referenced : Wtx
+mmfdemo.asm(86): warning A6004: procedure argument or local not referenced : Wty
+mmfdemo.asm(310): warning A6004: procedure argument or local not referenced : var
+mmfdemo.asm(310): warning A6004: procedure argument or local not referenced : caW
+mmfdemo.asm(310): warning A6004: procedure argument or local not referenced : caH
+mmfdemo.asm(310): warning A6004: procedure argument or local not referenced : Rct
+mmfdemo.asm(310): warning A6004: procedure argument or local not referenced : buffer1
+mmfdemo.asm(310): warning A6004: procedure argument or local not referenced : buffer2
+  Assembling statusbr.asm...
+  Demo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MFFDemo\Demo\Demo.exe

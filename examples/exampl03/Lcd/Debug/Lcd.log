@@ -1,0 +1,5 @@
+﻿  Assembling lcd.asm...
+lcd.asm(314): warning A6004: procedure argument or local not referenced : hPrevInst
+lcd.asm(314): warning A6004: procedure argument or local not referenced : CmdLine
+lcd.asm(314): warning A6004: procedure argument or local not referenced : CmdShow
+  Lcd.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Lcd\Lcd.exe

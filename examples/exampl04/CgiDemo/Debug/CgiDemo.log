@@ -1,0 +1,4 @@
+﻿  Assembling cgidemo.asm...
+cgidemo.asm(85): warning A5000: @@: label defined but not referenced
+cgidemo.asm(91): warning A6004: procedure argument or local not referenced : cntBuffer
+  CgiDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\WEB-CGI\CgiDemo\CgiDemo.exe

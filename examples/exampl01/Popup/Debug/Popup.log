@@ -1,0 +1,5 @@
+﻿  Assembling popup.asm...
+popup.asm(156): warning A6004: procedure argument or local not referenced : hPrevInst
+popup.asm(156): warning A6004: procedure argument or local not referenced : CmdLine
+popup.asm(156): warning A6004: procedure argument or local not referenced : CmdShow
+  Popup.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Popup\Popup.exe

@@ -1,0 +1,5 @@
+﻿  Assembling 3dframes.asm...
+3dframes.asm(165): warning A6004: procedure argument or local not referenced : hPrevInst
+3dframes.asm(165): warning A6004: procedure argument or local not referenced : CmdLine
+3dframes.asm(165): warning A6004: procedure argument or local not referenced : CmdShow
+  3DFrames.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\3DFrames\3DFrames.exe

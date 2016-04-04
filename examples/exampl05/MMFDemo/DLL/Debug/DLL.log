@@ -1,0 +1,6 @@
+﻿  Assembling mmfdll.asm...
+mmfdll.asm(98): warning A6004: procedure argument or local not referenced : hInstDLL
+mmfdll.asm(98): warning A6004: procedure argument or local not referenced : unused
+     Creating library D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MFFDemo\Demo\DLL.lib and object D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MFFDemo\Demo\DLL.exp
+DLL.exp : warning LNK4070: /OUT:mmfdll.dll directive in .EXP differs from output filename 'D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MFFDemo\Demo\DLL.dll'; ignoring directive
+  DLL.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MFFDemo\Demo\DLL.dll

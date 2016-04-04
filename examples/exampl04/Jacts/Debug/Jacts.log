@@ -1,0 +1,3 @@
+﻿  Assembling jacts.asm...
+jacts.asm(1026): warning A6004: procedure argument or local not referenced : secs_p_hours
+  Jacts.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Jacts\Jacts.exe

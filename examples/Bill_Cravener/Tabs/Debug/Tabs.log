@@ -1,0 +1,5 @@
+﻿  Assembling tabs.asm...
+tabs.asm(182): warning A6004: procedure argument or local not referenced : hPrevInst
+tabs.asm(182): warning A6004: procedure argument or local not referenced : CmdLine
+tabs.asm(182): warning A6004: procedure argument or local not referenced : CmdShow
+  Tabs.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Tabs\Tabs.exe

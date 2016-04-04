@@ -1,0 +1,21 @@
+﻿  Assembling appack.asm...
+appack.asm(141): warning A6004: procedure argument or local not referenced : hPrevInst
+appack.asm(141): warning A6004: procedure argument or local not referenced : CmdLine
+appack.asm(141): warning A6004: procedure argument or local not referenced : CmdShow
+appack.asm(278): warning A6004: procedure argument or local not referenced : var
+appack.asm(278): warning A6004: procedure argument or local not referenced : caW
+appack.asm(278): warning A6004: procedure argument or local not referenced : caH
+appack.asm(278): warning A6004: procedure argument or local not referenced : Rct
+appack.asm(278): warning A6004: procedure argument or local not referenced : tbab
+appack.asm(278): warning A6004: procedure argument or local not referenced : tbb
+appack.asm(278): warning A6004: procedure argument or local not referenced : buffer1
+appack.asm(278): warning A6004: procedure argument or local not referenced : buffer2
+appack.asm(313): warning A6004: procedure argument or local not referenced : hWin
+appack.asm(313): warning A6004: procedure argument or local not referenced : hDC
+appack.asm(313): warning A6004: procedure argument or local not referenced : Rct
+appack.asm(461): warning A6004: procedure argument or local not referenced : Param
+  Assembling ctrls.asm...
+  Assembling filedlgs.asm...
+  Assembling tbmacros.asm...
+  Assembling toolbar.asm...
+  AppPack.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\AppPack\AppPack.exe

@@ -1,0 +1,5 @@
+﻿  Assembling line_tokenize.asm...
+line_tokenize.asm(83): warning A6004: procedure argument or local not referenced : tvar
+line_tokenize.asm(178): warning A6004: procedure argument or local not referenced : ptxt
+line_tokenize.asm(178): warning A6004: procedure argument or local not referenced : hArr
+  Line_Tokenize.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\Line_Tokenize\Line_Tokenize.exe

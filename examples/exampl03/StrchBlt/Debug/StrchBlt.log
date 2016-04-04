@@ -1,0 +1,11 @@
+﻿  Assembling strchblt.asm...
+strchblt.asm(115): warning A6004: procedure argument or local not referenced : hPrevInst
+strchblt.asm(115): warning A6004: procedure argument or local not referenced : CmdLine
+strchblt.asm(115): warning A6004: procedure argument or local not referenced : CmdShow
+strchblt.asm(157): warning A6004: procedure argument or local not referenced : var
+strchblt.asm(157): warning A6004: procedure argument or local not referenced : caW
+strchblt.asm(157): warning A6004: procedure argument or local not referenced : caH
+strchblt.asm(157): warning A6004: procedure argument or local not referenced : Rct
+strchblt.asm(157): warning A6004: procedure argument or local not referenced : buffer1
+strchblt.asm(157): warning A6004: procedure argument or local not referenced : buffer2
+  StrchBlt.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\StrchBlt\StrchBlt.exe

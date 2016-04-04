@@ -1,4 +1,4 @@
-Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:51
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/04/16 17:46:46
 slickhuh.asm						     Page 1 - 1
 
 
@@ -96,7 +96,7 @@ slickhuh.asm						     Page 1 - 1
  000000BA  FF 15 00000000 E	    call pqm
  000000C0  FF 25 00000000 E	  @@: jmp dpro
 				  end slick_huh
-Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:51
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/04/16 17:46:46
 slickhuh.asm						     Symbols 2 - 1
 
 

@@ -1,0 +1,4 @@
+﻿  Assembling AniLeftRight.asm...
+AniLeftRight.asm(65): warning A6004: procedure argument or local not referenced : aParam
+AniLeftRight.asm(65): warning A6004: procedure argument or local not referenced : bParam
+  AniLeftRight.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\AniLeftRight\AniLeftRight.exe

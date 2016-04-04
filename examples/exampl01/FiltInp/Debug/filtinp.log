@@ -1,0 +1,5 @@
+﻿  Assembling filtinpt.asm...
+filtinpt.asm(163): warning A6004: procedure argument or local not referenced : hPrevInst
+filtinpt.asm(163): warning A6004: procedure argument or local not referenced : CmdLine
+filtinpt.asm(163): warning A6004: procedure argument or local not referenced : CmdShow
+  filtinp.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\FiltInp\FiltInp.exe

@@ -1,0 +1,3 @@
+﻿  Assembling Multimedia.asm...
+Multimedia.asm(141): warning A6004: procedure argument or local not referenced : bParam
+  PlayMP3.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\PlayMP3\PlayMP3.exe

@@ -1,0 +1,7 @@
+﻿  Assembling menudemo.asm...
+menudemo.asm(184): warning A6004: procedure argument or local not referenced : hinst
+menudemo.asm(184): warning A6004: procedure argument or local not referenced : hPrevInst
+menudemo.asm(184): warning A6004: procedure argument or local not referenced : CmdLine
+menudemo.asm(184): warning A6004: procedure argument or local not referenced : CmdShow
+menudemo.asm(537): warning A6004: procedure argument or local not referenced : pt
+  MenuDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\MenuDemo\MenuDemo.exe

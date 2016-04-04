@@ -1,0 +1,12 @@
+﻿  Assembling gdibits.asm...
+gdibits.asm(111): warning A6004: procedure argument or local not referenced : hPrevInst
+gdibits.asm(111): warning A6004: procedure argument or local not referenced : CmdLine
+gdibits.asm(111): warning A6004: procedure argument or local not referenced : CmdShow
+gdibits.asm(153): warning A6004: procedure argument or local not referenced : var
+gdibits.asm(153): warning A6004: procedure argument or local not referenced : caW
+gdibits.asm(153): warning A6004: procedure argument or local not referenced : caH
+gdibits.asm(153): warning A6004: procedure argument or local not referenced : Rct
+gdibits.asm(153): warning A6004: procedure argument or local not referenced : buffer1
+gdibits.asm(153): warning A6004: procedure argument or local not referenced : buffer2
+gdibits.asm(220): warning A6004: procedure argument or local not referenced : hWin
+  GDIBits.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\GDIBits\GDIBits.exe

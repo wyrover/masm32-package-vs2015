@@ -1,0 +1,7 @@
+﻿  Assembling vtable.asm...
+vtable.asm(239): warning A6004: procedure argument or local not referenced : lParam
+vtable.asm(239): warning A6004: procedure argument or local not referenced : buffer1
+vtable.asm(239): warning A6004: procedure argument or local not referenced : buffer2
+vtable.asm(239): warning A6004: procedure argument or local not referenced : buffer3
+vtable.asm(239): warning A6004: procedure argument or local not referenced : buffer4
+  Static.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\VTable\Static.exe

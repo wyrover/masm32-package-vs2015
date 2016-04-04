@@ -1,0 +1,10 @@
+﻿  Assembling enumdd.asm...
+enumdd.asm(176): warning A6004: procedure argument or local not referenced : var
+enumdd.asm(176): warning A6004: procedure argument or local not referenced : caW
+enumdd.asm(176): warning A6004: procedure argument or local not referenced : caH
+enumdd.asm(176): warning A6004: procedure argument or local not referenced : buffer1
+enumdd.asm(176): warning A6004: procedure argument or local not referenced : buffer2
+enumdd.asm(191): warning A6004: procedure argument or local not referenced : wDim
+enumdd.asm(191): warning A6004: procedure argument or local not referenced : sDim
+  Assembling statusbr.asm...
+  EnumDD.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\EnumDD\EnumDD.exe

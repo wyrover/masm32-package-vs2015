@@ -1,0 +1,3 @@
+﻿  Assembling geti.asm...
+geti.asm(164): warning A6004: procedure argument or local not referenced : pStruct
+  GetI.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\GetI\GetI.exe
