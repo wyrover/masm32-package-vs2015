@@ -1,4 +1,0 @@
-﻿  Assembling AniTopBotm.asm...
-AniTopBotm.asm(65): warning A6004: procedure argument or local not referenced : aParam
-AniTopBotm.asm(65): warning A6004: procedure argument or local not referenced : bParam
-  AniTopBotm.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\AniTopBotm\AniTopBotm.exe

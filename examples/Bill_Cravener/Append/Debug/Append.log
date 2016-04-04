@@ -1,3 +1,0 @@
-﻿  Assembling appender.asm...
-appender.asm(204): warning A6004: procedure argument or local not referenced : lParam
-  Append.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Append\Append.exe

@@ -1,3 +1,0 @@
-﻿  Assembling dlltest.asm...
-dlltest.asm(191): warning A6004: procedure argument or local not referenced : bParam
-  VolCtrlDLLTest.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MVolume\VolCtrlDLLTest.exe

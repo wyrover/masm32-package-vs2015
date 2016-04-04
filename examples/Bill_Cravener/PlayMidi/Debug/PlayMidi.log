@@ -1,3 +1,0 @@
-﻿  Assembling multimedia.asm...
-multimedia.asm(130): warning A6004: procedure argument or local not referenced : bParam
-  PlayMidi.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\PlayMidi\PlayMidi.exe

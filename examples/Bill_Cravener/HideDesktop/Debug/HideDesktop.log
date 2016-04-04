@@ -1,7 +1,0 @@
-﻿  Assembling HideDesktop.asm...
-HideDesktop.asm(135): warning A6004: procedure argument or local not referenced : hPrevInst
-HideDesktop.asm(135): warning A6004: procedure argument or local not referenced : CmdLine
-HideDesktop.asm(135): warning A6004: procedure argument or local not referenced : CmdShow
-HideDesktop.asm(250): warning A6004: procedure argument or local not referenced : aParam
-HideDesktop.asm(250): warning A6004: procedure argument or local not referenced : bParam
-  HideDesktop.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\HideDesktop\HideDesktop.exe

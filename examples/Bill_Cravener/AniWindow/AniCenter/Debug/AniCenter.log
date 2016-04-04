@@ -1,4 +1,0 @@
-﻿  Assembling AniCenter.asm...
-AniCenter.asm(65): warning A6004: procedure argument or local not referenced : aParam
-AniCenter.asm(65): warning A6004: procedure argument or local not referenced : bParam
-  AniCenter.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\AniCenter\AniCenter.exe

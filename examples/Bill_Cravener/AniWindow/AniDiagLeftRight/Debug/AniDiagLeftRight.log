@@ -1,4 +1,0 @@
-﻿  Assembling AniDiagLR.asm...
-AniDiagLR.asm(65): warning A6004: procedure argument or local not referenced : aParam
-AniDiagLR.asm(65): warning A6004: procedure argument or local not referenced : bParam
-  AniDiagLeftRight.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\AniDiagLeftRight\AniDiagLeftRight.exe

@@ -1,6 +1,0 @@
-﻿  Assembling volctrl.asm...
-volctrl.asm(39): warning A6004: procedure argument or local not referenced : hInstance
-volctrl.asm(39): warning A6004: procedure argument or local not referenced : reason
-volctrl.asm(39): warning A6004: procedure argument or local not referenced : reserved1
-     Creating library D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MVolume\VolCtrl.lib and object D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MVolume\VolCtrl.exp
-  VolCtrl.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\MVolume\VolCtrl.dll

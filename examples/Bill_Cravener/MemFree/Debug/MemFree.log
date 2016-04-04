@@ -1,5 +1,0 @@
-﻿  Assembling MemFree.asm...
-MemFree.asm(158): warning A6004: procedure argument or local not referenced : hPrevInst
-MemFree.asm(158): warning A6004: procedure argument or local not referenced : CmdLine
-MemFree.asm(158): warning A6004: procedure argument or local not referenced : CmdShow
-  MemFree.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\MemFree\MemFree.exe

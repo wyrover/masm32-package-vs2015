@@ -1,5 +1,0 @@
-﻿  Assembling enumdisplay.asm...
-enumdisplay.asm(113): warning A6004: procedure argument or local not referenced : hPrevInst
-enumdisplay.asm(113): warning A6004: procedure argument or local not referenced : CmdLine
-enumdisplay.asm(113): warning A6004: procedure argument or local not referenced : CmdShow
-  EnumDisplay.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\EnumDisplay\EnumDisplay.exe

@@ -1,5 +1,0 @@
-﻿  Assembling grid.asm...
-grid.asm(136): warning A6004: procedure argument or local not referenced : hPrevInst
-grid.asm(136): warning A6004: procedure argument or local not referenced : CmdLine
-grid.asm(136): warning A6004: procedure argument or local not referenced : CmdShow
-  GridDemo.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\GridDemo\GridDemo.exe

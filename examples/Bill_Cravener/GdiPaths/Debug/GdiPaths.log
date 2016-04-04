@@ -1,5 +1,0 @@
-﻿  Assembling gdipaths.asm...
-gdipaths.asm(118): warning A6004: procedure argument or local not referenced : hPrevInst
-gdipaths.asm(118): warning A6004: procedure argument or local not referenced : CmdLine
-gdipaths.asm(118): warning A6004: procedure argument or local not referenced : CmdShow
-  GdiPaths.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\GdiPaths\GdiPaths.exe
