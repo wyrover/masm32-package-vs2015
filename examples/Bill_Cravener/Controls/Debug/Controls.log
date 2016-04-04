@@ -1,0 +1,4 @@
+﻿  Assembling controls.asm...
+controls.asm(155): warning A6004: procedure argument or local not referenced : bParam
+controls.asm(155): warning A6004: procedure argument or local not referenced : Ps
+  Controls.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Controls\Controls.exe
