@@ -156,6 +156,9 @@
   <ItemGroup>
     <MASM Include="main.asm" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="WinInet.inc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />

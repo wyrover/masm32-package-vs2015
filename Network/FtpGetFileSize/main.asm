@@ -2,6 +2,7 @@
     include \masm32\include\urlmon.inc
 	include \masm32\include\windows.inc
 	include \masm32\include\wininet.inc
+	include wininet.inc						; file with missing equates
 	includelib wininet.lib
 	includelib \masm32\lib\urlmon.lib
 

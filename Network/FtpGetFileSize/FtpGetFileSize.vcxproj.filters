@@ -19,4 +19,9 @@
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="WinInet.inc">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
