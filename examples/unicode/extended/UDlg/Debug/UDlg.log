@@ -1,7 +1,0 @@
-﻿  Assembling udlg.asm...
-udlg.asm(86): warning A6004: procedure argument or local not referenced : lParam
-rsrc.rc(15): warning RC4005: 'LANG_NEUTRAL' : redefinition
-  
-rsrc.rc(16): warning RC4005: 'SUBLANG_NEUTRAL' : redefinition
-  
-  UDlg.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\UDlg\UDlg.exe
