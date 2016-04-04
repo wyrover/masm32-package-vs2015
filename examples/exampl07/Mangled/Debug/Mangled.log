@@ -1,0 +1,14 @@
+﻿  Assembling mangled.asm...
+misc.asm(48): warning A6004: procedure argument or local not referenced : instance
+misc.asm(189): warning A6004: procedure argument or local not referenced : lParam
+mangled.asm(254): warning A6004: procedure argument or local not referenced : var
+mangled.asm(254): warning A6004: procedure argument or local not referenced : caW
+mangled.asm(254): warning A6004: procedure argument or local not referenced : caH
+mangled.asm(254): warning A6004: procedure argument or local not referenced : fname
+mangled.asm(254): warning A6004: procedure argument or local not referenced : opatn
+mangled.asm(254): warning A6004: procedure argument or local not referenced : spatn
+mangled.asm(254): warning A6004: procedure argument or local not referenced : buffer1
+mangled.asm(254): warning A6004: procedure argument or local not referenced : buffer2
+  Assembling misc.asm...
+  Assembling richedit.asm...
+  Mangled.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Mangled\Mangled.exe

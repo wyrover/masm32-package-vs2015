@@ -1,0 +1,3 @@
+﻿  Assembling arr2dsk.asm...
+arr2dsk.asm(78): warning A6004: procedure argument or local not referenced : flen
+  Arr2Dsk.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\Arr2Dsk\Arr2Dsk.exe

@@ -1,0 +1,15 @@
+﻿  Assembling skins3.asm...
+skins3.asm(528): warning A6004: procedure argument or local not referenced : var
+skins3.asm(528): warning A6004: procedure argument or local not referenced : caW
+skins3.asm(528): warning A6004: procedure argument or local not referenced : caH
+skins3.asm(528): warning A6004: procedure argument or local not referenced : buffer1
+skins3.asm(528): warning A6004: procedure argument or local not referenced : buffer2
+skins3.asm(560): warning A6004: procedure argument or local not referenced : rct
+skins3.asm(560): warning A6004: procedure argument or local not referenced : pbuf
+skins3.asm(560): warning A6004: procedure argument or local not referenced : buffer
+skins3.asm(560): warning A6004: procedure argument or local not referenced : tbwd
+skins3.asm(586): warning A6004: procedure argument or local not referenced : lpText
+skins3.asm(586): warning A6004: procedure argument or local not referenced : hStat1
+skins3.asm(586): warning A6004: procedure argument or local not referenced : style
+skins3.asm(757): warning A6004: procedure argument or local not referenced : pt
+  Skins3.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Skins3\Skins3.exe

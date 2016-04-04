@@ -1,0 +1,3 @@
+﻿  Assembling append.asm...
+append.asm(54): warning A6004: procedure argument or local not referenced : wcnt
+  Append.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\Append\Append.exe

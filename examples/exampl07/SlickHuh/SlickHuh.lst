@@ -1,0 +1,150 @@
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:51
+slickhuh.asm						     Page 1 - 1
+
+
+				    .686p
+				    .model flat, stdcall
+				    option casemap :none
+				    externdef _imp__DispatchMessageA@4:PTR pr1
+ = _imp__DispatchMessageA@4	    m2wp equ <_imp__DispatchMessageA@4>
+				    externdef _imp__GetMessageA@16:PTR pr4
+ = _imp__GetMessageA@16		    gms equ <_imp__GetMessageA@16>
+				    externdef _imp__DefWindowProcA@16:PTR pr4
+ = _imp__DefWindowProcA@16	    dpro equ <_imp__DefWindowProcA@16>
+				    externdef _imp__PostQuitMessage@4:PTR pr1
+ = _imp__PostQuitMessage@4	    pqm equ <_imp__PostQuitMessage@4>
+				    externdef _imp__RegisterClassExA@4:PTR pr1
+ = _imp__RegisterClassExA@4	    scln equ <_imp__RegisterClassExA@4>
+				    externdef _imp__ShowWindow@8:PTR pr2
+ = _imp__ShowWindow@8		    wshw equ <_imp__ShowWindow@8>
+				    externdef _imp__LoadCursorA@8:PTR pr2
+ = _imp__LoadCursorA@8		    lsc equ <_imp__LoadCursorA@8>
+				    externdef _imp__CreateWindowExA@48:PTR pr12
+ = _imp__CreateWindowExA@48	    crwe equ <_imp__CreateWindowExA@48>
+				    includelib \masm32\lib\user32.lib
+ 00000000			  .code
+ 00000000 53 6C 69 63 6B	    ims db "Slick Huh ?", 0
+	   20 48 75 68 20
+	   3F 00
+ 0000000C 00000000 R		    pcl dd ims
+ 00000010			  slick_huh:
+ 00000010  55			    push ebp
+ 00000011  8B EC		    mov ebp, esp
+ 00000013  83 EC 60		    sub esp, 96
+ 00000016  68 00007F00		    push 32512
+ 0000001B  33 FF		    xor edi, edi
+ 0000001D  57			    push edi
+ 0000001E  BE 00400000		    mov esi, 4194304
+ 00000023  8B 1D 0000000C R	    mov ebx, pcl
+ 00000029  FF 15 00000000 E	    call lsc
+ 0000002F  C7 45 A0		    mov DWORD PTR [ebp-96], 48
+	   00000030
+ 00000036  C7 45 A4		    mov DWORD PTR [ebp-92], 3
+	   00000003
+ 0000003D  C7 45 A8		    mov DWORD PTR [ebp-88], OFFSET wpep
+	   000000B1 R
+ 00000044  89 7D AC		    mov DWORD PTR [ebp-84], edi
+ 00000047  89 7D B0		    mov DWORD PTR [ebp-80], edi
+ 0000004A  89 75 B4		    mov DWORD PTR [ebp-76], esi
+ 0000004D  89 7D B8		    mov DWORD PTR [ebp-72], edi
+ 00000050  89 45 BC		    mov DWORD PTR [ebp-68], eax
+ 00000053  C7 45 C0		    mov DWORD PTR [ebp-64], 10h
+	   00000010
+ 0000005A  89 7D C4		    mov DWORD PTR [ebp-60], edi
+ 0000005D  89 5D C8		    mov DWORD PTR [ebp-56], ebx
+ 00000060  89 7D CC		    mov DWORD PTR [ebp-52], edi
+ 00000063  8D 45 A0		    lea eax, [ebp-96]
+ 00000066  50			    push eax
+ 00000067  FF 15 00000000 E	    call scln
+ 0000006D  B9 80000000		    mov ecx, -2147483648
+ 00000072  6A 01		    push 1
+ 00000074  57			    push edi
+ 00000075  56			    push esi
+ 00000076  57			    push edi
+ 00000077  57			    push edi
+ 00000078  57			    push edi
+ 00000079  51			    push ecx
+ 0000007A  57			    push edi
+ 0000007B  51			    push ecx
+ 0000007C  68 00CF0000		    push 13565952
+ 00000081  53			    push ebx
+ 00000082  53			    push ebx
+ 00000083  57			    push edi
+ 00000084  FF 15 00000000 E	    call crwe
+ 0000008A  50			    push eax
+ 0000008B  FF 15 00000000 E	    call wshw
+ 00000091  8D 5D D0		    lea ebx, [ebp-48]
+ 00000094  57			    push edi
+ 00000095  57			    push edi
+ 00000096  57			    push edi
+ 00000097  53			    push ebx
+ 00000098  EB 0B		    jmp mlep
+ 0000009A  57			  @@: push edi
+ 0000009B  57			    push edi
+ 0000009C  57			    push edi
+ 0000009D  53			    push ebx
+ 0000009E  53			    push ebx
+ 0000009F  FF 15 00000000 E	    call m2wp
+ 000000A5  FF 15 00000000 E	    mlep: call gms
+ 000000AB  84 C0		    test al, al
+ 000000AD  75 EB		    jnz @B
+ 000000AF  C9			    leave
+ 000000B0  C3			    retn
+ 000000B1  83 7C 24 08 02	  wpep: cmp DWORD PTR [esp+8], 2
+ 000000B6  75 08		    jne @F
+ 000000B8  6A 00		    push 0
+ 000000BA  FF 15 00000000 E	    call pqm
+ 000000C0  FF 25 00000000 E	  @@: jmp dpro
+				  end slick_huh
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:51
+slickhuh.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 000000C6 Para	  Public  'CODE'	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+_imp__CreateWindowExA@48 . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__DefWindowProcA@16  . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__DispatchMessageA@4 . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__GetMessageA@16 . . . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__LoadCursorA@8  . . . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__PostQuitMessage@4  . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__RegisterClassExA@4 . . . .	DWord	 00000000 FLAT	External STDCALL
+_imp__ShowWindow@8 . . . . . . .	DWord	 00000000 FLAT	External STDCALL
+crwe . . . . . . . . . . . . . .	Text   	 _imp__CreateWindowExA@48
+dpro . . . . . . . . . . . . . .	Text   	 _imp__DefWindowProcA@16
+gms  . . . . . . . . . . . . . .	Text   	 _imp__GetMessageA@16
+ims  . . . . . . . . . . . . . .	Byte	 00000000 _TEXT	
+lsc  . . . . . . . . . . . . . .	Text   	 _imp__LoadCursorA@8
+m2wp . . . . . . . . . . . . . .	Text   	 _imp__DispatchMessageA@4
+mlep . . . . . . . . . . . . . .	L Near	 000000A5 _TEXT	
+pcl  . . . . . . . . . . . . . .	DWord	 0000000C _TEXT	
+pqm  . . . . . . . . . . . . . .	Text   	 _imp__PostQuitMessage@4
+scln . . . . . . . . . . . . . .	Text   	 _imp__RegisterClassExA@4
+slick_huh  . . . . . . . . . . .	L Near	 00000010 _TEXT	Public STDCALL
+wpep . . . . . . . . . . . . . .	L Near	 000000B1 _TEXT	
+wshw . . . . . . . . . . . . . .	Text   	 _imp__ShowWindow@8
+
+	   0 Warnings
+	   0 Errors

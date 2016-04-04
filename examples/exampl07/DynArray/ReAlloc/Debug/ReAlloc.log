@@ -1,0 +1,5 @@
+﻿  Assembling realloc.asm...
+realloc.asm(106): warning A6004: procedure argument or local not referenced : hMem
+realloc.asm(106): warning A6004: procedure argument or local not referenced : flen
+realloc.asm(106): warning A6004: procedure argument or local not referenced : atot
+  ReAlloc.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\ReAlloc\ReAlloc.exe

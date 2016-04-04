@@ -1,0 +1,3 @@
+﻿  Assembling hscroll.asm...
+hscroll.asm(75): warning A6001: no return from procedure
+  HScroll.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\HScroll\HScroll.exe

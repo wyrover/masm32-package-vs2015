@@ -1,0 +1,3 @@
+﻿  Assembling ftree.asm...
+ftree.asm(225): warning A6004: procedure argument or local not referenced : pwfd
+  FTree.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\FTree\FTree.exe

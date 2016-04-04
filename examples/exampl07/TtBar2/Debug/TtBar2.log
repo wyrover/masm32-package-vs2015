@@ -1,0 +1,13 @@
+﻿  Assembling misc.asm...
+  Assembling ttb2.asm...
+misc.asm(48): warning A6004: procedure argument or local not referenced : instance
+misc.asm(182): warning A6004: procedure argument or local not referenced : lParam
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : var
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : caW
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : caH
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : opatn
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : spatn
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : rct
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : buffer1
+ttb2.asm(277): warning A6004: procedure argument or local not referenced : buffer2
+  TtBar2.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\TtBar2\TtBar2.exe

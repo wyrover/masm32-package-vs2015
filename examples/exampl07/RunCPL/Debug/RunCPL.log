@@ -1,0 +1,7 @@
+﻿  Assembling runcpl.asm...
+runcpl.asm(120): warning A6004: procedure argument or local not referenced : lParam
+runcpl.asm(120): warning A6004: procedure argument or local not referenced : hDC
+runcpl.asm(120): warning A6004: procedure argument or local not referenced : ps
+runcpl.asm(161): warning A6004: procedure argument or local not referenced : xPos
+runcpl.asm(161): warning A6004: procedure argument or local not referenced : yPos
+  RunCPL.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\RunCPL\RunCPL.exe

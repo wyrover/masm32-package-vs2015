@@ -1,0 +1,3 @@
+﻿  Assembling sht.asm...
+sht.asm(92): warning A6004: procedure argument or local not referenced : lParam
+  ShellTst.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\ShellTst\ShellTst.exe

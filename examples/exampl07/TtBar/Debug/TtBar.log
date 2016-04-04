@@ -1,0 +1,3 @@
+﻿  Assembling ttbar.asm...
+ttbar.asm(124): warning A6004: procedure argument or local not referenced : lParam
+  TtBar.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\TtBar\TtBar.exe

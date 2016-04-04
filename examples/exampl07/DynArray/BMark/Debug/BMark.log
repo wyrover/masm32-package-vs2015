@@ -1,0 +1,3 @@
+﻿  Assembling bmark.asm...
+bmark.asm(112): warning A6004: procedure argument or local not referenced : hMem
+  BMark.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\BMark\BMark.exe
