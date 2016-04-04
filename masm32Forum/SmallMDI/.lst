@@ -1,0 +1,386 @@
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:53
+SmallMDI.asm						     Page 1 - 1
+
+
+
+				;Small MDI Window - DednDave - 8,2011
+
+				; =============================================================================================
+
+				        INCLUDE SmallMDI.inc
+			      C 
+			      C ;Small MDI Window - DednDave - 8,2011
+			      C 
+			      C ; =============================================================================================
+			      C 
+			      C ; =========== Preamble ===========
+			      C 
+			      C         .586
+			      C         .MODEL  Flat,StdCall
+			      C         OPTION  CaseMap:None
+			      C 
+			      C ; =========== Includes ===========
+			      C 
+			      C         .XCREF
+			      C         .NOLIST
+			      C         .LIST
+			      C 
+			      C ; =========== Prototypes ===========
+			      C 
+			      C WndProc         PROTO    :HWND,:UINT,:WPARAM,:LPARAM
+			      C ChildProc       PROTO    :HWND,:UINT,:WPARAM,:LPARAM
+			      C 
+			      C ; =========== Equates ===========
+			      C 
+ = 00000064		      C IDI_ICON                 EQU 100
+ = 0000021F		      C IDM_MAINMENU             EQU 543
+ = 00000220		      C IDM_FILENEW              EQU 544   ;= WM_MDICREATE
+ = 00000225		      C IDM_FILEARRANGE_TILEHORZ EQU 549   ;= WM_MDITILE - 1
+ = 00000226		      C IDM_FILEARRANGE_TILEVERT EQU 550   ;= WM_MDITILE
+ = 00000227		      C IDM_FILEARRANGE_CASCADE  EQU 551   ;= WM_MDICASCADE
+ = 00000228		      C IDM_FILEARRANGE_ICONS    EQU 552   ;= WM_MDIICONARRANGE
+ = 00000221		      C IDM_FILEEXIT             EQU 545
+ = 000003E7		      C IDA_ACC                  EQU 999
+ = 000003E8		      C IDW_FIRSTCHILD           EQU 1000
+			      C 
+			      C ;end of include file
+			      C 
+
+				; =========== Initialized Data ===========
+
+ 00000000			        .DATA
+
+ 00000000 00000001		nChildCount   dd 1
+
+ = 00000003			StyleFlags = CS_HREDRAW or CS_VREDRAW
+				;if scrollbars are added to the frame window, use COLOR_SCROLLBAR+1 instead of (NULL_BRUSH or NULL_PEN)
+ 00000004 00000030		wc WNDCLASSEX <SIZEOF WNDCLASSEX,StyleFlags,WndProc,0,0,?,?,?,NULL_BRUSH or NULL_PEN,IDM_MAINMENU,szFrameClass,?>
+	   00000003
+	   00000000 R
+	   00000000
+	   00000000
+	   00000000
+	   00000000
+	   00000000
+	   0000000D
+	   0000021F
+	   0000006B R
+	   00000000
+
+ = 00000001			StyleFlags = MDIS_ALLCHILDSTYLES
+				;or WS_HSCROLL or WS_VSCROLL (to add scroll bars to child windows)
+ 00000034 00000085 R		mcs MDICREATESTRUCT <szChildClass,szChildTitle,?,CW_USEDEFAULT,CW_USEDEFAULT,CW_USEDEFAULT,CW_USEDEFAULT,StyleFlags,0>
+	   00000062 R
+	   00000000
+	   80000000
+	   80000000
+	   80000000
+	   80000000
+	   00000001
+	   00000000
+
+ 00000058 53 6D 61 6C 6C	szFrameTitle  db 'Small MDI',0
+	   20 4D 44 49 00
+ 00000062 55 6E 74 69 74	szChildTitle  db 'Untitled',0
+	   6C 65 64 00
+ 0000006B 53 6D 61 6C 6C	szFrameClass  db 'SmallFrameClass',0
+	   46 72 61 6D 65
+	   43 6C 61 73 73
+	   00
+ 0000007B 4D 44 49 43 4C	szClientClass db 'MDICLIENT',0
+	   49 45 4E 54 00
+ 00000085 53 6D 61 6C 6C	szChildClass  db 'SmallChildClass',0
+	   43 68 69 6C 64
+	   43 6C 61 73 73
+	   00
+
+				; =========== Uninitialized Data ===========
+
+ 00000000			        .DATA?
+
+ 00000000 00000000		lpszCmdLine   dd ?
+ 00000004 00000000		hWin          dd ?
+ 00000008 00000000		hClient       dd ?
+ 0000000C 00000000		hMenu         dd ?
+ 00000010 00000000		hAccel        dd ?
+
+				; =========== Code ============================================================================
+
+ 00000000			        .CODE
+
+				        OPTION  PROLOGUE:None
+				        OPTION  EPILOGUE:None
+
+ 00000000			WndProc PROC    hWnd:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
+
+				; =========== Frame Window Proc ===========
+
+ 00000000  8B 4C 24 08		        mov     ecx,[esp+8]                                 ;uMsg
+ 00000004  55			        push    ebp
+ 00000005  81 F9 00000111	        cmp     ecx,WM_COMMAND
+ 0000000B  8B EC		        mov     ebp,esp
+ 0000000D  74 2D		        jz      WProc1
+
+ 0000000F  83 F9 02		        cmp     ecx,WM_DESTROY
+ 00000012  0F 84 0000009A	        jz      WProcY
+
+ 00000018  83 F9 01		        cmp     ecx,WM_CREATE
+ 0000001B  0F 84 0000009A	        jz      WProcZ
+
+ 00000021			WProc0: INVOKE  DefFrameProc,[ebp+8],hClient,[ebp+12],[ebp+16],[ebp+20]
+ 00000038  5D			        pop     ebp
+ 00000039  C2 0010		        ret     16
+
+				; =========== WM_COMMAND ===========
+
+ 0000003C  8B 45 10		WProc1: mov     eax,[ebp+16]                                ;wParam
+ 0000003F  33 C9		        xor     ecx,ecx                                     ;ECX = 0
+ 00000041  25 FFFEFFFF		        and     eax,0FFFEFFFFh                              ;clear accelerator bit
+
+				;test any additional WM_COMMAND ID's here
+
+ 00000046  3D 00000221		        cmp     eax,IDM_FILEEXIT
+ 0000004B  74 57		        jz      WProc5
+
+ 0000004D  53			        push    ebx
+ 0000004E  8B 15 00000008 R	        mov     edx,hClient                                 ;EDX = hClient
+ 00000054  3D 00000220		        cmp     eax,IDM_FILENEW                             ;EAX = WM_MDICREATE
+ 00000059  BB 00000034 R	        mov     ebx,offset mcs                              ;EBX = offset mcs
+ 0000005E  74 2A		        jz      WProc2
+
+ 00000060  3D 00000228		        cmp     eax,IDM_FILEARRANGE_ICONS                   ;EAX = WM_MDIICONARRANGE
+ 00000065  8B D9		        mov     ebx,ecx                                     ;EBX = 0
+ 00000067  74 21		        jz      WProc2
+
+ 00000069  83 C9 06		        or      ecx,MDITILE_SKIPDISABLED or MDITILE_ZORDER  ;ECX = MDITILE_SKIPDISABLED or MDITILE_ZORDER
+ 0000006C  3D 00000227		        cmp     eax,IDM_FILEARRANGE_CASCADE                 ;EAX = WM_MDIICONARRANGE
+ 00000071  74 17		        jz      WProc2
+
+ 00000073  83 E9 04		        sub     ecx,MDITILE_ZORDER                          ;ECX = MDITILE_SKIPDISABLED or MDITILE_VERTICAL
+ 00000076  3D 00000226		        cmp     eax,IDM_FILEARRANGE_TILEVERT                ;EAX = WM_MDITILE
+ 0000007B  74 0D		        jz      WProc2
+
+ 0000007D  3D 00000225		        cmp     eax,IDM_FILEARRANGE_TILEHORZ                ;EAX = WM_MDITILE - 1
+ 00000082  5B			        pop     ebx
+ 00000083  75 9C		        jnz     WProc0
+
+ 00000085  53			        push    ebx
+ 00000086  40			        inc     eax                                         ;EAX = WM_MDITILE
+ 00000087  33 DB		        xor     ebx,ebx                                     ;EBX = 0
+ 00000089  41			        inc     ecx                                         ;ECX = MDITILE_SKIPDISABLED or MDITILE_HORIZONTAL
+
+ 0000008A			WProc2: INVOKE  SendMessage,edx,eax,ecx,ebx
+ 00000093  0B DB		        or      ebx,ebx
+ 00000095  75 06		        jnz     WProc3
+
+				;only create new child comes here
+
+ 00000097  FF 05 00000000 R	        inc dword ptr nChildCount
+
+ 0000009D  5B			WProc3: pop     ebx
+
+ 0000009E  33 C0		WProc4: xor     eax,eax
+ 000000A0  5D			        pop     ebp
+ 000000A1  C2 0010		        ret     16
+
+ 000000A4			WProc5: INVOKE  SendMessage,hWnd,WM_CLOSE,ecx,ecx
+ 000000B0  EB EC		        jmp     WProc4
+
+				; =========== WM_DESTROY ===========
+
+ 000000B2			WProcY: INVOKE  PostQuitMessage,NULL
+ 000000B9  EB E3		        jmp     WProc4
+
+				; =========== WM_CREATE ===========
+
+ 000000BB  53			WProcZ: push    ebx
+ 000000BC  8B 5D 08		        mov     ebx,[ebp+8]                                 ;hWnd
+ 000000BF  3B 1D 00000004 R	        cmp     ebx,hWin
+ 000000C5  74 D6		        jz      WProc3
+
+ 000000C7  89 1D 00000004 R	        mov     hWin,ebx
+				        INVOKE  GetMenu,ebx
+ 000000D3  A3 0000000C R	        mov     hMenu,eax
+				        INVOKE  GetSubMenu,eax,0
+ 000000E0  93			        xchg    eax,ebx
+
+				; ----------- Create client window -----------
+
+ 000000E1  68 000003E8		        push    IDW_FIRSTCHILD
+ 000000E6  33 D2		        xor     edx,edx
+ 000000E8  53			        push    ebx
+ 000000E9  B9 80000000		        mov     ecx,CW_USEDEFAULT
+ 000000EE  8B 1D 00000018 R	        mov     ebx,wc.hInstance
+
+				        INVOKE  CreateWindowEx,edx,offset szClientClass,edx,
+				                WS_CHILD or WS_VISIBLE or WS_CLIPCHILDREN,
+				                ecx,ecx,ecx,ecx,eax,edx,ebx,esp
+
+ 0000010D  5A			        pop     edx
+ 0000010E  59			        pop     ecx
+ 0000010F  A3 00000008 R	        mov     hClient,eax
+
+				; ----------- Load keyboard accelerators -----------
+
+				        INVOKE  LoadAccelerators,ebx,IDA_ACC
+ 0000011F  A3 00000010 R	        mov     hAccel,eax
+ 00000124  E9 FFFFFF74		        jmp     WProc3
+
+ 00000129			WndProc ENDP
+SmallMDI.asm(160) : warning A6004:procedure argument or local not referenced : uMsg
+
+				        OPTION  PROLOGUE:PrologueDef
+				        OPTION  EPILOGUE:EpilogueDef
+
+				; =============================================================================================
+
+				        OPTION  PROLOGUE:None
+				        OPTION  EPILOGUE:None
+
+ 00000129			ChildProc PROC    hWnd:DWORD,uMsg:DWORD,wParam:DWORD,lParam:DWORD
+
+				; =========== Child Window Proc ===========
+
+ 00000129  83 7C 24 08 10	        cmp dword ptr [esp+8],WM_CLOSE
+ 0000012E  75 06		        jnz     CProc0
+
+ 00000130  FF 0D 00000000 R	        dec dword ptr nChildCount
+
+ 00000136  E9 00000000 E	CProc0: JMP     DefMDIChildProc
+
+ 0000013B			ChildProc ENDP
+SmallMDI.asm(181) : warning A6001:no return from procedure
+SmallMDI.asm(181) : warning A6004:procedure argument or local not referenced : wParam
+SmallMDI.asm(181) : warning A6004:procedure argument or local not referenced : lParam
+SmallMDI.asm(181) : warning A6004:procedure argument or local not referenced : hWnd
+SmallMDI.asm(181) : warning A6004:procedure argument or local not referenced : uMsg
+
+				        OPTION  PROLOGUE:PrologueDef
+				        OPTION  EPILOGUE:EpilogueDef
+
+				; =============================================================================================
+
+ 0000013B			WinMain PROC
+
+				; =========== Main Proc ===========
+
+				; =========== Initialize globals ===========
+
+ 0000013B  33 FF		        xor     edi,edi                                     ;EDI = 0
+ 0000013D  57			        push    edi
+ 0000013E  6A 08		        push    sizeof INITCOMMONCONTROLSEX
+				        INVOKE  InitCommonControlsEx,esp
+				        INVOKE  GetCommandLine
+ 0000014B  A3 00000000 R	        mov     lpszCmdLine,eax
+
+				; =========== Register frame window class ===========
+
+ 00000150  BE 00000004 R	        mov     esi,offset wc                               ;ESI = offset wc
+				        INVOKE  GetModuleHandle,edi
+ 0000015B  89 46 14		        mov     [esi].WNDCLASSEX.hInstance,eax
+ 0000015E  A3 0000003C R	        mov     mcs.hOwner,eax
+ 00000163  93			        xchg    eax,ebx                                     ;EBX = wc.hInstance
+				        INVOKE  LoadCursor,edi,IDC_ARROW
+ 0000016F  89 46 1C		        mov     [esi].WNDCLASSEX.hCursor,eax
+				        INVOKE  LoadIcon,ebx,IDI_ICON
+ 0000017A  89 46 18		        mov     [esi].WNDCLASSEX.hIcon,eax
+ 0000017D  89 46 2C		        mov     [esi].WNDCLASSEX.hIconSm,eax
+				        INVOKE  RegisterClassEx,esi
+
+				; =========== Register child window class ===========
+
+				        INVOKE  CreateSolidBrush,0FFFFFFh                   ;white bg
+ 00000190  C7 46 08		        mov     [esi].WNDCLASSEX.lpfnWndProc,ChildProc
+	   00000129 R
+ 00000197  6A 20		        push    32
+ 00000199  8F 46 10		        pop     [esi].WNDCLASSEX.cbWndExtra
+ 0000019C  89 46 20		        mov     [esi].WNDCLASSEX.hbrBackground,eax
+ 0000019F  C7 46 28		        mov     [esi].WNDCLASSEX.lpszClassName,offset szChildClass
+	   00000085 R
+				        INVOKE  RegisterClassEx,esi
+
+				; =========== Create frame window ===========
+
+ = 12CF0000			StyleFlags = WS_OVERLAPPEDWINDOW or WS_VISIBLE or WS_CLIPCHILDREN
+				;or WS_HSCROLL or WS_VSCROLL (to add scroll bars to frame window)
+				;if scrollbars are added to the frame window, refer to the wc structure notes
+
+				        INVOKE  CreateWindowEx,edi,offset szFrameClass,offset szFrameTitle,
+				                StyleFlags,CW_USEDEFAULT,SW_SHOWNORMAL,600,440,edi,edi,ebx,edi
+
+ 000001D6  93			        xchg    eax,ebx                                     ;EBX = hWin
+ 000001D7  8B 35 00000008 R	        mov     esi,hClient                                 ;ESI = hClient
+				        INVOKE  UpdateWindow,ebx
+				        INVOKE  SendMessage,esi,WM_MDICREATE,edi,offset mcs
+
+				; =========== Message loop ===========
+
+ 000001F4  60			        pushad
+ 000001F5  8B EC		        mov     ebp,esp                                     ;EBP = offset msg
+ 000001F7  EB 28		        jmp short mLoop1
+
+ 000001F9			mLoop0: INVOKE  TranslateMDISysAccel,esi,ebp
+ 00000200  0B C0		        or      eax,eax
+ 00000202  75 1D		        jnz     mLoop1
+
+				        INVOKE  TranslateAccelerator,ebx,hAccel,ebp
+ 00000211  0B C0		        or      eax,eax
+ 00000213  75 0C		        jnz     mLoop1
+				   
+				        INVOKE  TranslateMessage,ebp
+				        INVOKE  DispatchMessage,ebp
+
+ 00000221			mLoop1: INVOKE  GetMessage,ebp,edi,edi,edi
+ 0000022A  40			        inc     eax                                         ;exit only
+ 0000022B  D1 E8		        shr     eax,1                                       ;if 0 or -1
+ 0000022D  75 CA		        jnz     mLoop0
+
+ 0000022F  58			        pop     eax                                         ;ExitProcess:uExitCode = wParam
+ 00000230  E9 00000000 E	        JMP     ExitProcess
+
+ 00000235			WinMain ENDP
+
+				; =============================================================================================
+
+				        END     WinMain
+
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:53
+SmallMDI.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000095 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000235 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ChildProc  . . . . . . . . . . .	P Near	 00000129 _TEXT	Length= 00000012 Public STDCALL
+WinMain  . . . . . . . . . . . .	P Near	 0000013B _TEXT	Length= 000000FA Public STDCALL
+WndProc  . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000129 Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   6 Warnings
+	   0 Errors

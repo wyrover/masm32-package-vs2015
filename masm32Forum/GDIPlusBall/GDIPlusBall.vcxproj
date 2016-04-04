@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{73C9555C-7210-4FB0-8884-89623E5794B4}</ProjectGuid>
+    <ProjectGuid>{23C9E73A-2738-43F8-913F-360FC726FB9D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GDIPlusBall</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -35,7 +35,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\MASM32FORUM\$(ProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -159,9 +159,9 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="DrawGdiPlussBall.Asm" />
-  </ItemGroup>
-  <ItemGroup>
+    <MASM Include="DrawGdiPlussBall.Asm">
+      <FileType>Document</FileType>
+    </MASM>
     <None Include="DrawGdiPlussBall.Inc" />
   </ItemGroup>
   <ItemGroup>

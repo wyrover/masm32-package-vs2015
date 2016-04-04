@@ -15,17 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="crystal-ball.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="agguro.png">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="DrawGdiPlussBall.Asm">
-      <Filter>Source Files</Filter>
-    </MASM>
+    <Image Include="crystal-ball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="DrawGdiPlussBall.Inc">
@@ -36,5 +31,10 @@
     <ResourceCompile Include="DrawGdiPlussBall.Rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="DrawGdiPlussBall.Asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>

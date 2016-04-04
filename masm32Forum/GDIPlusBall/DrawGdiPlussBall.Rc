@@ -1,3 +1,3 @@
 #define CBall							101
 
-CBall					RCDATA    DISCARDABLE "crystal-ball.png"
+CBall					RCDATA    DISCARDABLE "agguro.png"

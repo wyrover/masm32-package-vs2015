@@ -1,0 +1,3 @@
+﻿  Assembling resimple.asm...
+resimple.asm(77): warning A6004: procedure argument or local not referenced : lParam
+  ReSimple.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\MASM32FORUM\ReSimple\ReSimple.exe

@@ -1,0 +1,8 @@
+﻿  Assembling SmallMDI.asm...
+SmallMDI.asm(181): warning A6001: no return from procedure
+SmallMDI.asm(160): warning A6004: procedure argument or local not referenced : uMsg
+SmallMDI.asm(160): warning A6004: procedure argument or local not referenced : wParam
+SmallMDI.asm(160): warning A6004: procedure argument or local not referenced : lParam
+SmallMDI.asm(181): warning A6004: procedure argument or local not referenced : hWnd
+SmallMDI.asm(181): warning A6004: procedure argument or local not referenced : uMsg
+  SmallMDI.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\MASM32FORUM\SmallMDI\SmallMDI.exe

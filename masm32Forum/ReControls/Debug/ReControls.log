@@ -1,0 +1,3 @@
+﻿  Assembling recontrols.asm...
+recontrols.asm(113): warning A6004: procedure argument or local not referenced : lParam
+  ReControls.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\MASM32FORUM\ReControls\ReControls.exe

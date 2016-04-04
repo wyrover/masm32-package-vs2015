@@ -3,7 +3,7 @@
 include \masm32\include\masm32rt.inc
 
 include \masm32\include\gdiplus.inc
-;includelib \masm32\lib\gdiplus.lib
+; includelib \masm32\lib\gdiplus.lib		;;; add gdiplus.lib to linker/input libraries
 
 include DrawGdiPlussBall.Inc
 
@@ -70,7 +70,7 @@ LOCAL rect:RECT
 	
 
 	
-	invoke DrawFileImage,graphics10,chr$("crystal-ball.png"),0,0,0,0
+	invoke DrawFileImage,graphics10,chr$("agguro.png"),0,0,0,0
 
  	
 

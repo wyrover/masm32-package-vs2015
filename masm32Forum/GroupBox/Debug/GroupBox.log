@@ -1,0 +1,3 @@
+﻿  Assembling GroupBoxDemo.asm...
+GroupBoxDemo.asm(39): warning A6001: no return from procedure
+  GroupBox.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\MASM32FORUM\GroupBox\GroupBox.exe

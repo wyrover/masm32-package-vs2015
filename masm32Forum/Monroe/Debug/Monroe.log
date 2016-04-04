@@ -1,0 +1,3 @@
+﻿  Assembling monroe.asm...
+monroe.asm(74): warning A6004: procedure argument or local not referenced : lParam
+  Monroe.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\MASM32FORUM\Monroe\Monroe.exe
