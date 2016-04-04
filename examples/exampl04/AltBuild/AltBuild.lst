@@ -1,0 +1,69 @@
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:30
+topxy.asm						     Page 1 - 1
+
+
+				; #########################################################################
+
+				      .486                      ; create 32 bit code
+				      .model flat, stdcall      ; 32 bit memory model
+				      option casemap :none      ; case sensitive
+
+ 00000000			.code
+
+				; #########################################################################
+
+ 00000000			TopXY proc wDim:DWORD, sDim:DWORD
+
+ 00000003  D1 6D 0C		    shr sDim, 1      ; divide screen dimension by 2
+ 00000006  D1 6D 08		    shr wDim, 1      ; divide window dimension by 2
+ 00000009  8B 45 08		    mov eax, wDim    ; copy window dimension into eax
+ 0000000C  29 45 0C		    sub sDim, eax    ; sub half win dimension from half screen dimension
+
+ 0000000F  8B 45 0C		    mov eax, sDim
+				    ret
+
+ 00000016			TopXY endp
+
+				; #########################################################################
+
+				    end
+Microsoft (R) Macro Assembler Version 14.00.23506.0	    04/01/16 14:56:30
+topxy.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000016 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+TopXY  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000016 Public STDCALL
+  wDim . . . . . . . . . . . . .	DWord	 bp + 00000008
+  sDim . . . . . . . . . . . . .	DWord	 bp + 0000000C
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   0 Warnings
+	   0 Errors
