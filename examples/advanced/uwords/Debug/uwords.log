@@ -1,0 +1,3 @@
+﻿  Assembling uwords.asm...
+uwords.asm(465): warning A6004: procedure argument or local not referenced : bptr
+  uwords.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\UWords\UWords.exe

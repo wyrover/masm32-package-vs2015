@@ -163,14 +163,14 @@ WndProc proc hWnd:HWND, uMsg:UINT, wParam:WPARAM, lParam:LPARAM
    	.elseif	uMsg==WM_KEYDOWN
         invoke PostMessage,hWnd,WM_CLOSE,0,0
 	.ELSEIF uMsg==WM_PAINT
- 			;invoke MainDraw,hWnd,0
+ 			invoke MainDraw,hWnd,0
  	.ELSEIF uMsg==WM_RBUTTONDOWN 
          invoke  SendMessage,hWnd,WM_CLOSE,wParam,lParam
     .ELSEIF uMsg==WM_LBUTTONDOWN
          invoke  SendMessage,hWnd,WM_NCLBUTTONDOWN,HTCAPTION,lParam
-     	invoke MainDraw,hWnd,0
+     	
     .ELSEIF uMsg==WM_RBUTTONUP
-     	invoke MainDraw,hWnd,0
+     	
     .ELSE
         invoke DefWindowProc,hWnd,uMsg,wParam,lParam        
         ret

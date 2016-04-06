@@ -1,0 +1,24 @@
+﻿  Assembling about.asm...
+about.asm(74): warning A6004: procedure argument or local not referenced : Icon
+about.asm(74): warning A6004: procedure argument or local not referenced : appname
+about.asm(74): warning A6004: procedure argument or local not referenced : description
+about.asm(74): warning A6004: procedure argument or local not referenced : copyright
+about.asm(242): warning A6004: procedure argument or local not referenced : Icon
+  Assembling getfile.asm...
+getfile.asm(52): warning A6004: procedure argument or local not referenced : Icon
+getfile.asm(52): warning A6004: procedure argument or local not referenced : caption
+getfile.asm(52): warning A6004: procedure argument or local not referenced : pattern
+getfile.asm(52): warning A6004: procedure argument or local not referenced : buffer
+  Assembling getip.asm...
+getip.asm(60): warning A6004: procedure argument or local not referenced : Icon
+getip.asm(60): warning A6004: procedure argument or local not referenced : lpCaption
+getip.asm(60): warning A6004: procedure argument or local not referenced : lpText
+getip.asm(60): warning A6004: procedure argument or local not referenced : defIP
+  Assembling gettext.asm...
+gettext.asm(61): warning A6004: procedure argument or local not referenced : Icon
+gettext.asm(61): warning A6004: procedure argument or local not referenced : caption
+gettext.asm(61): warning A6004: procedure argument or local not referenced : subcaption
+gettext.asm(61): warning A6004: procedure argument or local not referenced : lpbuffer
+  Assembling ip2str.asm...
+  Assembling loadlist.asm...
+  Lib.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\DLL-LIB\PdbDemo\DlgLib.lib
