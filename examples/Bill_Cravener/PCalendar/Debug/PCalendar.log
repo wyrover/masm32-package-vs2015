@@ -1,7 +1,0 @@
-﻿  Assembling PCalendar.asm...
-PCalendar.asm(128): warning A6004: procedure argument or local not referenced : hPrevInst
-PCalendar.asm(128): warning A6004: procedure argument or local not referenced : CmdLine
-PCalendar.asm(128): warning A6004: procedure argument or local not referenced : CmdShow
-PCalendar.asm(272): warning A6004: procedure argument or local not referenced : wParam
-PCalendar.asm(272): warning A6004: procedure argument or local not referenced : lParam
-  PCalendar.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\examples\Bill_Cravener\PCalendar\Debug\GUI\PCalendar\PCalendar.exe
