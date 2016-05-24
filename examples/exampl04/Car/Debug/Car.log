@@ -1,8 +1,0 @@
-﻿  Assembling car.asm...
-car.asm(179): warning A6004: procedure argument or local not referenced : var
-car.asm(179): warning A6004: procedure argument or local not referenced : caW
-car.asm(179): warning A6004: procedure argument or local not referenced : caH
-car.asm(179): warning A6004: procedure argument or local not referenced : Rct
-car.asm(179): warning A6004: procedure argument or local not referenced : buffer1
-car.asm(179): warning A6004: procedure argument or local not referenced : buffer2
-  Car.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Car\Car.exe
