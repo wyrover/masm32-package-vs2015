@@ -73,14 +73,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\CONSOLE\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\CONSOLE\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -151,7 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="msort.asm" />
+    <MASM Include="msort.asm">
+      <AssembledCodeListingFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(TargetName).lst</AssembledCodeListingFile>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSort.lst" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

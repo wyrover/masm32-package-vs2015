@@ -1,31 +1,31 @@
 comment * ллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл
-
-                    Build as a CONSOLE mode application
-
-                    MASM32 string sort testbed
-
-                This is the testbed that was used to test all of the
-                string sorting algorithms that are now included in the
-                MASM32 library. It was designed for very large capacity
-                so that different sort algorithms could be tested in
-                critical large capacity data situations. It writes the
-                sorted output to STDOUT and can be redirected to a file.
-
-                It reads a file from the command line directly into a
-                buffer, loads the start of each word into an array of
-                pointers and terminates each word with a CRLF plus zero.
-
-                This test bed has been used on 50 million words and
-                a file size of 500 megabytes.
-
-     IMPORTANT: With any of the string sort algorithms, do NOT pass a
-                NULL POINTER in the array of pointers to the algorithms
-                as they are not designed to handle that situation.
-                Ensure that you either filter the input data for the
-                array to prevent a NULL pointer or make provision to
-                append extra data to the string so that the first BYTE
-                is not ascii ZERO.
-
+;
+;                    Build as a CONSOLE mode application
+;
+;                    MASM32 string sort testbed
+;
+;                This is the testbed that was used to test all of the
+;                string sorting algorithms that are now included in the
+;                MASM32 library. It was designed for very large capacity
+;                so that different sort algorithms could be tested in
+;                critical large capacity data situations. It writes the
+;                sorted output to STDOUT and can be redirected to a file.
+;
+;                It reads a file from the command line directly into a
+;                buffer, loads the start of each word into an array of
+;                pointers and terminates each word with a CRLF plus zero.
+;
+;                This test bed has been used on 50 million words and
+;                a file size of 500 megabytes.
+;
+;     IMPORTANT: With any of the string sort algorithms, do NOT pass a
+;                NULL POINTER in the array of pointers to the algorithms
+;                as they are not designed to handle that situation.
+;                Ensure that you either filter the input data for the
+;                array to prevent a NULL pointer or make provision to
+;                append extra data to the string so that the first BYTE
+;                is not ascii ZERO.
+;
 ллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл *
 
     .486                       ; create 32 bit code
@@ -34,20 +34,31 @@ comment * ллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл
  
     include \masm32\include\windows.inc
     include \masm32\include\masm32.inc
-    include \masm32\include\gdi32.inc
     include \masm32\include\user32.inc
     include \masm32\include\kernel32.inc
-    include \masm32\include\shell32.inc
     include \masm32\macros\macros.asm
 
     includelib \masm32\lib\masm32.lib
-    includelib \masm32\lib\gdi32.lib
-    includelib \masm32\lib\user32.lib
-    includelib \masm32\lib\kernel32.lib
-    includelib \masm32\lib\shell32.lib
-
+    
     sortlist PROTO :DWORD,:DWORD
     chfilter PROTO :DWORD
+
+	.data
+		buffer	db	128	dup (0)
+		msg1	db	"Sorry, cannot find ", 0
+		crlf	db	10, 13, 0
+		msg2	db	"MSORT MASM32 String Sort Testbed", 10, 13
+				db	"Copyright (c) The MASM32 Project 1998-2004", 10, 13, 10, 13
+				db	"SYNTAX: MSORT FileName.Ext [0 or NON 0]", 10, 13
+				db	"        FileName.Ext is the list to sort", 10, 13
+				db	"        Optional second parameter if used.", 10, 13
+				db	"            0        = ascending sort", 10, 13
+				db	"            NON ZERO = descending sort", 10, 13
+				db	"            The default with no second argument is ascending sort.", 10, 13, 10, 13
+				db	"        Output is to STDOUT. It can redirected to a file.", 10, 13, 10, 13
+				; leave this zero as last
+				db	0
+		redirmsg	db	"        EXAMPLE: MSORT yourfile.txt 0 > targetfile.ext", 10, 13, 0
 
     .code
 
@@ -58,16 +69,21 @@ start:
 main proc
 
     LOCAL sortorder :DWORD
-    LOCAL buffer[128]:BYTE  ; filename buffer
+   ; LOCAL buffer[128]:BYTE  ; filename buffer
     LOCAL arg2[128]:BYTE    ; buffer for optional 2nd arg
-
+	jmp @debug
     invoke GetCL,1,ADDR buffer
     cmp eax, 1
     jne nocommandline
 
-    .if FUNC(exist,ADDR buffer) == 0
-      jmp filedoesnotexist
-    .endif
+	push	offset buffer
+	call	exist
+	or		eax, eax
+	jz		filedoesnotexist
+
+    ;.if FUNC(exist,ADDR buffer) == 0
+    ;  jmp filedoesnotexist
+    ;.endif
 
     invoke GetCL,2,ADDR arg2
     cmp eax, 1
@@ -90,42 +106,25 @@ main proc
     jmp close
 
   filedoesnotexist:
-    print "Sorry, cannot find "
-    print ADDR buffer
-    print chr$(13,10)
-    jmp close
+	push	offset msg1
+	call	StdOut
+	push	offset buffer
+	call	StdOut
+	push	offset crlf
+	call	StdOut
+	jmp		close
+
 
   nocommandline:
-    print "MSORT MASM32 String Sort Testbed"
-    print chr$(13,10)
-    print "Copyright (c) The MASM32 Project 1998-2004"
-    print chr$(13,10,13,10)
-    print "SYNTAX: MSORT FileName.Ext [0 or NON 0]"
-    print chr$(13,10)
-    print "        FileName.Ext is the list to sort"
-    print chr$(13,10)
-    print "        Optional second parameter if used."
-    print chr$(13,10)
-    print "            0        = ascending sort"
-    print chr$(13,10)
-    print "            NON ZERO = descending sort"
-    print chr$(13,10)
-    print "            The default with no second argument is ascending sort."
-    print chr$(13,10,13,10)
-    print "        Output is to STDOUT. It can redirected to a file."
-    print chr$(13,10,13,10)
+	push	offset msg2
+	call	StdOut
+	push	offset	redirmsg
+	call	StdOut
 
-    .data
-      redirmsg db "        EXAMPLE: MSORT yourfile.txt 0 > targetfile.ext",0
-    .code
-
-    print ADDR redirmsg
-    print chr$(13,10)
-
+@debug:
+	call	sortlist    
   close:
     invoke ExitProcess,0
-
-    ret
 
 main endp
 
@@ -139,9 +138,9 @@ align 4
 chfilter proc lpstr:DWORD
 
 comment * ----------------------------------------------------------
-        Leading character filter reads past blanks and tabs to test
-        1st character. If below 32 or about 126 it returns ZERO,
-        else it returns 1.
+;        Leading character filter reads past blanks and tabs to test
+;        1st character. If below 32 or about 126 it returns ZERO,
+;        else it returns 1.
         ---------------------------------------------------------- *
 
     mov eax, [esp+4]            ; lpstr
@@ -176,23 +175,23 @@ align 4
 sortlist proc lpname:DWORD,sortorder:DWORD
 
 comment * --------------------------------------------------------------
-    This algo reads a file into memory, reads each line into a
-    seperate buffer with the CRLF removed then writes the line back
-    to another buffer with an appended CRLF (13,10) and an appended
-    ascii ZERO after it. The appended CRLF garrantees that a NULL
-    pointer is not passed to the string sort algo that is not
-    designed to handle NULL pointers.
-
-    For each line it writes it stores the starting address in an
-    array of pointers so that when the 2nd buffer is loaded, there
-    is a pointers to each zero terminated string in the array.
-
-    The result is an array of pointers that can be passed to the string
-    sort algorithms that sort the pointers into either ascending or
-    descending alphabetical order.
-
-    When the sort algorith has finished, each zero terminated string
-    that is not a blank line is sent to STDOUT.
+;    This algo reads a file into memory, reads each line into a
+;    seperate buffer with the CRLF removed then writes the line back
+;    to another buffer with an appended CRLF (13,10) and an appended
+;    ascii ZERO after it. The appended CRLF garrantees that a NULL
+;    pointer is not passed to the string sort algo that is not
+;    designed to handle NULL pointers.
+;
+;    For each line it writes it stores the starting address in an
+;    array of pointers so that when the 2nd buffer is loaded, there
+;    is a pointers to each zero terminated string in the array.
+;
+;    The result is an array of pointers that can be passed to the string
+;    sort algorithms that sort the pointers into either ascending or
+;    descending alphabetical order.
+;
+;    When the sort algorith has finished, each zero terminated string
+;    that is not a blank line is sent to STDOUT.
     ------------------------------------------------------------------ *
 
     LOCAL hMem  :DWORD      ; buffer handle for file data
@@ -209,6 +208,7 @@ comment * --------------------------------------------------------------
     push esi
     push edi
 
+
     mov hMem, InputFile(lpname)             ; load disk file to memory
     mov flen, ecx                           ; save file length
 
@@ -217,7 +217,10 @@ comment * --------------------------------------------------------------
     mov eax, carr                           ; array address
     mov ecx, [eax+52]                       ; 52 = ascii 13 * 4
     mov lcnt, ecx                           ; set line count
-    free carr
+	push	dword ptr [carr]
+	call	GlobalFree
+
+    ;free carr
 
     mov esi, lcnt
     shl esi, 3                              ; mul by 8
@@ -252,12 +255,14 @@ comment * --------------------------------------------------------------
     test ebx, ebx                           ; test if linein$ returned zero
     jnz @B                                  ; loop back if it did not
 
-    free hMem                               ; source memory no longer required
-
+	push	dword ptr [hMem]				; source memory no longer required
+	call	GlobalFree
+    
     invoke GetTickCount
     push eax
 
-    invoke SetPriorityClass,FUNC(GetCurrentProcess),REALTIME_PRIORITY_CLASS
+	invoke	GetCurrentProcess
+    invoke SetPriorityClass, eax ,REALTIME_PRIORITY_CLASS
 
   ; ***********************************************************************
 
@@ -269,36 +274,51 @@ comment * --------------------------------------------------------------
 
     test eax, eax
     jnz @F
-    invoke StdErr,chr$("Strategy one")      ; strategy one means the data was quick sorted
-    invoke StdErr,chr$(13,10)
+	.data
+		msgStratOne	db	"Strategy one", 10, 13, 0
+		msgStratTwo	db	"Strategy two", 10, 13, 0
+
+	.code
+    invoke StdErr, addr	msgStratOne      ; strategy one means the data was quick sorted
+    
     jmp nxt
   @@:
-    invoke StdErr,chr$("Strategy two")      ; strategy two means the data was hybrid comb/insertion sorted
-    invoke StdErr,chr$(13,10)
+    invoke StdErr, addr msgStratTwo      ; strategy two means the data was hybrid comb/insertion sorted
+    
   nxt:
 
   ; ***********************************************************************
 
-    invoke SetPriorityClass,FUNC(GetCurrentProcess),NORMAL_PRIORITY_CLASS
+	invoke	GetCurrentProcess
+    invoke SetPriorityClass,eax,NORMAL_PRIORITY_CLASS
 
     invoke GetTickCount
     pop ecx
     sub eax, ecx
     mov esi, eax
 
-    invoke StdErr,chr$("timing = ")
-    invoke StdErr,str$(esi)
-    invoke StdErr,chr$(" milliseconds")
-    invoke StdErr,chr$(13,10)
+	.data
+		msgTiming	db	"timing = ", 0
+		msgMillisecs	db	" milliseconds", 10, 13, 0
+	
+	.code
 
+    invoke StdErr,addr msgTiming
+    invoke StdErr,esi
+    invoke StdErr,addr msgMillisecs
+    
   ; -----------------------
   ; print results to STDOUT
   ; -----------------------
     mov esi, parr                           ; load the pointer array in ESI
   @@:
-    cmp FUNC(chfilter,[esi]), 0             ; filter the line to test if it should be displayed
+    invoke	chfilter, esi
+
+	cmp eax, 0             ; filter the line to test if it should be displayed
     je no_write                             ; jump over if it is
-    print [esi]                             ; send string at that address to STDOUT
+	push	esi
+	call	StdOut
+    ;print [esi]                             ; send string at that address to STDOUT
   no_write:
     add esi, 4                              ; set pointer address to next string
     sub lcnt, 1
@@ -307,9 +327,16 @@ comment * --------------------------------------------------------------
 
   cleanup:
 
-    free hBuf                               ; free the buffer memory
-    free parr                               ; free the pointer array memory
-    free lBuf                               ; free the line buffer memory
+	push	dword ptr [hBuf]                ; free the buffer memory
+	call	GlobalFree
+	push	dword ptr [parr]				; free the pointer array memory
+	call	GlobalFree
+	push	dword ptr [lBuf]				; free the line buffer memory
+	call	GlobalFree
+
+    ;free hBuf
+    ;free parr                               ;
+    ;free lBuf                               ;
 
     pop edi
     pop esi

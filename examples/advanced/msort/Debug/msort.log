@@ -1,3 +1,4 @@
 ﻿  Assembling msort.asm...
-msort.asm(167): warning A6004: procedure argument or local not referenced : lpstr
-  msort.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\CONSOLE\MSort\MSort.exe
+msort.asm(129): warning A6001: no return from procedure
+msort.asm(166): warning A6004: procedure argument or local not referenced : lpstr
+  msort.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\examples\advanced\msort\Debug\MSort.exe
