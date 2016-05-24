@@ -1,5 +1,0 @@
-﻿  Assembling generic.asm...
-generic.asm(228): warning A6004: procedure argument or local not referenced : hPrevInst
-generic.asm(228): warning A6004: procedure argument or local not referenced : CmdLine
-generic.asm(228): warning A6004: procedure argument or local not referenced : CmdShow
-  Generic.vcxproj -> D:\Github\masm32-package-vs2015.git\trunk\Debug\GUI\Generic\Generic.exe
